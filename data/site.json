@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Gent Flowers",
-    "logo": "media/gent-flowers-logo.png"
+    "logo": "/media/gent-flowers-logo.png"
   },
   "theme": {
     "page_background": "#f8f6f3",
@@ -37,26 +37,6 @@
       "pl": "Z miłością, każdego dnia",
       "en": "Made with love, every day"
     },
-    "chooseBouquet": {
-      "pl": "Wybierz bukiet",
-      "en": "Choose a bouquet"
-    },
-    "home": {
-      "pl": "Start",
-      "en": "Home"
-    },
-    "collectionsNav": {
-      "pl": "Kolekcje",
-      "en": "Collections"
-    },
-    "bouquets": {
-      "pl": "Bukiety",
-      "en": "Bouquets"
-    },
-    "about": {
-      "pl": "O nas",
-      "en": "About us"
-    },
     "findOccasion": {
       "pl": "Znajdź swój powód",
       "en": "Find your moment"
@@ -81,30 +61,6 @@
       "pl": "Świeże kwiaty każdego dnia",
       "en": "Fresh flowers every day"
     },
-    "tile": {
-      "pl": "Siatka",
-      "en": "Grid"
-    },
-    "list": {
-      "pl": "Lista",
-      "en": "List"
-    },
-    "carousel": {
-      "pl": "Karuzela",
-      "en": "Carousel"
-    },
-    "palette": {
-      "pl": "Paleta kolorów",
-      "en": "Colour palette"
-    },
-    "bestseller": {
-      "pl": "Bestseller",
-      "en": "Bestseller"
-    },
-    "new": {
-      "pl": "Nowość",
-      "en": "New"
-    },
     "ourStudio": {
       "pl": "Nasza pracownia",
       "en": "Our studio"
@@ -128,28 +84,21 @@
     "hours": {
       "pl": "Codziennie · 9:00–21:00",
       "en": "Daily · 9 am–9 pm"
-    },
-    "productDetails": {
-      "pl": "Szczegóły bukietu",
-      "en": "Bouquet details"
-    },
-    "add": {
-      "pl": "Dodaj do koszyka",
-      "en": "Add to basket"
-    },
-    "added": {
-      "pl": "Dodano ✓",
-      "en": "Added ✓"
     }
   },
   "hero": {
     "eyebrow": "Gent Flowers",
-    "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85",
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
       "en": "A delicate bouquet of pink flowers"
+    }
+  },
+  "hero_button": {
+    "label": {
+      "pl": "Wybierz bukiet",
+      "en": "Choose a bouquet"
     },
-    "button_url": "#shop"
+    "url": "#shop"
   },
   "navigation": [
     {
@@ -181,13 +130,6 @@
       "url": "#story"
     }
   ],
-  "hero_button": {
-    "label": {
-      "pl": "Wybierz bukiet",
-      "en": "Choose a bouquet"
-    },
-    "url": "#shop"
-  },
   "collections": [
     {
       "title": {
@@ -198,7 +140,6 @@
         "pl": "Ręcznie układane · od 190 zł",
         "en": "Hand-arranged · from 190 zł"
       },
-      "image": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1000&q=85",
       "alt": {
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
@@ -214,7 +155,6 @@
         "pl": "Róże i sezonowe kwiaty",
         "en": "Roses and seasonal flowers"
       },
-      "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
@@ -230,7 +170,6 @@
         "pl": "Kompozycje w wazonie",
         "en": "Arrangements in a vase"
       },
-      "image": "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
@@ -254,7 +193,6 @@
       },
       "price": 350,
       "currency": "zł",
-      "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Obfity bukiet różowych róż",
         "en": "A full bouquet of pink roses"
@@ -309,14 +247,9 @@
       },
       "price": 280,
       "currency": "zł",
-      "image": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Polny bukiet w pastelowych odcieniach",
         "en": "A pastel wildflower bouquet"
-      },
-      "badge": {
-        "pl": "",
-        "en": ""
       },
       "palette": [
         {
@@ -364,7 +297,6 @@
       },
       "price": 240,
       "currency": "zł",
-      "image": "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Czerwone tulipany",
         "en": "Red tulips"
@@ -419,14 +351,9 @@
       },
       "price": 320,
       "currency": "zł",
-      "image": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85",
       "alt": {
         "pl": "Jasna kompozycja z białych kwiatów",
         "en": "A light arrangement of white flowers"
-      },
-      "badge": {
-        "pl": "",
-        "en": ""
       },
       "palette": [
         {
@@ -461,12 +388,10 @@
     }
   ],
   "story": {
-    "image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85",
     "alt": {
       "pl": "Florystka starannie układa bukiet",
       "en": "A florist carefully arranging a bouquet"
     },
     "button_url": "#footer"
-  },
-  "extra_blocks": []
+  }
 }
