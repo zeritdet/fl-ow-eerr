@@ -9,6 +9,16 @@
   let cartCount = 0;
   const tr = value => value && typeof value === "object" ? (value[lang] ?? value.pl ?? value.en ?? "") : (value ?? "");
   const safeUrl = value => /^(https?:\/\/|mailto:|tel:|\/|#|\.{1,2}\/)/i.test(String(value||"")) ? value : "#";
+
+  // GitHub Pages publishes this project below /<repository>/.
+  // CMS media values may start with /media/, which otherwise points to the domain root.
+  const getImageUrl = value => {
+    if (!value) return "";
+    const path = String(value).trim();
+    if (/^(https?:|data:|blob:)/i.test(path)) return path;
+    return new URL(path.replace(/^\/+/, ""), new URL("./", window.location.href)).href;
+  };
+
   const el = (tag, cls, text) => {
     const node = document.createElement(tag);
     if (cls) node.className = cls;
@@ -21,7 +31,7 @@
   };
   const setImage = (node, src, alt) => {
     if (node && src) {
-      node.src = src;
+      node.src = getImageUrl(src);
       node.alt = tr(alt);
     }
   };
@@ -30,7 +40,7 @@
   document.title = data.brand?.name || "Gent Flowers";
   const logo = data.brand?.logo || "./gent-flowers-logo.png";
   $$(".brand-logo").forEach(img => {
-    img.src = logo;
+    img.src = getImageUrl(logo);
     img.alt = data.brand?.name || "Gent Flowers";
   });
 
@@ -390,7 +400,7 @@
     activeCard = card;
     const item = card._productData || {};
 
-    modalImage.src = item.image || "";
+    modalImage.src = getImageUrl(item.image);
     modalImage.alt = tr(item.alt);
     modalTitle.textContent = tr(item.name);
     modalDesc.textContent = tr(item.description);

@@ -91,7 +91,8 @@
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
       "en": "A delicate bouquet of pink flowers"
-    }
+    },
+    "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85"
   },
   "hero_button": {
     "label": {
@@ -144,7 +145,8 @@
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
       },
-      "url": "#shop"
+      "url": "#shop",
+      "image": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1000&q=85"
     },
     {
       "title": {
@@ -159,7 +161,8 @@
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
       },
-      "url": "#shop"
+      "url": "#shop",
+      "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=85"
     },
     {
       "title": {
@@ -174,7 +177,8 @@
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
       },
-      "url": "#shop"
+      "url": "#shop",
+      "image": "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=85"
     }
   ],
   "products": [
@@ -277,7 +281,8 @@
           },
           "hex": "#e4c568"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=85"
     },
     {
       "name": {
@@ -331,7 +336,8 @@
           },
           "hex": "#7861a8"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=85"
     },
     {
       "name": {
@@ -381,11 +387,12 @@
           },
           "hex": "#f5f1e9"
         }
-      ]
+      ],
+      "image": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85"
     }
   ],
   "story": {
-    "image": "/media/gent-flowers-logo.png",
+    "image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85",
     "alt": {
       "pl": "Florystka starannie układa bukiet",
       "en": "A florist carefully arranging a bouquet"
