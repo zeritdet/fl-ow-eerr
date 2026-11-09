@@ -21,3 +21,10 @@ body { background: var(--cms-page-bg); color: var(--cms-ink); }
 .cms-extra-section img { display:block; max-width:100%; max-height:520px; object-fit:cover; border-radius:12px; margin-top:16px; }
 .cms-extra-section .button { margin-top:10px; }
 @media(max-width:560px){.cms-extra-section{padding:25px 17px}.cms-extra-section h2{font-size:27px}}
+/* Small overlap and depth between content panels, without sticky scroll traps. */
+.section + .section, .section + .story { margin-top: -5px; }
+.section, .hero, .nav, .story { transition: box-shadow .35s ease, transform .35s ease; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .collection img, .product-photo img { will-change: transform; }
+  .button, .icon, .view-button { transition: transform .25s ease, background-color .25s ease, color .25s ease; }
+}
