@@ -1,0 +1,472 @@
+{
+  "brand": {
+    "name": "Gent Flowers",
+    "logo": "media/gent-flowers-logo.png"
+  },
+  "theme": {
+    "page_background": "#f8f6f3",
+    "ink": "#24211f",
+    "muted": "#77716e",
+    "hero_background": "#f6e6e7",
+    "green": "#66735c",
+    "accent": "#bd777e",
+    "line": "#eee9e5"
+  },
+  "texts": {
+    "delivery": {
+      "pl": "Dostawa w mieście jeszcze dziś do 21:00",
+      "en": "Same-day city delivery until 9 pm"
+    },
+    "contact": {
+      "pl": "Napisz do nas ↗",
+      "en": "Get in touch ↗"
+    },
+    "studio": {
+      "pl": "pracownia florystyczna",
+      "en": "flower studio"
+    },
+    "heroTitle": {
+      "pl": "Kwiaty, które mówią za Ciebie",
+      "en": "Flowers that speak for you"
+    },
+    "heroText": {
+      "pl": "Tworzymy wyjątkowe bukiety z sezonowych kwiatów. Na ważne spotkania, małe radości i zupełnie bez okazji.",
+      "en": "Distinctive bouquets made with seasonal flowers. For meaningful meetings, little joys, and everything in between."
+    },
+    "heroNote": {
+      "pl": "Z miłością, każdego dnia",
+      "en": "Made with love, every day"
+    },
+    "chooseBouquet": {
+      "pl": "Wybierz bukiet",
+      "en": "Choose a bouquet"
+    },
+    "home": {
+      "pl": "Start",
+      "en": "Home"
+    },
+    "collectionsNav": {
+      "pl": "Kolekcje",
+      "en": "Collections"
+    },
+    "bouquets": {
+      "pl": "Bukiety",
+      "en": "Bouquets"
+    },
+    "about": {
+      "pl": "O nas",
+      "en": "About us"
+    },
+    "findOccasion": {
+      "pl": "Znajdź swój powód",
+      "en": "Find your moment"
+    },
+    "collectionsTitle": {
+      "pl": "Kolekcje",
+      "en": "Collections"
+    },
+    "collectionIntro": {
+      "pl": "Kwiaty na małe i wielkie chwile",
+      "en": "Flowers for little and big moments"
+    },
+    "pickedForYou": {
+      "pl": "Wybrane dla Ciebie",
+      "en": "Picked for you"
+    },
+    "favoriteBouquets": {
+      "pl": "Ulubione bukiety",
+      "en": "Customer favourites"
+    },
+    "freshDaily": {
+      "pl": "Świeże kwiaty każdego dnia",
+      "en": "Fresh flowers every day"
+    },
+    "tile": {
+      "pl": "Siatka",
+      "en": "Grid"
+    },
+    "list": {
+      "pl": "Lista",
+      "en": "List"
+    },
+    "carousel": {
+      "pl": "Karuzela",
+      "en": "Carousel"
+    },
+    "palette": {
+      "pl": "Paleta kolorów",
+      "en": "Colour palette"
+    },
+    "bestseller": {
+      "pl": "Bestseller",
+      "en": "Bestseller"
+    },
+    "new": {
+      "pl": "Nowość",
+      "en": "New"
+    },
+    "ourStudio": {
+      "pl": "Nasza pracownia",
+      "en": "Our studio"
+    },
+    "storyTitle": {
+      "pl": "Piękno tkwi w prostocie",
+      "en": "Beauty in the little details"
+    },
+    "storyText": {
+      "pl": "Wybieramy sezonowe kwiaty, starannie układamy każdy bukiet i dołączamy bilecik z Twoimi słowami. Bez szablonów — tylko żywe kompozycje.",
+      "en": "We choose seasonal flowers, carefully arrange every bouquet, and include a note in your words. No templates — just fresh, thoughtful flowers."
+    },
+    "meetGent": {
+      "pl": "Poznaj Gent →",
+      "en": "Meet Gent →"
+    },
+    "footerLine": {
+      "pl": "Świeże kwiaty. Ciepłe emocje.",
+      "en": "Fresh flowers. Warm feelings."
+    },
+    "hours": {
+      "pl": "Codziennie · 9:00–21:00",
+      "en": "Daily · 9 am–9 pm"
+    },
+    "productDetails": {
+      "pl": "Szczegóły bukietu",
+      "en": "Bouquet details"
+    },
+    "add": {
+      "pl": "Dodaj do koszyka",
+      "en": "Add to basket"
+    },
+    "added": {
+      "pl": "Dodano ✓",
+      "en": "Added ✓"
+    }
+  },
+  "hero": {
+    "eyebrow": "Gent Flowers",
+    "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85",
+    "image_alt": {
+      "pl": "Delikatny bukiet różowych kwiatów",
+      "en": "A delicate bouquet of pink flowers"
+    },
+    "button_url": "#shop"
+  },
+  "navigation": [
+    {
+      "label": {
+        "pl": "Start",
+        "en": "Home"
+      },
+      "url": "#home"
+    },
+    {
+      "label": {
+        "pl": "Kolekcje",
+        "en": "Collections"
+      },
+      "url": "#collections"
+    },
+    {
+      "label": {
+        "pl": "Bukiety",
+        "en": "Bouquets"
+      },
+      "url": "#shop"
+    },
+    {
+      "label": {
+        "pl": "O nas",
+        "en": "About us"
+      },
+      "url": "#story"
+    }
+  ],
+  "hero_button": {
+    "label": {
+      "pl": "Wybierz bukiet",
+      "en": "Choose a bouquet"
+    },
+    "url": "#shop"
+  },
+  "collections": [
+    {
+      "title": {
+        "pl": "Bukiety autorskie",
+        "en": "Signature bouquets"
+      },
+      "subtitle": {
+        "pl": "Ręcznie układane · od 190 zł",
+        "en": "Hand-arranged · from 190 zł"
+      },
+      "image": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1000&q=85",
+      "alt": {
+        "pl": "Autorska kompozycja kwiatowa",
+        "en": "Signature floral arrangement"
+      },
+      "url": "#shop"
+    },
+    {
+      "title": {
+        "pl": "Chwila czułości",
+        "en": "A tender moment"
+      },
+      "subtitle": {
+        "pl": "Róże i sezonowe kwiaty",
+        "en": "Roses and seasonal flowers"
+      },
+      "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Delikatny bukiet róż",
+        "en": "A delicate rose bouquet"
+      },
+      "url": "#shop"
+    },
+    {
+      "title": {
+        "pl": "Kwiaty do domu",
+        "en": "Flowers for home"
+      },
+      "subtitle": {
+        "pl": "Kompozycje w wazonie",
+        "en": "Arrangements in a vase"
+      },
+      "image": "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Kwiaty w wazonie",
+        "en": "Flowers in a vase"
+      },
+      "url": "#shop"
+    }
+  ],
+  "products": [
+    {
+      "name": {
+        "pl": "Różowa chmurka",
+        "en": "Pink cloud"
+      },
+      "subtitle": {
+        "pl": "Róże piwoniowe · 15 szt.",
+        "en": "Peony roses · 15 stems"
+      },
+      "description": {
+        "pl": "Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie.",
+        "en": "A hand-tied bouquet of peonies and roses in soft blush tones. Made to order."
+      },
+      "price": 350,
+      "currency": "zł",
+      "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Obfity bukiet różowych róż",
+        "en": "A full bouquet of pink roses"
+      },
+      "badge": {
+        "pl": "Bestseller",
+        "en": "Bestseller"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Kremowy",
+            "en": "Cream"
+          },
+          "hex": "#e9d8bd"
+        },
+        {
+          "name": {
+            "pl": "Brzoskwiniowy",
+            "en": "Peach"
+          },
+          "hex": "#efb9a2"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Poranek w ogrodzie",
+        "en": "Morning in the garden"
+      },
+      "subtitle": {
+        "pl": "Sezonowy bukiet · min. 17 kwiatów",
+        "en": "Seasonal mix · 17+ stems"
+      },
+      "description": {
+        "pl": "Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny.",
+        "en": "An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind."
+      },
+      "price": 280,
+      "currency": "zł",
+      "image": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Polny bukiet w pastelowych odcieniach",
+        "en": "A pastel wildflower bouquet"
+      },
+      "badge": {
+        "pl": "",
+        "en": ""
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Pastelowy",
+            "en": "Pastel"
+          },
+          "hex": "#dcaab3"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        },
+        {
+          "name": {
+            "pl": "Lawendowy",
+            "en": "Lavender"
+          },
+          "hex": "#9b88b5"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4c568"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Pierwszy pocałunek",
+        "en": "First kiss"
+      },
+      "subtitle": {
+        "pl": "Tulipany · 25 szt.",
+        "en": "Tulips · 25 stems"
+      },
+      "description": {
+        "pl": "Wyraziste tulipany, które wnoszą do domu kolor i wiosenną energię.",
+        "en": "Bright tulips that bring colour and springtime energy into your home."
+      },
+      "price": 240,
+      "currency": "zł",
+      "image": "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Czerwone tulipany",
+        "en": "Red tulips"
+      },
+      "badge": {
+        "pl": "Nowość",
+        "en": "New"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#bd3446"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4c568"
+        },
+        {
+          "name": {
+            "pl": "Fioletowy",
+            "en": "Purple"
+          },
+          "hex": "#7861a8"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Cicha delikatność",
+        "en": "Quiet tenderness"
+      },
+      "subtitle": {
+        "pl": "Jaskry · 11 szt.",
+        "en": "Ranunculus · 11 stems"
+      },
+      "description": {
+        "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
+        "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
+      },
+      "price": 320,
+      "currency": "zł",
+      "image": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85",
+      "alt": {
+        "pl": "Jasna kompozycja z białych kwiatów",
+        "en": "A light arrangement of white flowers"
+      },
+      "badge": {
+        "pl": "",
+        "en": ""
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Kremowy",
+            "en": "Cream"
+          },
+          "hex": "#e9d8bd"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Brzoskwiniowy",
+            "en": "Peach"
+          },
+          "hex": "#efb9a2"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        }
+      ]
+    }
+  ],
+  "story": {
+    "image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85",
+    "alt": {
+      "pl": "Florystka starannie układa bukiet",
+      "en": "A florist carefully arranging a bouquet"
+    },
+    "button_url": "#footer"
+  },
+  "extra_blocks": []
+}

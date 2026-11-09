@@ -1,0 +1,23 @@
+
+/* CMS theme variables — updated from data/site.json */
+:root {
+  --cms-page-bg: #f8f6f3;
+  --cms-ink: #24211f;
+  --cms-muted: #77716e;
+  --cms-rose: #f6e6e7;
+  --cms-green: #66735c;
+  --cms-accent: #bd777e;
+  --cms-line: #eee9e5;
+}
+body { background: var(--cms-page-bg); color: var(--cms-ink); }
+.hero { background: var(--cms-rose); }
+.eyebrow, .text-link:hover { color: var(--cms-green); }
+.button:hover { background: var(--cms-green); }
+.nav .links a:hover, .brand span { color: var(--cms-accent); }
+.section { border-color: var(--cms-line); }
+.cms-extra-section { background:#fff; padding:38px 5.5%; margin:0 0 22px; border-radius:18px; }
+.cms-extra-section h2 { font:600 32px var(--serif); margin:0 0 12px; }
+.cms-extra-section p { color:var(--cms-muted); line-height:1.8; max-width:760px; }
+.cms-extra-section img { display:block; max-width:100%; max-height:520px; object-fit:cover; border-radius:12px; margin-top:16px; }
+.cms-extra-section .button { margin-top:10px; }
+@media(max-width:560px){.cms-extra-section{padding:25px 17px}.cms-extra-section h2{font-size:27px}}
