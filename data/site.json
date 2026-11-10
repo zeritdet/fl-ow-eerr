@@ -432,6 +432,13 @@
             "en": "Yellow"
           },
           "hex": "#e4b541"
+        },
+        {
+          "name": {
+            "pl": "kremowy",
+            "en": "Сream"
+          },
+          "hex": "#fffdf2"
         }
       ]
     }
