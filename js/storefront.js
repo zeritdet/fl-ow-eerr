@@ -82,7 +82,7 @@
   let overlay = $("#gentCart");
   if (!overlay) {
     overlay = document.createElement("div"); overlay.id = "gentCart"; overlay.className = "cart-overlay"; overlay.hidden = true;
-    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-copy-order" id="cartCopyOrder" type="button">${text("Skopiuj podsumowanie zamówienia", "Copy order summary")} <span>→</span></button><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
+    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-copy-order" id="cartCopyOrder" type="button">${text("Skopiuj podsumowanie zamówienia", "Copy order summary")} <span>→</span></button><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label>${text("Data dostawy", "Delivery date")}<input name="deliveryDate" type="date" required></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
     document.body.append(overlay);
   }
   const itemsNode = $("#cartItems"), emptyNode = $("#cartEmpty"), footerNode = $("#cartFooter");
@@ -126,5 +126,78 @@
     try { await navigator.clipboard.writeText(summary); toast(text("Podsumowanie skopiowane", "Order summary copied")); }
     catch { toast(text("Nie udało się skopiować podsumowania", "Could not copy the summary")); }
   });
+  const checkoutForm = $("#checkoutForm");
+  const checkoutOpen = $("#cartCheckoutOpen");
+  const checkoutMessage = $("#checkoutMessage");
+  const checkoutBack = $("#checkoutBack");
+  const dateInput = checkoutForm?.elements.deliveryDate;
+  if (dateInput) {
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0,10);
+    dateInput.min = localToday;
+  }
+  checkoutOpen?.addEventListener("click", () => {
+    if (!cart.length) return;
+    checkoutForm.hidden = false;
+    checkoutOpen.hidden = true;
+    $("#cartCopyOrder").hidden = true;
+    $("#cartClear").hidden = true;
+    checkoutForm.elements.name.focus();
+  });
+  checkoutBack?.addEventListener("click", () => {
+    checkoutForm.hidden = true;
+    checkoutOpen.hidden = false;
+    $("#cartCopyOrder").hidden = false;
+    $("#cartClear").hidden = false;
+    if (checkoutMessage) checkoutMessage.textContent = "";
+  });
+  checkoutForm?.addEventListener("submit", async event => {
+    event.preventDefault();
+    if (!cart.length || !checkoutForm.reportValidity()) return;
+    const submit = $("#cartSubmitOrder");
+    const formData = new FormData(checkoutForm);
+    const payload = {
+      customer: {
+        name: String(formData.get("name") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        address: String(formData.get("address") || "").trim(),
+        deliveryDate: String(formData.get("deliveryDate") || ""),
+        deliveryTime: String(formData.get("deliveryTime") || ""),
+        notes: String(formData.get("notes") || "").trim()
+      },
+      language: lang(),
+      items: cart.map(({product, qty}) => ({
+        name: product.name?.[lang()] || product.name?.pl || product.name?.en || "",
+        quantity: qty,
+        price: Number(product.price)
+      }))
+    };
+    submit.disabled = true;
+    submit.textContent = text("Wysyłanie…", "Sending…");
+    if (checkoutMessage) checkoutMessage.textContent = "";
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) throw new Error(result.error || text("Nie udało się wysłać zamówienia. Spróbuj ponownie.", "Could not submit the order. Please try again."));
+      cart = [];
+      save(); renderCart();
+      checkoutForm.reset();
+      checkoutForm.hidden = true;
+      checkoutOpen.hidden = false;
+      $("#cartCopyOrder").hidden = false;
+      $("#cartClear").hidden = false;
+      toast(text("Zamówienie wysłane! Dziękujemy.", "Order sent! Thank you."));
+    } catch (error) {
+      if (checkoutMessage) checkoutMessage.textContent = error.message || text("Błąd połączenia. Spróbuj ponownie.", "Connection error. Please try again.");
+    } finally {
+      submit.disabled = false;
+      submit.innerHTML = `${text("Wyślij zamówienie", "Place order")} <span>→</span>`;
+    }
+  });
+
   updateCount(); renderCart();
 })();

@@ -1,0 +1,6 @@
+name = "gent-flowers-orders"
+main = "index.js"
+compatibility_date = "2026-11-10"
+
+# Set SITE_JSON_URL and ALLOWED_ORIGIN as vars in Cloudflare dashboard.
+# Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID as encrypted Worker secrets.
