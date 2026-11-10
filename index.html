@@ -1,76 +1,444 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7e8e9">
-<title>Gent Flowers — kwiaty z uczuciem</title>
-<style>
-@font-face{font-family:'Karla';src:url('./Karla-VariableFont_wght.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}
-:root{--ink:#24211f;--muted:#77716e;--rose:#f6e6e7;--green:#66735c;--line:#eee9e5;--serif:'Karla',sans-serif;--sans:'Karla',sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f8f6f3;color:var(--ink);font:14px var(--sans)}.shell{max-width:1320px;margin:30px auto;padding:0 26px}.topline{height:35px;display:flex;justify-content:space-between;align-items:center;color:#69625e;font-size:11px;letter-spacing:.04em;padding:0 5px}.topline a,.nav a{color:inherit;text-decoration:none}.topline strong{color:var(--green)}.hero{position:relative;overflow:hidden;min-height:480px;border-radius:22px;background:var(--rose);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:55px 7%;box-shadow:0 18px 45px #3b292110}.hero:after{content:"";position:absolute;width:390px;height:390px;border-radius:50%;background:#fff7f5;right:22%;top:-250px;opacity:.6}.hero-copy{position:relative;z-index:2;max-width:500px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#7a645f}.hero h1{font:600 clamp(43px,5.2vw,70px)/1.04 var(--serif);letter-spacing:-.04em;margin:20px 0 15px}.hero p{max-width:360px;line-height:1.8;color:#655d5a;margin:0 0 26px}.button{display:inline-flex;align-items:center;gap:18px;background:var(--ink);color:white;padding:14px 20px;border-radius:3px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.04em;transition:.2s}.button:hover{transform:translateY(-2px);background:var(--green)}.hero-image{height:390px;position:relative;z-index:1}.hero-image img{width:100%;height:100%;object-fit:cover;border-radius:48% 48% 8px 8px;mix-blend-mode:multiply;filter:saturate(.88)}.hero-note{position:absolute;right:1%;bottom:10%;background:#fffdf2;padding:13px 17px;box-shadow:0 8px 20px #40302012;font:italic 14px var(--serif);transform:rotate(3deg)}.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:#fff;padding:20px 34px;margin:13px 0 45px;border-radius:13px;box-shadow:0 8px 30px #2b21120a}.brand{font:700 22px var(--serif);letter-spacing:-.06em}.brand span{color:#bd777e}.links{display:flex;gap:30px;font-size:11px;font-weight:600}.links a:hover{color:#b96e79}.tools{justify-self:end;display:flex;gap:8px;align-items:center}.icon{width:34px;height:34px;border:1px solid #d9d3cf;border-radius:50%;display:grid;place-items:center;background:#fff;cursor:pointer;color:var(--ink);font-size:14px}.cart{position:relative}.count{position:absolute;top:-5px;right:-4px;min-width:16px;height:16px;background:#ba727c;color:white;border-radius:50%;font-size:9px;display:grid;place-items:center}.language{display:flex;gap:4px;margin-right:5px}.language button,.view-button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 10px;font:600 10px var(--sans);cursor:pointer}.language button[aria-pressed=true],.view-button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:white}.section{background:white;padding:42px 5.5%;border-radius:18px;margin:0 0 22px;box-shadow:0 13px 35px #2b21120a}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.section h2{font:600 32px var(--serif);letter-spacing:-.03em;margin:7px 0 0}.section-head p{margin:0 0 8px;color:var(--muted);font-size:12px}.collections{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px}.collection{position:relative;overflow:hidden;height:300px;background:#eee;border-radius:4px;color:white;text-decoration:none}.collection img{height:100%;width:100%;object-fit:cover;transition:transform .5s}.collection:hover img{transform:scale(1.04)}.collection:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#17151391)}.collection>span{position:absolute;z-index:1;left:20px;bottom:19px;font:500 20px var(--serif)}.collection small{display:block;font:10px var(--sans);letter-spacing:.08em;margin-top:5px}.view-controls{display:flex;gap:5px;margin-top:9px}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{min-width:0}.product-photo{height:245px;background:#f7f4f1;position:relative;overflow:hidden}.product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.product:hover img{transform:scale(1.045)}.tag{position:absolute;top:12px;left:12px;background:#fff;padding:6px 9px;font-size:9px;letter-spacing:.07em;text-transform:uppercase}.quick{position:absolute;bottom:12px;left:12px;right:12px;border:0;background:#fff;padding:11px;opacity:0;transform:translateY(5px);transition:.2s;cursor:pointer;font:600 10px var(--sans);letter-spacing:.03em}.product:hover .quick,.quick:focus{opacity:1;transform:none}.product-info{display:flex;justify-content:space-between;align-items:start;padding:13px 2px}.product-name{font-size:12px;font-weight:600}.product-sub{font-size:10px;color:var(--muted);margin-top:5px}.price{font-size:12px;white-space:nowrap}.products.view-list{grid-template-columns:1fr;gap:10px}.view-list .product{display:grid;grid-template-columns:140px 1fr;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px}.view-list .product-photo{height:110px;grid-row:1;grid-column:1}.view-list .product-info{grid-column:2;grid-row:1;padding:14px 20px}.view-list .quick{opacity:1;transform:none;left:auto;right:8px;bottom:8px;width:auto;padding:8px 10px}.products.view-carousel{display:flex;overflow-x:auto;gap:18px;scroll-snap-type:x mandatory;padding-bottom:12px}.view-carousel .product{flex:0 0 calc(25% - 14px);scroll-snap-align:start}.story{display:grid;grid-template-columns:1fr 1fr;min-height:300px;background:#e9ece6;padding:0;overflow:hidden}.story img{width:100%;height:100%;min-height:300px;object-fit:cover}.story-copy{padding:48px 12%;align-self:center}.story-copy h2{font-size:34px;margin:12px 0}.story-copy p{color:#656a60;line-height:1.8;font-size:12px;margin:0 0 20px}.text-link{color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid #aaa;padding-bottom:5px}.footer{display:flex;justify-content:space-between;align-items:center;padding:24px 8px 40px;color:var(--muted);font-size:10px}.footer .brand{color:var(--ink)}
-@media(max-width:800px){.shell{margin:12px auto;padding:0 14px}.hero{min-height:390px;padding:38px 7%;grid-template-columns:1.1fr .9fr}.hero-image{height:300px}.nav{padding:17px 20px;margin-bottom:25px}.links{gap:14px}.section{padding:30px 5%}.collections{grid-template-columns:1fr 1fr}.collection:first-child{grid-column:span 2;height:260px}.collection{height:220px}.products{grid-template-columns:repeat(2,1fr)}.view-carousel .product{flex-basis:calc(50% - 9px)}.product-photo{height:260px}.story-copy{padding:35px 9%}}
-@media(max-width:560px){.topline{font-size:9px}.hero{grid-template-columns:1fr;min-height:0;padding:38px 8% 25px}.hero h1{font-size:48px}.hero-image{height:260px;margin-top:24px;width:90%;justify-self:center}.nav{grid-template-columns:1fr auto;padding:15px 12px}.brand{font-size:19px}.brand-logo{width:180px;height:auto}.links{grid-row:2;grid-column:1/3;justify-content:center;padding-top:15px;margin-top:12px;border-top:1px solid var(--line)}.tools{grid-column:2;grid-row:1;gap:5px}.icon{width:30px;height:30px}.language button{padding:6px 7px}.section{padding:25px 17px}.section h2{font-size:27px}.section-head p{max-width:130px;text-align:right;line-height:1.5}.view-controls{flex-wrap:wrap;justify-content:flex-end}.view-button{padding:7px}.collections{gap:9px}.collection:first-child{height:220px}.collection{height:175px}.collection>span{font-size:16px;left:12px;bottom:13px}.products{gap:12px}.product-photo{height:190px}.quick{opacity:1;transform:none;left:6px;right:6px;padding:9px;font-size:9px}.product-info{gap:6px}.product-name{font-size:11px}.view-list .product{grid-template-columns:100px 1fr}.view-list .product-photo{height:90px}.view-list .product-info{padding:8px}.view-list .quick{font-size:8px;padding:7px}.view-carousel .product{flex-basis:82%}.story{grid-template-columns:1fr}.story img{height:220px;min-height:0}.story-copy{padding:28px 25px}.footer{gap:16px;flex-wrap:wrap}}
-
-.carousel-controls{display:none;align-items:center;justify-content:flex-end;gap:12px;margin-top:10px}.carousel-controls button,.close-feed{border:1px solid #d9d3cf;background:#fff;color:var(--ink);cursor:pointer}.carousel-controls button{width:34px;height:34px;border-radius:50%;font-size:17px}.carousel-controls button:disabled{opacity:.35;cursor:default}.carousel-controls span{font-size:10px;color:var(--muted);min-width:35px;text-align:center}.close-feed{display:none;width:42px;height:42px;border-radius:50%;font-size:25px;line-height:1}.feed-open#shop{position:fixed;z-index:50;inset:0;max-width:none;width:100%;height:100dvh;overflow:auto;margin:0;border-radius:0;padding:clamp(24px,5vw,72px);background:#faf7f3;box-shadow:none;animation:feed-in .35s ease-out}.feed-open .section-head{position:sticky;z-index:3;top:0;background:#faf7f3;padding:14px 0 20px;margin:0 0 22px;align-items:center}.feed-open .close-feed{display:grid;place-items:center}.feed-open .section-head>div:nth-child(2){margin-left:auto;margin-right:16px}.feed-open .section-head>div:first-child{margin-right:auto}.close-feed-wrap{display:none}.feed-open .close-feed-wrap{display:block}.feed-open .products.view-list{display:flex;flex-direction:column;gap:0;max-width:1120px;margin:0 auto}.feed-open .view-list .product{display:grid;grid-template-columns:minmax(280px,42%) 1fr;align-items:center;gap:clamp(24px,5vw,72px);padding:24px 0;border-bottom:1px solid #e8e0da}.feed-open .view-list .product-photo{grid-column:1;grid-row:1;height:clamp(260px,34vw,430px);background:#eee7e2}.feed-open .view-list .product-info{grid-column:2;grid-row:1;display:block;padding:24px 56px 24px 0}.feed-open .view-list .product-name{font:500 clamp(28px,3.2vw,44px)/1.1 var(--serif)}.feed-open .view-list .product-sub{font-size:13px;margin-top:12px}.feed-open .view-list .price{font:500 18px var(--serif);margin-top:22px}.feed-open .view-list .tag{top:18px;left:18px}.feed-open .view-list .quick{position:static;display:inline-block;width:auto;margin-top:24px;padding:14px 20px;background:var(--ink);color:#fff;font-size:11px;opacity:1;transform:none}.view-carousel .product{flex-basis:56%}.view-carousel .product-photo{height:clamp(350px,42vw,520px)}.products.view-carousel{scrollbar-width:none}.products.view-carousel::-webkit-scrollbar{display:none}
-@keyframes feed-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:700px){.view-carousel .product{flex-basis:84%}.view-carousel .product-photo{height:65vh}.feed-open#shop{padding:22px 18px}.feed-open .section-head{top:0;gap:12px;flex-wrap:wrap;padding:10px 0 18px}.feed-open .section-head>div:nth-child(2){order:3;width:100%;margin:0}.feed-open .section-head>div:first-child{margin-right:0}.feed-open .close-feed-wrap{margin-left:auto}.feed-open .view-controls{justify-content:flex-start}.feed-open .view-list .product{grid-template-columns:38% 1fr;gap:16px;padding:16px 0}.feed-open .view-list .product-photo{height:clamp(190px,45vw,300px)}.feed-open .view-list .product-info{padding:10px 0}.feed-open .view-list .product-name{font-size:24px}.feed-open .view-list .product-sub{font-size:11px}.feed-open .view-list .price{font-size:15px;margin-top:12px}.feed-open .view-list .quick{margin-top:14px;padding:11px 12px;font-size:9px}}
-
-.close-feed-wrap{display:none!important}.feed-open#shop{position:static;height:auto;overflow:visible;margin:0 0 22px;padding:42px 5.5%;border-radius:18px;animation:none;box-shadow:0 13px 35px #2b21120a}.feed-open .section-head{position:static;background:transparent;padding:0;margin:0 0 25px}.product-info{display:grid;grid-template-columns:1fr auto;gap:8px 12px}.product-info>div:first-child{grid-column:1}.product-info>.price{grid-column:2;grid-row:1}.product-description,.product-options{grid-column:1/-1}.products.view-list{display:flex;flex-direction:column;gap:42px;max-width:1040px;margin:0 auto}.view-list .product{display:block;width:100%;padding:0 0 32px;border-bottom:1px solid var(--line)}.view-list .product-photo{width:100%;height:auto;aspect-ratio:16/9;max-height:560px;background:#f1eeeb}.view-list .product-photo img{object-fit:cover}.view-list .product-info{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:start;padding:20px 2px 0}.view-list .product-info>div:first-child{grid-column:1}.view-list .product-name{font:500 26px/1.15 var(--serif)}.view-list .product-sub{font-size:11px;margin-top:6px}.view-list .price{grid-column:2;grid-row:1;font:500 18px var(--serif)}.product-description{grid-column:1/-1;color:#635e59;font-size:12px;line-height:1.75;max-width:700px}.product-options{grid-column:1/-1;margin-top:6px}.palette-head{display:flex;gap:10px;align-items:center;font-size:10px;font-weight:600;letter-spacing:.04em}.selected-color{color:var(--muted);font-weight:400}.swatches{display:flex;gap:9px;margin-top:10px}.color-swatch{width:25px;height:25px;border:1px solid #ded8d3;border-radius:50%;background:var(--swatch);cursor:pointer;position:relative}.color-swatch[aria-pressed=true]:after{content:"";position:absolute;inset:-4px;border:1px solid var(--ink);border-radius:50%}.view-list .quick{position:static;display:inline-block;width:auto;margin:15px 0 0;padding:12px 18px;background:var(--ink);color:#fff;opacity:1;transform:none}.view-carousel .product{flex-basis:56%}.view-carousel .product-photo{height:clamp(350px,42vw,520px)}
-@media(max-width:700px){.products.view-list{gap:28px}.view-list .product{padding-bottom:24px}.view-list .product-photo{aspect-ratio:4/3}.view-list .product-info{padding-top:14px;gap:8px 12px}.view-list .product-name{font-size:22px}.view-list .price{font-size:16px}.product-description{font-size:11px}.color-swatch{width:23px;height:23px}.view-carousel .product{flex-basis:84%}.view-carousel .product-photo{height:65vh}}
-
-.product{cursor:pointer}.product .quick{cursor:pointer}.color-swatch{cursor:default;pointer-events:none}.product-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:24px;background:#211d1bd1;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s}.product-modal.is-open{opacity:1;visibility:visible}.product-detail{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,1000px);max-height:min(88vh,760px);overflow:auto;background:#fffdfb;box-shadow:0 24px 80px #0003;animation:detail-in .28s ease-out}.modal-image{width:100%;height:100%;min-height:480px;object-fit:cover;background:#f2eeeb}.modal-copy{align-self:center;padding:clamp(25px,5vw,60px)}.modal-copy h2{font:500 clamp(30px,4vw,48px)/1.08 var(--serif);margin:14px 0}.modal-copy p{font-size:13px;line-height:1.8;color:#635e59}.modal-price{font:500 20px var(--serif);margin:22px 0}.modal-swatches{margin:12px 0 26px}.modal-swatches .color-swatch{pointer-events:auto;cursor:pointer}.modal-close{position:absolute;z-index:2;right:16px;top:16px;width:40px;height:40px;border:1px solid #d9d3cf;border-radius:50%;background:#fff;cursor:pointer;font-size:24px}.modal-add{border:0;cursor:pointer}.modal-add span{color:#fff}.product-modal .palette-head{font-weight:600}@keyframes detail-in{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
-@media(max-width:700px){.product-modal{padding:12px}.product-detail{grid-template-columns:1fr;max-height:94vh}.modal-image{height:38vh;min-height:220px;max-height:340px}.modal-copy{padding:25px}.modal-copy h2{font-size:32px}.modal-price{margin:14px 0}}
-.brand-logo{display:block;width:220px;height:auto;object-fit:contain;object-position:center;mix-blend-mode:multiply}.footer .brand-logo{width:220px;height:auto}@media(max-width:560px){.brand-logo{width:170px}}
-
-/* Hero bouquet replacement — isolated to the existing hero visual */
-.hero-image {
-  position: absolute;
-  right: 3%;
-  bottom: 0;
-  width: 46%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-  border-radius: 0;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 16px 20px rgba(70, 45, 42, .12));
-}
-@media(max-width:800px) {
-  .hero-image { right: 2%; width: 43%; height: 94%; }
-}
-@media(max-width:560px) {
-  .hero-image {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 90%;
-    height: 260px;
-    margin-top: 24px;
-    justify-self: center;
-    transform: translateY(25px);
-  }
-}
-</style><link rel="stylesheet" href="./css/cms.css"><link rel="stylesheet" href="./css/motion.css">
-</head>
-<body class="intro-active"><div class="intro-screen" id="introScreen" aria-label="Gent Flowers" role="status"><div class="intro-aura"></div><div class="intro-rose-wrap"><img class="intro-rose" src="./media/rose-mark.png" alt="" width="150" height="150"></div><div class="intro-wordmark">Gent Flowers</div><div class="intro-caption">FLOWERS WITH FEELING</div><button class="intro-skip" id="introSkip" type="button">Pomiń animację</button></div><main class="shell">
-<div class="topline"><span data-i18n="delivery">Zamów do 21:00<strong> dostarczymy kwiaty następnego dnia rano!</strong></span><a href="#footer" data-i18n="contact">Napisz do nas ↗</a></div>
-<section class="hero stack-panel" id="home"><div class="hero-copy"><div class="eyebrow">Gent Flowers · <span data-i18n="studio">pracownia florystyczna</span></div><h1 data-i18n="heroTitle">Kwiaty, które mówią za Ciebie</h1><p data-i18n="heroText">Tworzymy wyjątkowe bukiety z sezonowych kwiatów. Na ważne spotkania, małe radości i zupełnie bez okazji.</p><a class="button" href="#shop"><span data-i18n="chooseBouquet">Wybierz bukiet</span><span>→</span></a></div><div class="hero-image"><img src="./media/pink-tulip-bouquet.png" alt="Różowy bukiet tulipanów"><div class="hero-note" data-i18n="heroNote">Z miłością, każdego dnia</div></div></section>
-<nav class="nav" aria-label="Nawigacja główna"><a class="brand" href="#home" aria-label="Gent Flowers"><img class="brand-logo" src="./gent-flowers-logo.png" alt="Gent Flowers"></a><div class="links"><a href="#home" data-i18n="home">Start</a><a href="#collections" data-i18n="collections">Kolekcje</a><a href="#shop" data-i18n="bouquets">Bukiety</a><a href="#story" data-i18n="about">O nas</a></div><div class="tools"><div class="language" aria-label="Wybór języka"><button data-lang="pl" aria-pressed="true">PL</button><button data-lang="en" aria-pressed="false">EN</button></div><button class="icon" aria-label="Ulubione">♡</button><button class="icon" aria-label="Szukaj" onclick="document.querySelector('#shop').scrollIntoView()">⌕</button><button class="icon cart" aria-label="Koszyk">♧<span class="count" id="count">0</span></button></div></nav>
-<section class="section stack-panel" id="collections"><div class="section-head"><div><div class="eyebrow" data-i18n="findOccasion">Znajdź swój powód</div><h2 data-i18n="collections">Kolekcje</h2></div><p data-i18n="collectionIntro">Kwiaty na małe i wielkie chwile</p></div><div class="collections"><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1000&q=85" alt="Autorska kompozycja kwiatowa"><span><span data-i18n="signature">Bukiety autorskie</span><small data-i18n="signatureSub">Ręcznie układane · od 190 zł</small></span></a><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=85" alt="Delikatny bukiet róż"><span><span data-i18n="tender">Chwila czułości</span><small data-i18n="tenderSub">Róże i sezonowe kwiaty</small></span></a><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=85" alt="Kwiaty w wazonie"><span><span data-i18n="homeFlowers">Kwiaty do domu</span><small data-i18n="homeFlowersSub">Kompozycje w wazonie</small></span></a></div></section>
-<section class="section stack-panel" id="shop"><div class="section-head"><div><div class="eyebrow" data-i18n="pickedForYou">Wybrane dla Ciebie</div><h2 data-i18n="favoriteBouquets">Ulubione bukiety</h2></div><div><p data-i18n="freshDaily">Świeże kwiaty każdego dnia</p><div class="view-controls" role="group" aria-label="Widok kompozycji"><button class="view-button" data-view="grid" aria-pressed="true" data-i18n="tile">Siatka</button><button class="view-button" data-view="list" aria-pressed="false" data-i18n="list">Lista</button><button class="view-button" data-view="carousel" aria-pressed="false" data-i18n="carousel">Karuzela</button></div><div class="carousel-controls" id="carouselControls"><button id="carouselPrev" aria-label="Poprzedni bukiet">←</button><span id="carouselPosition">1 / 4</span><button id="carouselNext" aria-label="Następny bukiet">→</button></div></div><div class="close-feed-wrap"><button class="close-feed" id="closeFeed" aria-label="Zamknij widok">×</button></div></div><div class="products" id="productGrid">
-<article class="product"><div class="product-photo"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=700&q=85" alt="Obfity bukiet różowych róż"><span class="tag" data-i18n="bestseller">Bestseller</span><button class="quick" data-price="350"></button></div><div class="product-info"><div><div class="product-name" data-pl="Różowa chmurka" data-en="Pink cloud">Różowa chmurka</div><div class="product-sub" data-pl="Róże piwoniowe · 15 szt." data-en="Peony roses · 15 stems">Róże piwoniowe · 15 szt.</div></div><div class="price">350 zł</div><div class="product-description" data-pl="Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie." data-en="A hand-tied bouquet of peonies and roses in soft blush tones. Made to order.">Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie.</div><div class="product-options"><div class="palette-head"><span data-i18n="palette">Paleta</span></div><div class="swatches"><span class="color-swatch" aria-hidden="true" data-pl="Różowy" data-en="Pink" style="--swatch:#d993a2"></span><span class="color-swatch" aria-hidden="true" data-pl="Kremowy" data-en="Cream" style="--swatch:#e9d8bd"></span><span class="color-swatch" aria-hidden="true" data-pl="Brzoskwiniowy" data-en="Peach" style="--swatch:#efb9a2"></span><span class="color-swatch" aria-hidden="true" data-pl="Biały" data-en="White" style="--swatch:#f5f1e9"></span></div></div></div></article>
-<article class="product"><div class="product-photo"><img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=700&q=85" alt="Polny bukiet w pastelowych odcieniach"><button class="quick" data-price="280"></button></div><div class="product-info"><div><div class="product-name" data-pl="Poranek w ogrodzie" data-en="Morning in the garden">Poranek w ogrodzie</div><div class="product-sub" data-pl="Sezonowy bukiet · min. 17 kwiatów" data-en="Seasonal mix · 17+ stems">Sezonowy bukiet · min. 17 kwiatów</div></div><div class="price">280 zł</div><div class="product-description" data-pl="Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny." data-en="An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind.">Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny.</div><div class="product-options"><div class="palette-head"><span data-i18n="palette">Paleta</span></div><div class="swatches"><span class="color-swatch" aria-hidden="true" data-pl="Pastelowy" data-en="Pastel" style="--swatch:#dcaab3"></span><span class="color-swatch" aria-hidden="true" data-pl="Biały" data-en="White" style="--swatch:#f5f1e9"></span><span class="color-swatch" aria-hidden="true" data-pl="Lawendowy" data-en="Lavender" style="--swatch:#9b88b5"></span><span class="color-swatch" aria-hidden="true" data-pl="Żółty" data-en="Yellow" style="--swatch:#e4c568"></span></div></div></div></article>
-<article class="product"><div class="product-photo"><img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=85" alt="Czerwone tulipany"><span class="tag" data-i18n="new">Nowość</span><button class="quick" data-price="240"></button></div><div class="product-info"><div><div class="product-name" data-pl="Pierwszy pocałunek" data-en="First kiss">Pierwszy pocałunek</div><div class="product-sub" data-pl="Tulipany · 25 szt." data-en="Tulips · 25 stems">Tulipany · 25 szt.</div></div><div class="price">240 zł</div><div class="product-description" data-pl="Wyraziste tulipany, które wnoszą do domu kolor i wiosenną energię." data-en="Bright tulips that bring colour and springtime energy into your home.">Wyraziste tulipany, które wnoszą do domu kolor i wiosenną energię.</div><div class="product-options"><div class="palette-head"><span data-i18n="palette">Paleta</span></div><div class="swatches"><span class="color-swatch" aria-hidden="true" data-pl="Czerwony" data-en="Red" style="--swatch:#bd3446"></span><span class="color-swatch" aria-hidden="true" data-pl="Różowy" data-en="Pink" style="--swatch:#d993a2"></span><span class="color-swatch" aria-hidden="true" data-pl="Żółty" data-en="Yellow" style="--swatch:#e4c568"></span><span class="color-swatch" aria-hidden="true" data-pl="Fioletowy" data-en="Purple" style="--swatch:#7861a8"></span></div></div></div></article>
-<article class="product"><div class="product-photo"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=700&q=85" alt="Jasna kompozycja z białych kwiatów"><button class="quick" data-price="320"></button></div><div class="product-info"><div><div class="product-name" data-pl="Cicha delikatność" data-en="Quiet tenderness">Cicha delikatność</div><div class="product-sub" data-pl="Jaskry · 11 szt." data-en="Ranunculus · 11 stems">Jaskry · 11 szt.</div></div><div class="price">320 zł</div><div class="product-description" data-pl="Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień." data-en="Delicate ranunculus in a light palette — an elegant choice for a special day.">Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.</div><div class="product-options"><div class="palette-head"><span data-i18n="palette">Paleta</span></div><div class="swatches"><span class="color-swatch" aria-hidden="true" data-pl="Kremowy" data-en="Cream" style="--swatch:#e9d8bd"></span><span class="color-swatch" aria-hidden="true" data-pl="Różowy" data-en="Pink" style="--swatch:#d993a2"></span><span class="color-swatch" aria-hidden="true" data-pl="Brzoskwiniowy" data-en="Peach" style="--swatch:#efb9a2"></span><span class="color-swatch" aria-hidden="true" data-pl="Biały" data-en="White" style="--swatch:#f5f1e9"></span></div></div></div></article>
-</div></section>
-<section class="section story stack-panel" id="story"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85" alt="Florystka starannie układa bukiet"><div class="story-copy"><div class="eyebrow" data-i18n="ourStudio">Nasza pracownia</div><h2 data-i18n="storyTitle">Piękno tkwi w prostocie</h2><p data-i18n="storyText">Wybieramy sezonowe kwiaty, starannie układamy każdy bukiet i dołączamy bilecik z Twoimi słowami. Bez szablonów — tylko żywe kompozycje.</p><a class="text-link" href="#footer" data-i18n="meetGent">Poznaj Gent →</a></div></section>
-<footer class="footer" id="footer"><a class="brand" href="#home" aria-label="Gent Flowers"><img class="brand-logo" src="./gent-flowers-logo.png" alt="Gent Flowers"></a><span data-i18n="footerLine">Świeże kwiaty. Ciepłe emocje.</span><span data-i18n="hours">Codziennie · 9:00–21:00</span></footer>
-
-<div class="product-modal" id="productModal" aria-hidden="true"><div class="product-detail" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><button class="modal-close" id="modalClose" aria-label="Zamknij">×</button><img class="modal-image" id="modalImage" alt=""><div class="modal-copy"><div class="eyebrow" data-i18n="productDetails">Szczegóły bukietu</div><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-price" id="modalPrice"></div><div class="swatches modal-swatches" id="modalSwatches"></div><button class="button modal-add" id="modalAdd"><span data-i18n="add">Dodaj do koszyka</span><span>→</span></button></div></div></div>
-</main><script src="./js/cms.js"></script><script src="./js/motion.js" defer></script><script src="./js/product-modal-fix.js"></script></body></html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f7e8e9" name="theme-color"/>
+  <title>
+   Gent Flowers &mdash; kwiaty z uczuciem
+  </title>
+ 
+  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="./css/cms.css"/>
+  <link rel="stylesheet" href="./css/storefront.css"/>
+  <link rel="stylesheet" href="./css/motion.css"/>
+ </head>
+ <body class="intro-active">
+  <div aria-label="Gent Flowers" class="intro-screen" id="introScreen" role="status">
+   <div class="intro-aura">
+   </div>
+   <div class="intro-rose-wrap">
+    <img alt="" class="intro-rose" height="150" src="./assets/images/rose-mark.png" width="150"/>
+   </div>
+   <div class="intro-wordmark">
+    Gent Flowers
+   </div>
+   <div class="intro-caption">
+    FLOWERS WITH FEELING
+   </div>
+   <button class="intro-skip" id="introSkip" type="button">
+    Pomi&nacute; animacj&eogon;
+   </button>
+  </div>
+  <main class="shell">
+   <div class="topline">
+    <span data-i18n="delivery">
+     Zam&oacute;w do 21:00
+     <strong>
+      dostarczymy kwiaty nast&eogon;pnego dnia rano!
+     </strong>
+    </span>
+    <a data-i18n="contact" href="#footer">
+     Napisz do nas &nearrow;
+    </a>
+   </div>
+   <section class="hero stack-panel" id="home">
+    <div class="hero-copy">
+     <div class="eyebrow">
+      Gent Flowers &middot;
+      <span data-i18n="studio">
+       pracownia florystyczna
+      </span>
+     </div>
+     <h1 data-i18n="heroTitle">
+      Kwiaty, kt&oacute;re m&oacute;wi&aogon; za Ciebie
+     </h1>
+     <p data-i18n="heroText">
+      Tworzymy wyj&aogon;tkowe bukiety z sezonowych kwiat&oacute;w. Na wa&zdot;ne spotkania, ma&lstrok;e rado&sacute;ci i zupe&lstrok;nie bez okazji.
+     </p>
+     <a class="button" href="#shop">
+      <span data-i18n="chooseBouquet">
+       Wybierz bukiet
+      </span>
+      <span>
+       &rarr;
+      </span>
+     </a>
+    </div>
+    <div class="hero-image">
+     <img alt="R&oacute;&zdot;owy bukiet tulipan&oacute;w" src="./assets/images/pink-tulip-bouquet.png"/>
+     <div class="hero-note" data-i18n="heroNote">
+      Z mi&lstrok;o&sacute;ci&aogon;, ka&zdot;dego dnia
+     </div>
+    </div>
+   </section>
+   <nav aria-label="Nawigacja g&lstrok;&oacute;wna" class="nav">
+    <a aria-label="Gent Flowers" class="brand" href="#home">
+     <img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"/>
+    </a>
+    <div class="links">
+     <a data-i18n="home" href="#home">
+      Start
+     </a>
+     <a data-i18n="collections" href="#collections">
+      Kolekcje
+     </a>
+     <a data-i18n="bouquets" href="#shop">
+      Bukiety
+     </a>
+     <a data-i18n="about" href="#story">
+      O nas
+     </a>
+    </div>
+    <div class="tools">
+     <div aria-label="Wyb&oacute;r j&eogon;zyka" class="language">
+      <button aria-pressed="true" data-lang="pl">
+       PL
+      </button>
+      <button aria-pressed="false" data-lang="en">
+       EN
+      </button>
+     </div>
+     <button aria-label="Ulubione" class="icon">
+      ♡
+     </button>
+     <button aria-label="Szukaj" class="icon" onclick="document.querySelector('#shop').scrollIntoView()">
+      &telrec;
+     </button>
+     <button aria-label="Koszyk" class="icon cart">
+      ♧
+      <span class="count" id="count">
+       0
+      </span>
+     </button>
+    </div>
+   </nav>
+   <section class="section stack-panel" id="collections">
+    <div class="section-head">
+     <div>
+      <div class="eyebrow" data-i18n="findOccasion">
+       Znajd&zacute; sw&oacute;j pow&oacute;d
+      </div>
+      <h2 data-i18n="collections">
+       Kolekcje
+      </h2>
+     </div>
+     <p data-i18n="collectionIntro">
+      Kwiaty na ma&lstrok;e i wielkie chwile
+     </p>
+    </div>
+    <div class="collections">
+     <a class="collection" href="#shop">
+      <img alt="Autorska kompozycja kwiatowa" src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+      <span>
+       <span data-i18n="signature">
+        Bukiety autorskie
+       </span>
+       <small data-i18n="signatureSub">
+        R&eogon;cznie uk&lstrok;adane &middot; od 190 z&lstrok;
+       </small>
+      </span>
+     </a>
+     <a class="collection" href="#shop">
+      <img alt="Delikatny bukiet r&oacute;&zdot;" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+      <span>
+       <span data-i18n="tender">
+        Chwila czu&lstrok;o&sacute;ci
+       </span>
+       <small data-i18n="tenderSub">
+        R&oacute;&zdot;e i sezonowe kwiaty
+       </small>
+      </span>
+     </a>
+     <a class="collection" href="#shop">
+      <img alt="Kwiaty w wazonie" src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+      <span>
+       <span data-i18n="homeFlowers">
+        Kwiaty do domu
+       </span>
+       <small data-i18n="homeFlowersSub">
+        Kompozycje w wazonie
+       </small>
+      </span>
+     </a>
+    </div>
+   </section>
+   <section class="section stack-panel" id="shop">
+    <div class="section-head">
+     <div>
+      <div class="eyebrow" data-i18n="pickedForYou">
+       Wybrane dla Ciebie
+      </div>
+      <h2 data-i18n="favoriteBouquets">
+       Ulubione bukiety
+      </h2>
+     </div>
+     <div>
+      <p data-i18n="freshDaily">
+       &Sacute;wie&zdot;e kwiaty ka&zdot;dego dnia
+      </p>
+      <div aria-label="Widok kompozycji" class="view-controls" role="group">
+       <button aria-pressed="true" class="view-button" data-i18n="tile" data-view="grid">
+        Siatka
+       </button>
+       <button aria-pressed="false" class="view-button" data-i18n="list" data-view="list">
+        Lista
+       </button>
+       <button aria-pressed="false" class="view-button" data-i18n="carousel" data-view="carousel">
+        Karuzela
+       </button>
+      </div>
+      <div class="carousel-controls" id="carouselControls">
+       <button aria-label="Poprzedni bukiet" id="carouselPrev">
+        &larr;
+       </button>
+       <span id="carouselPosition">
+        1 / 4
+       </span>
+       <button aria-label="Nast&eogon;pny bukiet" id="carouselNext">
+        &rarr;
+       </button>
+      </div>
+     </div>
+     <div class="close-feed-wrap">
+      <button aria-label="Zamknij widok" class="close-feed" id="closeFeed">
+       &times;
+      </button>
+     </div>
+    </div>
+    <div class="products" id="productGrid">
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Obfity bukiet r&oacute;&zdot;owych r&oacute;&zdot;" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <span class="tag" data-i18n="bestseller">
+        Bestseller
+       </span>
+       <button class="quick" data-price="350">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Pink cloud" data-pl="R&oacute;&zdot;owa chmurka">
+         R&oacute;&zdot;owa chmurka
+        </div>
+        <div class="product-sub" data-en="Peony roses &middot; 15 stems" data-pl="R&oacute;&zdot;e piwoniowe &middot; 15 szt.">
+         R&oacute;&zdot;e piwoniowe &middot; 15 szt.
+        </div>
+       </div>
+       <div class="price">
+        350 z&lstrok;
+       </div>
+       <div class="product-description" data-en="A hand-tied bouquet of peonies and roses in soft blush tones. Made to order." data-pl="Bukiet piwonii i r&oacute;&zdot; o mi&eogon;kkich, pudrowych odcieniach. R&eogon;cznie uk&lstrok;adany na zam&oacute;wienie.">
+        Bukiet piwonii i r&oacute;&zdot; o mi&eogon;kkich, pudrowych odcieniach. R&eogon;cznie uk&lstrok;adany na zam&oacute;wienie.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Cream" data-pl="Kremowy" style="--swatch:#e9d8bd">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Peach" data-pl="Brzoskwiniowy" style="--swatch:#efb9a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Polny bukiet w pastelowych odcieniach" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <button class="quick" data-price="280">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Morning in the garden" data-pl="Poranek w ogrodzie">
+         Poranek w ogrodzie
+        </div>
+        <div class="product-sub" data-en="Seasonal mix &middot; 17+ stems" data-pl="Sezonowy bukiet &middot; min. 17 kwiat&oacute;w">
+         Sezonowy bukiet &middot; min. 17 kwiat&oacute;w
+        </div>
+       </div>
+       <div class="price">
+        280 z&lstrok;
+       </div>
+       <div class="product-description" data-en="An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind." data-pl="Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Ka&zdot;dy bukiet jest nieco inny.">
+        Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Ka&zdot;dy bukiet jest nieco inny.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Pastel" data-pl="Pastelowy" style="--swatch:#dcaab3">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Lavender" data-pl="Lawendowy" style="--swatch:#9b88b5">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Yellow" data-pl="&Zdot;&oacute;&lstrok;ty" style="--swatch:#e4c568">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Czerwone tulipany" src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <span class="tag" data-i18n="new">
+        Nowo&sacute;&cacute;
+       </span>
+       <button class="quick" data-price="240">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="First kiss" data-pl="Pierwszy poca&lstrok;unek">
+         Pierwszy poca&lstrok;unek
+        </div>
+        <div class="product-sub" data-en="Tulips &middot; 25 stems" data-pl="Tulipany &middot; 25 szt.">
+         Tulipany &middot; 25 szt.
+        </div>
+       </div>
+       <div class="price">
+        240 z&lstrok;
+       </div>
+       <div class="product-description" data-en="Bright tulips that bring colour and springtime energy into your home." data-pl="Wyraziste tulipany, kt&oacute;re wnosz&aogon; do domu kolor i wiosenn&aogon; energi&eogon;.">
+        Wyraziste tulipany, kt&oacute;re wnosz&aogon; do domu kolor i wiosenn&aogon; energi&eogon;.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Red" data-pl="Czerwony" style="--swatch:#bd3446">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Yellow" data-pl="&Zdot;&oacute;&lstrok;ty" style="--swatch:#e4c568">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Purple" data-pl="Fioletowy" style="--swatch:#7861a8">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Jasna kompozycja z bia&lstrok;ych kwiat&oacute;w" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <button class="quick" data-price="320">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Quiet tenderness" data-pl="Cicha delikatno&sacute;&cacute;">
+         Cicha delikatno&sacute;&cacute;
+        </div>
+        <div class="product-sub" data-en="Ranunculus &middot; 11 stems" data-pl="Jaskry &middot; 11 szt.">
+         Jaskry &middot; 11 szt.
+        </div>
+       </div>
+       <div class="price">
+        320 z&lstrok;
+       </div>
+       <div class="product-description" data-en="Delicate ranunculus in a light palette &mdash; an elegant choice for a special day." data-pl="Delikatne jaskry w jasnej palecie &mdash; elegancki wyb&oacute;r na wyj&aogon;tkowy dzie&nacute;.">
+        Delikatne jaskry w jasnej palecie &mdash; elegancki wyb&oacute;r na wyj&aogon;tkowy dzie&nacute;.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Cream" data-pl="Kremowy" style="--swatch:#e9d8bd">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Peach" data-pl="Brzoskwiniowy" style="--swatch:#efb9a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="section story stack-panel" id="story">
+    <img alt="Florystka starannie uk&lstrok;ada bukiet" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+    <div class="story-copy">
+     <div class="eyebrow" data-i18n="ourStudio">
+      Nasza pracownia
+     </div>
+     <h2 data-i18n="storyTitle">
+      Pi&eogon;kno tkwi w prostocie
+     </h2>
+     <p data-i18n="storyText">
+      Wybieramy sezonowe kwiaty, starannie uk&lstrok;adamy ka&zdot;dy bukiet i do&lstrok;&aogon;czamy bilecik z Twoimi s&lstrok;owami. Bez szablon&oacute;w &mdash; tylko &zdot;ywe kompozycje.
+     </p>
+     <a class="text-link" data-i18n="meetGent" href="#footer">
+      Poznaj Gent &rarr;
+     </a>
+    </div>
+   </section>
+   <footer class="footer" id="footer">
+    <a aria-label="Gent Flowers" class="brand" href="#home">
+     <img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"/>
+    </a>
+    <span data-i18n="footerLine">
+     &Sacute;wie&zdot;e kwiaty. Ciep&lstrok;e emocje.
+    </span>
+    <span data-i18n="hours">
+     Codziennie &middot; 9:00&ndash;21:00
+    </span>
+   </footer>
+   <div aria-hidden="true" class="product-modal" id="productModal">
+    <div aria-labelledby="modalTitle" aria-modal="true" class="product-detail" role="dialog" tabindex="-1">
+     <button aria-label="Zamknij" class="modal-close" id="modalClose">
+      &times;
+     </button>
+     <img alt="" class="modal-image" id="modalImage"/>
+     <div class="modal-copy">
+      <div class="eyebrow" data-i18n="productDetails">
+       Szczeg&oacute;&lstrok;y bukietu
+      </div>
+      <h2 id="modalTitle">
+      </h2>
+      <p id="modalDescription">
+      </p>
+      <div class="modal-price" id="modalPrice">
+      </div>
+      <div class="swatches modal-swatches" id="modalSwatches">
+      </div>
+      <button class="button modal-add" id="modalAdd">
+       <span data-i18n="add">
+        Dodaj do koszyka
+       </span>
+       <span>
+        &rarr;
+       </span>
+      </button>
+     </div>
+    </div>
+   </div>
+  </main>
+  <script defer="" src="./js/cms.js">
+  </script>
+  <script defer="" src="./js/motion.js">
+  </script>
+  <script defer="" src="./js/product-modal.js">
+  </script>
+ </body>
+</html>
 
