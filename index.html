@@ -18,11 +18,48 @@
 
 .product{cursor:pointer}.product .quick{cursor:pointer}.color-swatch{cursor:default;pointer-events:none}.product-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:24px;background:#211d1bd1;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s}.product-modal.is-open{opacity:1;visibility:visible}.product-detail{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,1000px);max-height:min(88vh,760px);overflow:auto;background:#fffdfb;box-shadow:0 24px 80px #0003;animation:detail-in .28s ease-out}.modal-image{width:100%;height:100%;min-height:480px;object-fit:cover;background:#f2eeeb}.modal-copy{align-self:center;padding:clamp(25px,5vw,60px)}.modal-copy h2{font:500 clamp(30px,4vw,48px)/1.08 var(--serif);margin:14px 0}.modal-copy p{font-size:13px;line-height:1.8;color:#635e59}.modal-price{font:500 20px var(--serif);margin:22px 0}.modal-swatches{margin:12px 0 26px}.modal-swatches .color-swatch{pointer-events:auto;cursor:pointer}.modal-close{position:absolute;z-index:2;right:16px;top:16px;width:40px;height:40px;border:1px solid #d9d3cf;border-radius:50%;background:#fff;cursor:pointer;font-size:24px}.modal-add{border:0;cursor:pointer}.modal-add span{color:#fff}.product-modal .palette-head{font-weight:600}@keyframes detail-in{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
 @media(max-width:700px){.product-modal{padding:12px}.product-detail{grid-template-columns:1fr;max-height:94vh}.modal-image{height:38vh;min-height:220px;max-height:340px}.modal-copy{padding:25px}.modal-copy h2{font-size:32px}.modal-price{margin:14px 0}}
-.brand-logo{display:block;width:220px;height:auto;object-fit:contain;object-position:center;mix-blend-mode:multiply}.footer .brand-logo{width:220px;height:auto}@media(max-width:560px){.brand-logo{width:170px}}</style><link rel="stylesheet" href="./css/cms.css"><link rel="stylesheet" href="./css/motion.css">
+.brand-logo{display:block;width:220px;height:auto;object-fit:contain;object-position:center;mix-blend-mode:multiply}.footer .brand-logo{width:220px;height:auto}@media(max-width:560px){.brand-logo{width:170px}}
+
+/* Hero bouquet replacement — isolated to the existing hero visual */
+.hero-image {
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+  width: 46%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 0;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 16px 20px rgba(70, 45, 42, .12));
+}
+@media(max-width:800px) {
+  .hero-image { right: 2%; width: 43%; height: 94%; }
+}
+@media(max-width:560px) {
+  .hero-image {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 90%;
+    height: 260px;
+    margin-top: 24px;
+    justify-self: center;
+    transform: translateY(25px);
+  }
+}
+</style><link rel="stylesheet" href="./css/cms.css"><link rel="stylesheet" href="./css/motion.css">
 </head>
 <body class="intro-active"><div class="intro-screen" id="introScreen" aria-label="Gent Flowers" role="status"><div class="intro-aura"></div><div class="intro-rose-wrap"><img class="intro-rose" src="./media/rose-mark.png" alt="" width="150" height="150"></div><div class="intro-wordmark">Gent Flowers</div><div class="intro-caption">FLOWERS WITH FEELING</div><button class="intro-skip" id="introSkip" type="button">Pomiń animację</button></div><main class="shell">
 <div class="topline"><span data-i18n="delivery">Dostawa w mieście jeszcze dziś <strong>do 21:00</strong></span><a href="#footer" data-i18n="contact">Napisz do nas ↗</a></div>
-<section class="hero stack-panel" id="home"><div class="hero-copy"><div class="eyebrow">Gent Flowers · <span data-i18n="studio">pracownia florystyczna</span></div><h1 data-i18n="heroTitle">Kwiaty, które mówią za Ciebie</h1><p data-i18n="heroText">Tworzymy wyjątkowe bukiety z sezonowych kwiatów. Na ważne spotkania, małe radości i zupełnie bez okazji.</p><a class="button" href="#shop"><span data-i18n="chooseBouquet">Wybierz bukiet</span><span>→</span></a></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85" alt="Delikatny bukiet różowych kwiatów"><div class="hero-note" data-i18n="heroNote">Z miłością, każdego dnia</div></div></section>
+<section class="hero stack-panel" id="home"><div class="hero-copy"><div class="eyebrow">Gent Flowers · <span data-i18n="studio">pracownia florystyczna</span></div><h1 data-i18n="heroTitle">Kwiaty, które mówią za Ciebie</h1><p data-i18n="heroText">Tworzymy wyjątkowe bukiety z sezonowych kwiatów. Na ważne spotkania, małe radości i zupełnie bez okazji.</p><a class="button" href="#shop"><span data-i18n="chooseBouquet">Wybierz bukiet</span><span>→</span></a></div><div class="hero-image"><img src="./media/pink-tulip-bouquet.png" alt="Różowy bukiet tulipanów"><div class="hero-note" data-i18n="heroNote">Z miłością, każdego dnia</div></div></section>
 <nav class="nav" aria-label="Nawigacja główna"><a class="brand" href="#home" aria-label="Gent Flowers"><img class="brand-logo" src="./gent-flowers-logo.png" alt="Gent Flowers"></a><div class="links"><a href="#home" data-i18n="home">Start</a><a href="#collections" data-i18n="collections">Kolekcje</a><a href="#shop" data-i18n="bouquets">Bukiety</a><a href="#story" data-i18n="about">O nas</a></div><div class="tools"><div class="language" aria-label="Wybór języka"><button data-lang="pl" aria-pressed="true">PL</button><button data-lang="en" aria-pressed="false">EN</button></div><button class="icon" aria-label="Ulubione">♡</button><button class="icon" aria-label="Szukaj" onclick="document.querySelector('#shop').scrollIntoView()">⌕</button><button class="icon cart" aria-label="Koszyk">♧<span class="count" id="count">0</span></button></div></nav>
 <section class="section stack-panel" id="collections"><div class="section-head"><div><div class="eyebrow" data-i18n="findOccasion">Znajdź swój powód</div><h2 data-i18n="collections">Kolekcje</h2></div><p data-i18n="collectionIntro">Kwiaty na małe i wielkie chwile</p></div><div class="collections"><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1000&q=85" alt="Autorska kompozycja kwiatowa"><span><span data-i18n="signature">Bukiety autorskie</span><small data-i18n="signatureSub">Ręcznie układane · od 190 zł</small></span></a><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=700&q=85" alt="Delikatny bukiet róż"><span><span data-i18n="tender">Chwila czułości</span><small data-i18n="tenderSub">Róże i sezonowe kwiaty</small></span></a><a class="collection" href="#shop"><img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=85" alt="Kwiaty w wazonie"><span><span data-i18n="homeFlowers">Kwiaty do domu</span><small data-i18n="homeFlowersSub">Kompozycje w wazonie</small></span></a></div></section>
 <section class="section stack-panel" id="shop"><div class="section-head"><div><div class="eyebrow" data-i18n="pickedForYou">Wybrane dla Ciebie</div><h2 data-i18n="favoriteBouquets">Ulubione bukiety</h2></div><div><p data-i18n="freshDaily">Świeże kwiaty każdego dnia</p><div class="view-controls" role="group" aria-label="Widok kompozycji"><button class="view-button" data-view="grid" aria-pressed="true" data-i18n="tile">Siatka</button><button class="view-button" data-view="list" aria-pressed="false" data-i18n="list">Lista</button><button class="view-button" data-view="carousel" aria-pressed="false" data-i18n="carousel">Karuzela</button></div><div class="carousel-controls" id="carouselControls"><button id="carouselPrev" aria-label="Poprzedni bukiet">←</button><span id="carouselPosition">1 / 4</span><button id="carouselNext" aria-label="Następny bukiet">→</button></div></div><div class="close-feed-wrap"><button class="close-feed" id="closeFeed" aria-label="Zamknij widok">×</button></div></div><div class="products" id="productGrid">
