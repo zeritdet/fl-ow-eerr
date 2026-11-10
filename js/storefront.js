@@ -2,6 +2,7 @@
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
   const KEY = "gent-cart-v1";
+  const ORDER_API_URL = "https://gent-flowers-orders.zeritdet.workers.dev/api/orders";
   let cart = [];
   try { cart = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { cart = []; }
   const lang = () => localStorage.getItem("gent-language") || document.documentElement.lang || "pl";
@@ -176,7 +177,7 @@
     submit.textContent = text("Wysyłanie…", "Sending…");
     if (checkoutMessage) checkoutMessage.textContent = "";
     try {
-      const response = await fetch("/api/orders", {
+      const response = await fetch(ORDER_API_URL, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
