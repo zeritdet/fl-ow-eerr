@@ -84,6 +84,34 @@
     "hours": {
       "pl": "Codziennie · 9:00–21:00",
       "en": "Daily · 9 am–9 pm"
+    },
+    "add": {
+      "pl": "Dodaj do koszyka",
+      "en": "Add to cart"
+    },
+    "added": {
+      "pl": "Dodano do koszyka ✓",
+      "en": "Added to cart ✓"
+    },
+    "tile": {
+      "pl": "Siatka",
+      "en": "Grid"
+    },
+    "list": {
+      "pl": "Lista",
+      "en": "List"
+    },
+    "carousel": {
+      "pl": "Karuzela",
+      "en": "Carousel"
+    },
+    "palette": {
+      "pl": "Paleta",
+      "en": "Palette"
+    },
+    "productDetails": {
+      "pl": "Szczegóły bukietu",
+      "en": "Bouquet details"
     }
   },
   "hero": {
@@ -232,7 +260,12 @@
           },
           "hex": "#f5f1e9"
         }
-      ]
+      ],
+      "id": "pink-cloud",
+      "keywords": {
+        "pl": "piwonie, róże, róża, różowy bukiet, kwiaty różowe, romantyczny, pastelowy, peonie",
+        "en": "peonies, roses, rose, pink flowers, romantic, pastel bouquet"
+      }
     },
     {
       "name": {
@@ -283,7 +316,12 @@
           },
           "hex": "#f5f1e9"
         }
-      ]
+      ],
+      "id": "quiet-tenderness",
+      "keywords": {
+        "pl": "jaskry, ranunkulusy, białe kwiaty, biały bukiet, kremowy, delikatny, elegancki",
+        "en": "ranunculus, white flowers, cream bouquet, delicate, elegant"
+      }
     },
     {
       "name": {
@@ -338,7 +376,12 @@
           },
           "hex": "#7861a8"
         }
-      ]
+      ],
+      "id": "first-kiss",
+      "keywords": {
+        "pl": "tulipany, tulipan, czerwone kwiaty, czerwony bukiet, wiosenny, kolorowy",
+        "en": "tulips, tulip, red flowers, spring bouquet, colourful"
+      }
     },
     {
       "name": {
@@ -389,58 +432,12 @@
           },
           "hex": "#e4c568"
         }
-      ]
-    },
-    {
-      "name": {
-        "pl": "Student Classic",
-        "en": "Student Classic"
-      },
-      "subtitle": {
-        "pl": "Róże · 25 szt.",
-        "en": "Seven beautiful roses in an elegant bouquet. The perfect combination of a romantic gesture, style, and an affordable price."
-      },
-      "description": {
-        "pl": "Bukiet siedmiu białych róż w eleganckim opakowaniu. Ręcznie układany na zamówienie.",
-        "en": "A bouquet of seven white roses in elegant packaging. Hand-arranged to order."
-      },
-      "price": 45,
-      "currency": "zł",
-      "image": "/media/Student Classic.png",
-      "alt": {
-        "pl": "Elegancki bukiet 7 białych róż, ozdobiony delikatnym papierem i satynową wstążką. Idealny na wyjątkowe okazje i jako wyraz pięknych uczuć.",
-        "en": "An elegant bouquet of 7 white roses, adorned with delicate paper and a satin ribbon. Perfect for special occasions and as an expression of beautiful sentiments."
-      },
-      "palette": [
-        {
-          "name": {
-            "pl": "Czerwony",
-            "en": "Red"
-          },
-          "hex": "#5e091a"
-        },
-        {
-          "name": {
-            "pl": "Różowy",
-            "en": "Pink"
-          },
-          "hex": "#ffafc1"
-        },
-        {
-          "name": {
-            "pl": "Żółty",
-            "en": "Yellow"
-          },
-          "hex": "#e4b541"
-        },
-        {
-          "name": {
-            "pl": "kremowy",
-            "en": "Сream"
-          },
-          "hex": "#fffdf2"
-        }
-      ]
+      ],
+      "id": "morning-garden",
+      "keywords": {
+        "pl": "kwiaty polne, sezonowe kwiaty, bukiet polny, pastelowy, lawenda, ogród, naturalny",
+        "en": "wildflowers, seasonal flowers, pastel bouquet, lavender, garden, natural"
+      }
     }
   ],
   "story": {
