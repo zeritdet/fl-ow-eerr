@@ -140,6 +140,7 @@
         "pl": "Ręcznie układane · od 190 zł",
         "en": "Hand-arranged · from 190 zł"
       },
+      "image": "/media/bukiety autorskie.png",
       "alt": {
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
@@ -235,31 +236,45 @@
     },
     {
       "name": {
-        "pl": "Poranek w ogrodzie",
-        "en": "Morning in the garden"
+        "pl": "Cicha delikatność",
+        "en": "Quiet tenderness"
       },
       "subtitle": {
-        "pl": "Sezonowy bukiet · min. 17 kwiatów",
-        "en": "Seasonal mix · 17+ stems"
+        "pl": "Jaskry · 11 szt.",
+        "en": "Ranunculus · 11 stems"
       },
       "description": {
-        "pl": "Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny.",
-        "en": "An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind."
+        "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
+        "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
       },
-      "price": 280,
+      "price": 320,
       "currency": "zł",
-      "image": "/media/Poranek-w-ogrodzie.png",
+      "image": "/media/Cicha-delikatnosc.png",
       "alt": {
-        "pl": "Polny bukiet w pastelowych odcieniach",
-        "en": "A pastel wildflower bouquet"
+        "pl": "Jasna kompozycja z białych kwiatów",
+        "en": "A light arrangement of white flowers"
       },
       "palette": [
         {
           "name": {
-            "pl": "Pastelowy",
-            "en": "Pastel"
+            "pl": "Kremowy",
+            "en": "Cream"
           },
-          "hex": "#dcaab3"
+          "hex": "#e9d8bd"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Brzoskwiniowy",
+            "en": "Peach"
+          },
+          "hex": "#efb9a2"
         },
         {
           "name": {
@@ -267,20 +282,6 @@
             "en": "White"
           },
           "hex": "#f5f1e9"
-        },
-        {
-          "name": {
-            "pl": "Lawendowy",
-            "en": "Lavender"
-          },
-          "hex": "#9b88b5"
-        },
-        {
-          "name": {
-            "pl": "Żółty",
-            "en": "Yellow"
-          },
-          "hex": "#e4c568"
         }
       ]
     },
@@ -341,45 +342,31 @@
     },
     {
       "name": {
-        "pl": "Cicha delikatność",
-        "en": "Quiet tenderness"
+        "pl": "Poranek w ogrodzie",
+        "en": "Morning in the garden"
       },
       "subtitle": {
-        "pl": "Jaskry · 11 szt.",
-        "en": "Ranunculus · 11 stems"
+        "pl": "Sezonowy bukiet · min. 17 kwiatów",
+        "en": "Seasonal mix · 17+ stems"
       },
       "description": {
-        "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
-        "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
+        "pl": "Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny.",
+        "en": "An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind."
       },
-      "price": 320,
+      "price": 280,
       "currency": "zł",
-      "image": "/media/Cicha-delikatnosc.png",
+      "image": "/media/Poranek-w-ogrodzie.png",
       "alt": {
-        "pl": "Jasna kompozycja z białych kwiatów",
-        "en": "A light arrangement of white flowers"
+        "pl": "Polny bukiet w pastelowych odcieniach",
+        "en": "A pastel wildflower bouquet"
       },
       "palette": [
         {
           "name": {
-            "pl": "Kremowy",
-            "en": "Cream"
+            "pl": "Pastelowy",
+            "en": "Pastel"
           },
-          "hex": "#e9d8bd"
-        },
-        {
-          "name": {
-            "pl": "Różowy",
-            "en": "Pink"
-          },
-          "hex": "#d993a2"
-        },
-        {
-          "name": {
-            "pl": "Brzoskwiniowy",
-            "en": "Peach"
-          },
-          "hex": "#efb9a2"
+          "hex": "#dcaab3"
         },
         {
           "name": {
@@ -387,9 +374,24 @@
             "en": "White"
           },
           "hex": "#f5f1e9"
+        },
+        {
+          "name": {
+            "pl": "Lawendowy",
+            "en": "Lavender"
+          },
+          "hex": "#9b88b5"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4c568"
         }
       ]
-    }
+    },
+    {}
   ],
   "story": {
     "alt": {
