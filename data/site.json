@@ -84,6 +84,34 @@
     "hours": {
       "pl": "Codziennie · 9:00–21:00",
       "en": "Daily · 9 am–9 pm"
+    },
+    "tile": {
+      "pl": "Siatka",
+      "en": "Grid"
+    },
+    "list": {
+      "pl": "Lista",
+      "en": "List"
+    },
+    "carousel": {
+      "pl": "Karuzela",
+      "en": "Carousel"
+    },
+    "palette": {
+      "pl": "Paleta kolorów",
+      "en": "Colour palette"
+    },
+    "productDetails": {
+      "pl": "Szczegóły bukietu",
+      "en": "Bouquet details"
+    },
+    "add": {
+      "pl": "Dodaj do koszyka",
+      "en": "Add to basket"
+    },
+    "added": {
+      "pl": "Dodano do koszyka ✓",
+      "en": "Added to basket ✓"
     }
   },
   "hero": {
@@ -231,7 +259,11 @@
           },
           "hex": "#f5f1e9"
         }
-      ]
+      ],
+      "alt": {
+        "pl": "Bukiet różowych piwonii i róż w pudrowych odcieniach",
+        "en": "A bouquet of pink peonies and roses in soft blush tones"
+      }
     },
     {
       "name": {
@@ -398,5 +430,6 @@
       "en": "A florist carefully arranging a bouquet"
     },
     "button_url": "#footer"
-  }
+  },
+  "extra_blocks": []
 }

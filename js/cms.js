@@ -61,7 +61,7 @@
   // Header / hero
   setText(".topline [data-i18n='delivery']", data.texts?.delivery);
   setText(".topline [data-i18n='contact']", data.texts?.contact);
-  setText(".hero .eyebrow span", data.texts?.studio);
+  setText(".hero .eyebrow span", data.hero?.eyebrow || data.texts?.studio);
   setText(".hero h1", data.texts?.heroTitle);
   setText(".hero-copy p", data.texts?.heroText);
   setText(".hero-note", data.texts?.heroNote);
@@ -160,9 +160,10 @@
       photo.append(badge);
     }
 
-    const quick = el("button", "quick");
+    const quick = el("button", "quick", tr(data.texts?.add));
     quick.type = "button";
     quick.dataset.price = item.price;
+    quick.dataset.label = tr(data.texts?.add);
     photo.append(quick);
     article.append(photo);
 

@@ -8,13 +8,20 @@
   --cms-green: #66735c;
   --cms-accent: #bd777e;
   --cms-line: #eee9e5;
+
+  /* Connect editable CMS colors to the variables used by the original design. */
+  --ink: var(--cms-ink);
+  --muted: var(--cms-muted);
+  --rose: var(--cms-rose);
+  --green: var(--cms-green);
+  --line: var(--cms-line);
 }
-body { background: var(--cms-page-bg); color: var(--cms-ink); }
-.hero { background: var(--cms-rose); }
-.eyebrow, .text-link:hover { color: var(--cms-green); }
-.button:hover { background: var(--cms-green); }
+body { background: var(--cms-page-bg); color: var(--ink); }
+.hero { background: var(--rose); }
+.eyebrow, .text-link:hover { color: var(--green); }
+.button:hover { background: var(--green); }
 .nav .links a:hover, .brand span { color: var(--cms-accent); }
-.section { border-color: var(--cms-line); }
+.section { border-color: var(--line); }
 .cms-extra-section { background:#fff; padding:38px 5.5%; margin:0 0 22px; border-radius:18px; }
 .cms-extra-section h2 { font:600 32px var(--serif); margin:0 0 12px; }
 .cms-extra-section p { color:var(--cms-muted); line-height:1.8; max-width:760px; }
