@@ -429,8 +429,12 @@
   }
 
   function addToCart() {
-    cartCount++;
-    if (count) count.textContent = cartCount;
+    if (window.GentStore && activeCard?._productData) {
+      window.GentStore.add(activeCard._productData);
+    } else {
+      cartCount++;
+      if (count) count.textContent = cartCount;
+    }
     closeProduct();
   }
 
@@ -449,8 +453,11 @@
         event.preventDefault();
         event.stopPropagation();
 
-        cartCount++;
-        if (count) count.textContent = cartCount;
+        if (window.GentStore) window.GentStore.add(card._productData);
+        else {
+          cartCount++;
+          if (count) count.textContent = cartCount;
+        }
 
         quick.textContent = tr(data.texts?.added);
 
