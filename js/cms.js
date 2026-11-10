@@ -152,10 +152,11 @@
       photo.append(badge);
     }
 
-    const quick = el("button", "quick", tr(data.texts?.add));
+    const addLabel = tr(data.texts?.add) || (lang === "pl" ? "Dodaj do koszyka" : "Add to cart");
+    const quick = el("button", "quick", addLabel);
     quick.type = "button";
     quick.dataset.price = item.price;
-    quick.dataset.label = tr(data.texts?.add);
+    quick.dataset.label = addLabel;
     photo.append(quick);
     article.append(photo);
 
@@ -459,10 +460,10 @@
           if (count) count.textContent = cartCount;
         }
 
-        quick.textContent = tr(data.texts?.added);
+        quick.textContent = tr(data.texts?.added) || (lang === "pl" ? "Dodano do koszyka" : "Added to cart");
 
         setTimeout(() => {
-          quick.textContent = quick.dataset.label || tr(data.texts?.add);
+          quick.textContent = quick.dataset.label || (lang === "pl" ? "Dodaj do koszyka" : "Add to cart");
         }, 1100);
 
         return;

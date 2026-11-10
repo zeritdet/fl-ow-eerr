@@ -101,3 +101,6 @@ body.cart-open { overflow: hidden; }
   .cart-item { grid-template-columns: 78px minmax(0,1fr); gap: 12px; }
   .cart-item-image { width: 78px; height: 96px; }
 }
+
+/* Keep the quick-add label readable on its white hover strip. */
+.quick { color: var(--ink); }
