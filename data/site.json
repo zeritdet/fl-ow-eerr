@@ -401,8 +401,8 @@
         "en": "Seven beautiful roses in an elegant bouquet. The perfect combination of a romantic gesture, style, and an affordable price."
       },
       "description": {
-        "pl": "Szukasz prezentu, który zrobi wrażenie, ale nie nadwyręży Twojego budżetu? Student Classic to bukiet siedmiu świeżych róż, stworzony z myślą o wyjątkowych chwilach i codziennych niespodziankach.\nŚwietnie sprawdzi się jako prezent na randkę, urodziny, rocznicę lub po prostu jako sposób na poprawienie komuś humoru.\nBo piękne gesty nie muszą kosztować fortuny!\nIdealny na: randkę, urodziny, rocznicę, romantyczną niespodziankę.\nW zestawie: 7 świeżych róż w estetycznym opakowaniu.",
-        "en": "Looking for a gift that makes an impression without breaking the bank? \"Student Classic\" is a bouquet of seven fresh roses, designed for both special moments and everyday surprises.\nIt’s a perfect choice for a date, a birthday, an anniversary, or simply as a way to brighten someone’s day.\nAfter all, beautiful gestures don’t have to cost a fortune!\nIdeal for: dates, birthdays, anniversaries, or a romantic surprise.\nIncludes: 7 fresh roses in elegant packaging."
+        "pl": "Bukiet siedmiu białych róż w eleganckim opakowaniu. Ręcznie układany na zamówienie.",
+        "en": "A bouquet of seven white roses in elegant packaging. Hand-arranged to order."
       },
       "price": 45,
       "currency": "zł",
@@ -410,7 +410,30 @@
       "alt": {
         "pl": "Elegancki bukiet 7 białych róż, ozdobiony delikatnym papierem i satynową wstążką. Idealny na wyjątkowe okazje i jako wyraz pięknych uczuć.",
         "en": "An elegant bouquet of 7 white roses, adorned with delicate paper and a satin ribbon. Perfect for special occasions and as an expression of beautiful sentiments."
-      }
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#5e091a"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#ffafc1"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4b541"
+        }
+      ]
     }
   ],
   "story": {
