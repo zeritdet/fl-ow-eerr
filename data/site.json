@@ -299,6 +299,7 @@
       },
       "price": 240,
       "currency": "zł",
+      "image": "/media/Pierwszy-pocalunek.png",
       "alt": {
         "pl": "Czerwone tulipany",
         "en": "Red tulips"
@@ -353,6 +354,7 @@
       },
       "price": 320,
       "currency": "zł",
+      "image": "/media/Cicha-delikatnosc.png",
       "alt": {
         "pl": "Jasna kompozycja z białych kwiatów",
         "en": "A light arrangement of white flowers"
