@@ -72,15 +72,43 @@
     if (label) label.textContent = tr(data.hero_button?.label);
   }
 
+  // Keep the main navigation in one canonical order on every page.
+  // Match CMS entries by their meaning, not by array position, so a reordered
+  // Pages CMS list cannot silently swap "Katalog" and "Kolekcje".
   const navLinks = $$(".nav .links a");
-  (data.navigation || []).forEach((item, i) => {
-    const a = navLinks[i];
-    if (a) {
-      a.textContent = tr(item.label);
-      a.href = safeUrl(item.url);
-    }
+  const navAliases = {
+    home: ["Start", "Home"],
+    bouquets: ["Katalog", "Catalog", "Bukiety", "Bouquets"],
+    collections: ["Kolekcje", "Collections"],
+    about: ["O nas", "About us"]
+  };
+  const navFallbacks = {
+    home: { label: { pl: "Start", en: "Home" }, url: "./index.html" },
+    bouquets: { label: { pl: "Katalog", en: "Catalog" }, url: "./index.html#collections" },
+    collections: { label: { pl: "Kolekcje", en: "Collections" }, url: "./shop.html" },
+    about: { label: { pl: "O nas", en: "About us" }, url: "./about.html" }
+  };
+  const navItemsByKey = {};
+  Object.entries(navAliases).forEach(([key, aliases], index) => {
+    const item = (data.navigation || []).find(entry =>
+      aliases.includes(String(entry.label?.pl || "")) ||
+      aliases.includes(String(entry.label?.en || ""))
+    );
+    navItemsByKey[key] = item || (data.navigation || [])[index] || navFallbacks[key];
   });
-  navLinks.slice((data.navigation || []).length).forEach(a => a.remove());
+
+  const canonicalNavUrls = {
+    home: "./index.html",
+    bouquets: "./index.html#collections",
+    collections: "./shop.html",
+    about: "./about.html"
+  };
+  navLinks.forEach(a => {
+    const item = navItemsByKey[a.dataset.i18n];
+    if (!item) return;
+    a.textContent = tr(item.label);
+    a.href = canonicalNavUrls[a.dataset.i18n] || safeUrl(item.url);
+  });
 
   const collectionRoot = $(".collections");
   if (collectionRoot) {
@@ -274,10 +302,10 @@
       heroText: data.texts?.heroText,
       heroNote: data.texts?.heroNote,
       chooseBouquet: data.hero_button?.label,
-      home: data.navigation?.[0]?.label,
-      bouquets: data.navigation?.[1]?.label,
-      collections: data.navigation?.[2]?.label,
-      about: data.navigation?.[3]?.label,
+      home: navItemsByKey.home?.label,
+      bouquets: navItemsByKey.bouquets?.label,
+      collections: navItemsByKey.collections?.label,
+      about: navItemsByKey.about?.label,
       findOccasion: data.texts?.findOccasion,
       collectionIntro: data.texts?.collectionIntro,
       pickedForYou: data.texts?.pickedForYou,
