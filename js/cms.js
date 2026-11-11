@@ -5,7 +5,6 @@
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   let lang = localStorage.getItem("gent-language") || "pl";
-  let cartCount = 0;
   const tr = value => value && typeof value === "object" ? (value[lang] ?? value.pl ?? value.en ?? "") : (value ?? "");
   const safeUrl = value => /^(https?:\/\/|mailto:|tel:|\/|#|\.{1,2}\/)/i.test(String(value||"")) ? value : "#";
 
@@ -152,10 +151,11 @@
       photo.append(badge);
     }
 
-    const quick = el("button", "quick", tr(data.texts?.add));
+    const addLabel = tr(data.texts?.add) || (lang === "en" ? "Add to cart" : "Dodaj do koszyka");
+    const quick = el("button", "quick", addLabel);
     quick.type = "button";
     quick.dataset.price = item.price;
-    quick.dataset.label = tr(data.texts?.add);
+    quick.dataset.label = addLabel;
     photo.append(quick);
     article.append(photo);
 
@@ -293,7 +293,7 @@
       hours: data.texts?.hours,
       palette: data.texts?.palette,
       productDetails: data.texts?.productDetails,
-      add: data.texts?.add
+      add: data.texts?.add || { pl: "Dodaj do koszyka", en: "Add to cart" }
     };
 
     $$("[data-i18n]").forEach(node => {
@@ -429,8 +429,11 @@
   }
 
   function addToCart() {
-    cartCount++;
-    if (count) count.textContent = cartCount;
+    if (!activeCard?._productData || !window.GentStore?.add) {
+      console.error("Gent Flowers: товар или корзина не найдены");
+      return;
+    }
+    window.GentStore.add(activeCard._productData);
     closeProduct();
   }
 
@@ -449,14 +452,20 @@
         event.preventDefault();
         event.stopPropagation();
 
-        cartCount++;
-        if (count) count.textContent = cartCount;
+        const product = card._productData;
+        if (product && window.GentStore?.add) {
+          window.GentStore.add(product);
+        } else {
+          console.error("Gent Flowers: корзина не подключена");
+          return;
+        }
 
-        quick.textContent = tr(data.texts?.added);
-
-        setTimeout(() => {
-          quick.textContent = quick.dataset.label || tr(data.texts?.add);
-        }, 1100);
+        quick.textContent = lang === "en" ? "Added to cart" : "Dodano do koszyka";
+        quick.classList.add("is-added");
+        window.setTimeout(() => {
+          quick.textContent = quick.dataset.label || (lang === "en" ? "Add to cart" : "Dodaj do koszyka");
+          quick.classList.remove("is-added");
+        }, 1400);
 
         return;
       }
