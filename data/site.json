@@ -110,17 +110,17 @@
     },
     {
       "label": {
+        "pl": "Katalog",
+        "en": "Catalog"
+      },
+      "url": "./shop.html"
+    },
+    {
+      "label": {
         "pl": "Kolekcje",
         "en": "Collections"
       },
       "url": "./index.html#collections"
-    },
-    {
-      "label": {
-        "pl": "Bukiety",
-        "en": "Bouquets"
-      },
-      "url": "./shop.html"
     },
     {
       "label": {
