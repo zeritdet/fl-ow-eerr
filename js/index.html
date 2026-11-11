@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f7e8e9" name="theme-color"/>
+  <title>
+   Gent Flowers &mdash; kwiaty z uczuciem
+  </title>
+ 
+  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="./css/cms.css"/>
+  <link rel="stylesheet" href="./css/storefront.css"/>
+  <link rel="stylesheet" href="./css/motion.css"/>
+ </head>
+ <body class="intro-active page-home">
+  <div aria-label="Gent Flowers" class="intro-screen" id="introScreen" role="status">
+   <div class="intro-aura">
+   </div>
+   <div class="intro-rose-wrap">
+    <img alt="" class="intro-rose" height="150" src="./assets/images/rose-mark.png" width="150"/>
+   </div>
+   <div class="intro-wordmark">
+    Gent Flowers
+   </div>
+   <div class="intro-caption">
+    FLOWERS WITH FEELING
+   </div>
+   <button class="intro-skip" id="introSkip" type="button">
+    Pomi&nacute; animacj&eogon;
+   </button>
+  </div>
+  <main class="shell">
+   <div class="topline">
+    <span data-i18n="delivery">
+     Zam&oacute;w do 21:00
+     <strong>
+      dostarczymy kwiaty nast&eogon;pnego dnia rano!
+     </strong>
+    </span>
+    <a data-i18n="contact" href="#footer">
+     Napisz do nas &nearrow;
+    </a>
+   </div>
+   <section class="hero stack-panel" id="home">
+    <div class="hero-copy">
+     <div class="eyebrow">
+      Gent Flowers &middot;
+      <span data-i18n="studio">
+       pracownia florystyczna
+      </span>
+     </div>
+     <h1 data-i18n="heroTitle">
+      Kwiaty, kt&oacute;re m&oacute;wi&aogon; za Ciebie
+     </h1>
+     <p data-i18n="heroText">
+      Tworzymy wyj&aogon;tkowe bukiety z sezonowych kwiat&oacute;w. Na wa&zdot;ne spotkania, ma&lstrok;e rado&sacute;ci i zupe&lstrok;nie bez okazji.
+     </p>
+     <a class="button" href="#shop">
+      <span data-i18n="chooseBouquet">
+       Wybierz bukiet
+      </span>
+      <span>
+       &rarr;
+      </span>
+     </a>
+    </div>
+    <div class="hero-image">
+     <img alt="R&oacute;&zdot;owy bukiet tulipan&oacute;w" src="./assets/images/pink-tulip-bouquet.png"/>
+     <div class="hero-note" data-i18n="heroNote">
+      Z mi&lstrok;o&sacute;ci&aogon;, ka&zdot;dego dnia
+     </div>
+    </div>
+   </section>
+   <nav aria-label="Nawigacja g&lstrok;&oacute;wna" class="nav">
+    <a aria-label="Gent Flowers" class="brand" href="./index.html">
+     <img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"/>
+    </a>
+    <div class="links">
+     <a data-i18n="home" href="#home">
+      Start
+     </a>
+     <a data-i18n="collections" href="#collections">
+      Kolekcje
+     </a>
+     <a data-i18n="bouquets" href="#shop">
+      Bukiety
+     </a>
+     <a data-i18n="about" href="#story">
+      O nas
+     </a>
+    </div>
+    <div class="tools">
+     <div aria-label="Wyb&oacute;r j&eogon;zyka" class="language">
+      <button aria-pressed="true" data-lang="pl">
+       PL
+      </button>
+      <button aria-pressed="false" data-lang="en">
+       EN
+      </button>
+     </div>
+     <button aria-label="Ulubione" class="icon">
+      ♡
+     </button>
+     <button aria-label="Szukaj" class="icon" type="button">
+      &telrec;
+     </button>
+     <button aria-label="Koszyk" class="icon cart" type="button">
+      ♧
+      <span class="count" id="count">
+       0
+      </span>
+     </button>
+    </div>
+   </nav>
+   <section class="section stack-panel" id="collections">
+    <div class="section-head">
+     <div>
+      <div class="eyebrow" data-i18n="findOccasion">
+       Znajd&zacute; sw&oacute;j pow&oacute;d
+      </div>
+      <h2 data-i18n="collections">
+       Kolekcje
+      </h2>
+     </div>
+     <p data-i18n="collectionIntro">
+      Kwiaty na ma&lstrok;e i wielkie chwile
+     </p>
+    </div>
+    <div class="collections">
+     <a class="collection" href="#shop">
+      <img alt="Autorska kompozycja kwiatowa" src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+      <span>
+       <span data-i18n="signature">
+        Bukiety autorskie
+       </span>
+       <small data-i18n="signatureSub">
+        R&eogon;cznie uk&lstrok;adane &middot; od 190 z&lstrok;
+       </small>
+      </span>
+     </a>
+     <a class="collection" href="#shop">
+      <img alt="Delikatny bukiet r&oacute;&zdot;" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+      <span>
+       <span data-i18n="tender">
+        Chwila czu&lstrok;o&sacute;ci
+       </span>
+       <small data-i18n="tenderSub">
+        R&oacute;&zdot;e i sezonowe kwiaty
+       </small>
+      </span>
+     </a>
+     <a class="collection" href="#shop">
+      <img alt="Kwiaty w wazonie" src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+      <span>
+       <span data-i18n="homeFlowers">
+        Kwiaty do domu
+       </span>
+       <small data-i18n="homeFlowersSub">
+        Kompozycje w wazonie
+       </small>
+      </span>
+     </a>
+    </div>
+   </section>
+   <section class="section stack-panel" id="shop">
+    <div class="section-head">
+     <div>
+      <div class="eyebrow" data-i18n="pickedForYou">
+       Wybrane dla Ciebie
+      </div>
+      <h2 data-i18n="favoriteBouquets">
+       Ulubione bukiety
+      </h2>
+     </div>
+     <div>
+      <p data-i18n="freshDaily">
+       &Sacute;wie&zdot;e kwiaty ka&zdot;dego dnia
+      </p>
+      <div aria-label="Widok kompozycji" class="view-controls" role="group">
+       <button aria-pressed="true" class="view-button" data-i18n="tile" data-view="grid">
+        Siatka
+       </button>
+       <button aria-pressed="false" class="view-button" data-i18n="list" data-view="list">
+        Lista
+       </button>
+       <button aria-pressed="false" class="view-button" data-i18n="carousel" data-view="carousel">
+        Karuzela
+       </button>
+      </div>
+      <div class="carousel-controls" id="carouselControls">
+       <button aria-label="Poprzedni bukiet" id="carouselPrev">
+        &larr;
+       </button>
+       <span id="carouselPosition">
+        1 / 4
+       </span>
+       <button aria-label="Nast&eogon;pny bukiet" id="carouselNext">
+        &rarr;
+       </button>
+      </div>
+     </div>
+     <div class="close-feed-wrap">
+      <button aria-label="Zamknij widok" class="close-feed" id="closeFeed">
+       &times;
+      </button>
+     </div>
+    </div>
+    <div class="products" id="productGrid">
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Obfity bukiet r&oacute;&zdot;owych r&oacute;&zdot;" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <span class="tag" data-i18n="bestseller">
+        Bestseller
+       </span>
+       <button class="quick" data-price="350">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Pink cloud" data-pl="R&oacute;&zdot;owa chmurka">
+         R&oacute;&zdot;owa chmurka
+        </div>
+        <div class="product-sub" data-en="Peony roses &middot; 15 stems" data-pl="R&oacute;&zdot;e piwoniowe &middot; 15 szt.">
+         R&oacute;&zdot;e piwoniowe &middot; 15 szt.
+        </div>
+       </div>
+       <div class="price">
+        350 z&lstrok;
+       </div>
+       <div class="product-description" data-en="A hand-tied bouquet of peonies and roses in soft blush tones. Made to order." data-pl="Bukiet piwonii i r&oacute;&zdot; o mi&eogon;kkich, pudrowych odcieniach. R&eogon;cznie uk&lstrok;adany na zam&oacute;wienie.">
+        Bukiet piwonii i r&oacute;&zdot; o mi&eogon;kkich, pudrowych odcieniach. R&eogon;cznie uk&lstrok;adany na zam&oacute;wienie.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Cream" data-pl="Kremowy" style="--swatch:#e9d8bd">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Peach" data-pl="Brzoskwiniowy" style="--swatch:#efb9a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Polny bukiet w pastelowych odcieniach" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <button class="quick" data-price="280">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Morning in the garden" data-pl="Poranek w ogrodzie">
+         Poranek w ogrodzie
+        </div>
+        <div class="product-sub" data-en="Seasonal mix &middot; 17+ stems" data-pl="Sezonowy bukiet &middot; min. 17 kwiat&oacute;w">
+         Sezonowy bukiet &middot; min. 17 kwiat&oacute;w
+        </div>
+       </div>
+       <div class="price">
+        280 z&lstrok;
+       </div>
+       <div class="product-description" data-en="An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind." data-pl="Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Ka&zdot;dy bukiet jest nieco inny.">
+        Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Ka&zdot;dy bukiet jest nieco inny.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Pastel" data-pl="Pastelowy" style="--swatch:#dcaab3">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Lavender" data-pl="Lawendowy" style="--swatch:#9b88b5">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Yellow" data-pl="&Zdot;&oacute;&lstrok;ty" style="--swatch:#e4c568">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Czerwone tulipany" src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <span class="tag" data-i18n="new">
+        Nowo&sacute;&cacute;
+       </span>
+       <button class="quick" data-price="240">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="First kiss" data-pl="Pierwszy poca&lstrok;unek">
+         Pierwszy poca&lstrok;unek
+        </div>
+        <div class="product-sub" data-en="Tulips &middot; 25 stems" data-pl="Tulipany &middot; 25 szt.">
+         Tulipany &middot; 25 szt.
+        </div>
+       </div>
+       <div class="price">
+        240 z&lstrok;
+       </div>
+       <div class="product-description" data-en="Bright tulips that bring colour and springtime energy into your home." data-pl="Wyraziste tulipany, kt&oacute;re wnosz&aogon; do domu kolor i wiosenn&aogon; energi&eogon;.">
+        Wyraziste tulipany, kt&oacute;re wnosz&aogon; do domu kolor i wiosenn&aogon; energi&eogon;.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Red" data-pl="Czerwony" style="--swatch:#bd3446">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Yellow" data-pl="&Zdot;&oacute;&lstrok;ty" style="--swatch:#e4c568">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Purple" data-pl="Fioletowy" style="--swatch:#7861a8">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+     <article class="product">
+      <div class="product-photo">
+       <img alt="Jasna kompozycja z bia&lstrok;ych kwiat&oacute;w" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;w=700&amp;q=85"/>
+       <button class="quick" data-price="320">
+       </button>
+      </div>
+      <div class="product-info">
+       <div>
+        <div class="product-name" data-en="Quiet tenderness" data-pl="Cicha delikatno&sacute;&cacute;">
+         Cicha delikatno&sacute;&cacute;
+        </div>
+        <div class="product-sub" data-en="Ranunculus &middot; 11 stems" data-pl="Jaskry &middot; 11 szt.">
+         Jaskry &middot; 11 szt.
+        </div>
+       </div>
+       <div class="price">
+        320 z&lstrok;
+       </div>
+       <div class="product-description" data-en="Delicate ranunculus in a light palette &mdash; an elegant choice for a special day." data-pl="Delikatne jaskry w jasnej palecie &mdash; elegancki wyb&oacute;r na wyj&aogon;tkowy dzie&nacute;.">
+        Delikatne jaskry w jasnej palecie &mdash; elegancki wyb&oacute;r na wyj&aogon;tkowy dzie&nacute;.
+       </div>
+       <div class="product-options">
+        <div class="palette-head">
+         <span data-i18n="palette">
+          Paleta
+         </span>
+        </div>
+        <div class="swatches">
+         <span aria-hidden="true" class="color-swatch" data-en="Cream" data-pl="Kremowy" style="--swatch:#e9d8bd">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Pink" data-pl="R&oacute;&zdot;owy" style="--swatch:#d993a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="Peach" data-pl="Brzoskwiniowy" style="--swatch:#efb9a2">
+         </span>
+         <span aria-hidden="true" class="color-swatch" data-en="White" data-pl="Bia&lstrok;y" style="--swatch:#f5f1e9">
+         </span>
+        </div>
+       </div>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="section story stack-panel" id="story">
+    <img alt="Florystka starannie uk&lstrok;ada bukiet" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/>
+    <div class="story-copy">
+     <div class="eyebrow" data-i18n="ourStudio">
+      Nasza pracownia
+     </div>
+     <h2 data-i18n="storyTitle">
+      Pi&eogon;kno tkwi w prostocie
+     </h2>
+     <p data-i18n="storyText">
+      Wybieramy sezonowe kwiaty, starannie uk&lstrok;adamy ka&zdot;dy bukiet i do&lstrok;&aogon;czamy bilecik z Twoimi s&lstrok;owami. Bez szablon&oacute;w &mdash; tylko &zdot;ywe kompozycje.
+     </p>
+     <a class="text-link" data-i18n="meetGent" href="#footer">
+      Poznaj Gent &rarr;
+     </a>
+    </div>
+   </section>
+<div class="footer-pages"><a href="./index.html">Start</a><a href="./shop.html">Bukiety</a><a href="./about.html">O nas</a><a href="./delivery.html">Dostawa i płatność</a><a href="./contacts.html">Kontakt</a></div>
+   <footer class="footer" id="footer">
+    <a aria-label="Gent Flowers" class="brand" href="./index.html">
+     <img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"/>
+    </a>
+    <span data-i18n="footerLine">
+     &Sacute;wie&zdot;e kwiaty. Ciep&lstrok;e emocje.
+    </span>
+    <span data-i18n="hours">
+     Codziennie &middot; 9:00&ndash;21:00
+    </span>
+   </footer>
+   <div aria-hidden="true" class="product-modal" id="productModal">
+    <div aria-labelledby="modalTitle" aria-modal="true" class="product-detail" role="dialog" tabindex="-1">
+     <button aria-label="Zamknij" class="modal-close" id="modalClose">
+      &times;
+     </button>
+     <img alt="" class="modal-image" id="modalImage"/>
+     <div class="modal-copy">
+      <div class="eyebrow" data-i18n="productDetails">
+       Szczeg&oacute;&lstrok;y bukietu
+      </div>
+      <h2 id="modalTitle">
+      </h2>
+      <p id="modalDescription">
+      </p>
+      <div class="modal-price" id="modalPrice">
+      </div>
+      <div class="swatches modal-swatches" id="modalSwatches">
+      </div>
+      <button class="button modal-add" id="modalAdd">
+       <span data-i18n="add">
+        Dodaj do koszyka
+       </span>
+       <span>
+        &rarr;
+       </span>
+      </button>
+     </div>
+    </div>
+   </div>
+  </main>
+  <script defer="" src="./js/cms.js">
+  </script>
+  <script defer="" src="./js/motion.js">
+  </script>
+  <script defer="" src="./js/storefront.js">
+  </script>
+ </body>
+</html>
+

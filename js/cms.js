@@ -152,11 +152,10 @@
       photo.append(badge);
     }
 
-    const addLabel = tr(data.texts?.add) || (lang === "pl" ? "Dodaj do koszyka" : "Add to cart");
-    const quick = el("button", "quick", addLabel);
+    const quick = el("button", "quick", tr(data.texts?.add));
     quick.type = "button";
     quick.dataset.price = item.price;
-    quick.dataset.label = addLabel;
+    quick.dataset.label = tr(data.texts?.add);
     photo.append(quick);
     article.append(photo);
 
@@ -430,12 +429,8 @@
   }
 
   function addToCart() {
-    if (window.GentStore && activeCard?._productData) {
-      window.GentStore.add(activeCard._productData);
-    } else {
-      cartCount++;
-      if (count) count.textContent = cartCount;
-    }
+    cartCount++;
+    if (count) count.textContent = cartCount;
     closeProduct();
   }
 
@@ -454,16 +449,13 @@
         event.preventDefault();
         event.stopPropagation();
 
-        if (window.GentStore) window.GentStore.add(card._productData);
-        else {
-          cartCount++;
-          if (count) count.textContent = cartCount;
-        }
+        cartCount++;
+        if (count) count.textContent = cartCount;
 
-        quick.textContent = tr(data.texts?.added) || (lang === "pl" ? "Dodano do koszyka" : "Added to cart");
+        quick.textContent = tr(data.texts?.added);
 
         setTimeout(() => {
-          quick.textContent = quick.dataset.label || (lang === "pl" ? "Dodaj do koszyka" : "Add to cart");
+          quick.textContent = quick.dataset.label || tr(data.texts?.add);
         }, 1100);
 
         return;

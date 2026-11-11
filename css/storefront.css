@@ -116,3 +116,11 @@ body.cart-open { overflow: hidden; }
 .cart-checkout-open[hidden], #cartCopyOrder[hidden], #cartClear[hidden] { display: none !important; }
 .cart-submit-order:disabled { opacity: .6; cursor: wait; }
 .checkout-back { margin-top: 6px; }
+
+
+/* Persistent confirmation shown after a successful order submission. */
+.order-confirmation { margin: auto 0; padding: 34px 22px; text-align: center; color: var(--ink); }
+.order-confirmation[hidden] { display: none !important; }
+.order-confirmation-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 16px; border: 1px solid #c9d7c8; border-radius: 50%; color: #58785b; font-size: 24px; }
+.order-confirmation h3 { margin: 0 0 10px; font: 500 25px/1.2 var(--serif); }
+.order-confirmation p { max-width: 330px; margin: 0 auto; color: var(--muted); font-size: 12px; line-height: 1.8; }

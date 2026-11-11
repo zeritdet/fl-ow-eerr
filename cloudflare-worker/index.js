@@ -68,12 +68,16 @@ export default {
       if (!Number.isFinite(total) || total <= 0) throw new Error("Invalid order total");
 
       const orderId = `GF-${Date.now().toString(36).toUpperCase()}`;
+      const orderedAt = new Intl.DateTimeFormat("pl-PL", {
+        timeZone: "Europe/Warsaw", dateStyle: "short", timeStyle: "short"
+      }).format(new Date());
       const itemLines = verifiedItems.map(item =>
         `• ${escapeHtml(item.name)} — ${item.quantity} × ${item.price} zł = ${item.quantity * item.price} zł`
       ).join("\n");
       const message = [
         "🌸 <b>NOWE ZAMÓWIENIE — GENT FLOWERS</b>",
         `<b>Numer:</b> ${escapeHtml(orderId)}`,
+        `<b>Data i godzina zamówienia:</b> ${escapeHtml(orderedAt)}`,
         "",
         "<b>BUKIETY:</b>",
         itemLines,

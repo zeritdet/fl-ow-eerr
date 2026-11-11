@@ -27,6 +27,7 @@
   }
   function add(product) {
     if (!product) return;
+    if (confirmationPanel) confirmationPanel.hidden = true;
     const id = productId(product);
     const existing = cart.find(x => x.id === id);
     if (existing) existing.qty += 1;
@@ -87,6 +88,18 @@
     document.body.append(overlay);
   }
   const itemsNode = $("#cartItems"), emptyNode = $("#cartEmpty"), footerNode = $("#cartFooter");
+  const cartDrawer = $(".cart-drawer", overlay);
+  let confirmationPanel = $("#orderConfirmation", overlay);
+  if (!confirmationPanel && cartDrawer) {
+    confirmationPanel = document.createElement("section");
+    confirmationPanel.id = "orderConfirmation";
+    confirmationPanel.className = "order-confirmation";
+    confirmationPanel.hidden = true;
+    confirmationPanel.setAttribute("role", "status");
+    confirmationPanel.setAttribute("aria-live", "polite");
+    confirmationPanel.innerHTML = `<div class="order-confirmation-icon" aria-hidden="true">✓</div><h3>${text("Dziękujemy za zamówienie!", "Thank you for your order!")}</h3><p>${text("Twoje zamówienie zostało wysłane. Oczekuj telefonu od kuriera w celu potwierdzenia dostawy.", "Your order has been sent. Please expect a call from the courier to confirm delivery.")}</p>`;
+    cartDrawer.append(confirmationPanel);
+  }
   function renderCart() {
     if (!itemsNode) return;
     itemsNode.replaceChildren();
@@ -139,6 +152,8 @@
   }
   checkoutOpen?.addEventListener("click", () => {
     if (!cart.length) return;
+    if (confirmationPanel) confirmationPanel.hidden = true;
+    if (emptyNode) emptyNode.hidden = true;
     checkoutForm.hidden = false;
     checkoutOpen.hidden = true;
     $("#cartCopyOrder").hidden = true;
@@ -191,6 +206,8 @@
       checkoutOpen.hidden = false;
       $("#cartCopyOrder").hidden = false;
       $("#cartClear").hidden = false;
+      if (emptyNode) emptyNode.hidden = true;
+      if (confirmationPanel) confirmationPanel.hidden = false;
       toast(text("Zamówienie wysłane! Dziękujemy.", "Order sent! Thank you."));
     } catch (error) {
       if (checkoutMessage) checkoutMessage.textContent = error.message || text("Błąd połączenia. Spróbuj ponownie.", "Connection error. Please try again.");

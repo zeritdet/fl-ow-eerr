@@ -106,28 +106,28 @@
         "pl": "Start",
         "en": "Home"
       },
-      "url": "#home"
+      "url": "./index.html"
     },
     {
       "label": {
         "pl": "Kolekcje",
         "en": "Collections"
       },
-      "url": "#collections"
+      "url": "./index.html#collections"
     },
     {
       "label": {
         "pl": "Bukiety",
         "en": "Bouquets"
       },
-      "url": "#shop"
+      "url": "./shop.html"
     },
     {
       "label": {
         "pl": "O nas",
         "en": "About us"
       },
-      "url": "#story"
+      "url": "./about.html"
     }
   ],
   "collections": [
