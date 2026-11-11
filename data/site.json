@@ -113,14 +113,14 @@
         "pl": "Katalog",
         "en": "Catalog"
       },
-      "url": "./shop.html"
+      "url": "./index.html#collections"
     },
     {
       "label": {
         "pl": "Kolekcje",
         "en": "Collections"
       },
-      "url": "./index.html#collections"
+      "url": "./shop.html"
     },
     {
       "label": {
