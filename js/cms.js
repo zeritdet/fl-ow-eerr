@@ -6,6 +6,8 @@
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   let lang = localStorage.getItem("gent-language") || "pl";
   const tr = value => value && typeof value === "object" ? (value[lang] ?? value.pl ?? value.en ?? "") : (value ?? "");
+  const addLabel = () => lang === "en" ? "Add to cart" : "Dodaj do koszyka";
+  const addedLabel = () => lang === "en" ? "Added to cart" : "Dodano do koszyka";
   const safeUrl = value => /^(https?:\/\/|mailto:|tel:|\/|#|\.{1,2}\/)/i.test(String(value||"")) ? value : "#";
 
   const getImageUrl = value => {
@@ -151,11 +153,10 @@
       photo.append(badge);
     }
 
-    const addLabel = tr(data.texts?.add) || (lang === "en" ? "Add to cart" : "Dodaj do koszyka");
-    const quick = el("button", "quick", addLabel);
+    const quick = el("button", "quick", addLabel());
     quick.type = "button";
     quick.dataset.price = item.price;
-    quick.dataset.label = addLabel;
+    quick.dataset.label = addLabel();
     photo.append(quick);
     article.append(photo);
 
@@ -293,7 +294,7 @@
       hours: data.texts?.hours,
       palette: data.texts?.palette,
       productDetails: data.texts?.productDetails,
-      add: data.texts?.add || { pl: "Dodaj do koszyka", en: "Add to cart" }
+      add: addLabel()
     };
 
     $$("[data-i18n]").forEach(node => {
@@ -309,6 +310,8 @@
     });
 
     renderProducts();
+    const modalButton = $("#modalAdd");
+    if (modalButton) modalButton.textContent = addLabel();
 
     localStorage.setItem("gent-language", lang);
   }
@@ -369,7 +372,8 @@
   const modalDesc = $("#modalDescription");
   const modalPrice = $("#modalPrice");
   const modalSwatches = $("#modalSwatches");
-  const count = $("#count");
+  const modalAddButton = $("#modalAdd");
+  if (modalAddButton) modalAddButton.textContent = addLabel();
 
   let activeCard = null;
 
@@ -429,12 +433,14 @@
   }
 
   function addToCart() {
-    if (!activeCard?._productData || !window.GentStore?.add) {
-      console.error("Gent Flowers: товар или корзина не найдены");
-      return;
+    const item = activeCard?._productData;
+    if (!item) return;
+    if (window.GentStore?.add) {
+      window.GentStore.add(item);
+      closeProduct();
+    } else {
+      console.error("Gent Flowers cart is not ready: window.GentStore.add is unavailable");
     }
-    window.GentStore.add(activeCard._productData);
-    closeProduct();
   }
 
   if (grid) {
@@ -452,20 +458,18 @@
         event.preventDefault();
         event.stopPropagation();
 
-        const product = card._productData;
-        if (product && window.GentStore?.add) {
-          window.GentStore.add(product);
+        if (window.GentStore?.add) {
+          window.GentStore.add(card._productData);
         } else {
-          console.error("Gent Flowers: корзина не подключена");
+          console.error("Gent Flowers cart is not ready: window.GentStore.add is unavailable");
           return;
         }
 
-        quick.textContent = lang === "en" ? "Added to cart" : "Dodano do koszyka";
-        quick.classList.add("is-added");
-        window.setTimeout(() => {
-          quick.textContent = quick.dataset.label || (lang === "en" ? "Add to cart" : "Dodaj do koszyka");
-          quick.classList.remove("is-added");
-        }, 1400);
+        quick.textContent = addedLabel();
+
+        setTimeout(() => {
+          quick.textContent = quick.dataset.label || addLabel();
+        }, 1100);
 
         return;
       }
