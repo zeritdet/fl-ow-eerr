@@ -1,13 +1,7 @@
 (async function () {
-  // Content is split into clear CMS sections; merge them into the same
-  // runtime shape so storefront behaviour remains unchanged.
-  const cmsSections = ["brand", "content", "home", "catalog", "about"];
-  const sectionResponses = await Promise.all(cmsSections.map(async section => {
-    const response = await fetch(`./data/${section}.json`, { cache: "no-cache" });
-    if (!response.ok) throw new Error(`Nie udało się pobrać data/${section}.json`);
-    return response.json();
-  }));
-  const data = Object.assign({}, ...sectionResponses);
+  const response = await fetch("./data/site.json", { cache: "no-cache" });
+  if (!response.ok) throw new Error("Nie udało się pobrać data/site.json");
+  const data = await response.json();
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   let lang = localStorage.getItem("gent-language") || "pl";
@@ -117,24 +111,23 @@
   });
 
   const collectionRoot = $(".collections");
-  if (collectionRoot) {
+  function renderCollections() {
+    if (!collectionRoot) return;
     collectionRoot.replaceChildren();
     (data.collections || []).forEach(item => {
       const a = el("a", "collection");
       a.href = safeUrl(item.url);
-
       const img = el("img");
       setImage(img, item.image, item.alt);
       a.append(img);
-
       const title = el("span", "", tr(item.title));
       const small = el("small", "", tr(item.subtitle));
       title.append(small);
       a.append(title);
-
       collectionRoot.append(a);
     });
   }
+  renderCollections();
 
   setText("#collections .section-head .eyebrow", data.texts?.findOccasion);
   setText("#collections h2", data.texts?.collectionsTitle);
@@ -263,8 +256,61 @@
     storyLink.href = safeUrl(data.story?.button_url);
   }
 
+  // Page-specific content is managed from the same Pages CMS document.
+  const pageKey = document.body.classList.contains("page-contacts")
+    ? "contacts"
+    : document.body.classList.contains("page-delivery") ? "delivery" : null;
+  const pageData = pageKey ? data.pages?.[pageKey] : null;
+  const pageSection = $(".page-extra");
+  if (pageData && pageSection) {
+    const eyebrow = $(".section-head .eyebrow", pageSection);
+    const title = $("[data-page-title]", pageSection);
+    const body = $("[data-page-copy]", pageSection);
+    if (eyebrow) eyebrow.textContent = tr(pageData.eyebrow);
+    if (title) title.textContent = tr(pageData.title);
+    if (body) body.textContent = tr(pageData.body);
+
+    if (pageKey === "contacts") {
+      const links = $(".page-extra-copy p a", pageSection);
+      if (links) {
+        links.textContent = tr(pageData.link_label);
+        links.href = pageData.email ? `mailto:${pageData.email}` : "#";
+      }
+      const linkWrap = links?.parentElement;
+      if (linkWrap && pageData.telegram) {
+        const telegram = el("a", "text-link", tr(pageData.telegram_label));
+        telegram.href = safeUrl(pageData.telegram);
+        telegram.target = "_blank";
+        telegram.rel = "noopener noreferrer";
+        linkWrap.append(el("span", "", " · "), telegram);
+      }
+    } else {
+      const copy = $(".page-extra-copy", pageSection);
+      const paragraphs = copy ? $$("p", copy) : [];
+      if (paragraphs[1]) paragraphs[1].textContent = tr(pageData.secondary);
+      const button = $("a.button", pageSection);
+      if (button) {
+        const label = $("span", button);
+        if (label) label.textContent = tr(pageData.button_label);
+        button.href = safeUrl(pageData.button_url);
+      }
+    }
+  }
+
   setText(".footer [data-i18n='footerLine']", data.texts?.footerLine);
   setText(".footer [data-i18n='hours']", data.texts?.hours);
+
+  const footerNav = $(".footer-pages");
+  function renderFooterNavigation() {
+    if (!footerNav || !Array.isArray(data.footer_navigation)) return;
+    footerNav.replaceChildren();
+    data.footer_navigation.forEach(item => {
+      const link = el("a", "", tr(item.label));
+      link.href = safeUrl(item.url);
+      footerNav.append(link);
+    });
+  }
+  renderFooterNavigation();
 
   const footer = $("#footer");
   const extraRoot = el("div", "cms-extra-root");
@@ -313,6 +359,7 @@
       collections: navItemsByKey.collections?.label,
       about: navItemsByKey.about?.label,
       findOccasion: data.texts?.findOccasion,
+      collections: data.texts?.collectionsTitle,
       collectionIntro: data.texts?.collectionIntro,
       pickedForYou: data.texts?.pickedForYou,
       favoriteBouquets: data.texts?.favoriteBouquets,

@@ -84,6 +84,38 @@
     "hours": {
       "pl": "Codziennie · 9:00–21:00",
       "en": "Daily · 9 am–9 pm"
+    },
+    "palette": {
+      "pl": "Paleta",
+      "en": "Palette"
+    },
+    "tile": {
+      "pl": "Siatka",
+      "en": "Grid"
+    },
+    "list": {
+      "pl": "Lista",
+      "en": "List"
+    },
+    "carousel": {
+      "pl": "Karuzela",
+      "en": "Carousel"
+    },
+    "productDetails": {
+      "pl": "Szczegóły bukietu",
+      "en": "Bouquet details"
+    },
+    "add": {
+      "pl": "Dodaj do koszyka",
+      "en": "Add to cart"
+    },
+    "bestseller": {
+      "pl": "Bestseller",
+      "en": "Bestseller"
+    },
+    "new": {
+      "pl": "Nowość",
+      "en": "New"
     }
   },
   "hero": {
@@ -91,7 +123,8 @@
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
       "en": "A delicate bouquet of pink flowers"
-    }
+    },
+    "image": "./assets/images/pink-tulip-bouquet.png"
   },
   "hero_button": {
     "label": {
@@ -501,6 +534,94 @@
       "pl": "Florystka starannie układa bukiet",
       "en": "A florist carefully arranging a bouquet"
     },
-    "button_url": "#footer"
-  }
+    "button_url": "#footer",
+    "image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85"
+  },
+  "pages": {
+    "contacts": {
+      "eyebrow": {
+        "pl": "Gent Flowers",
+        "en": "Gent Flowers"
+      },
+      "title": {
+        "pl": "Kontakt",
+        "en": "Contact"
+      },
+      "body": {
+        "pl": "Masz pytania dotyczące bukietu lub dostawy? Napisz do nas — chętnie pomożemy wybrać kompozycję i ustalić szczegóły zamówienia.",
+        "en": "Have questions about a bouquet or delivery? Get in touch — we will be happy to help you choose an arrangement and confirm your order details."
+      },
+      "link_label": {
+        "pl": "Napisz do nas →",
+        "en": "Email us →"
+      },
+      "email": "kontakt@gentflowers.com",
+      "telegram": "https://t.me/gentflowers",
+      "telegram_label": {
+        "pl": "Telegram →",
+        "en": "Telegram →"
+      }
+    },
+    "delivery": {
+      "eyebrow": {
+        "pl": "Gent Flowers",
+        "en": "Gent Flowers"
+      },
+      "title": {
+        "pl": "Dostawa i płatność",
+        "en": "Delivery & payment"
+      },
+      "body": {
+        "pl": "Dostarczamy bukiety pod wskazany adres. Wybierz bukiet, dodaj go do koszyka i wypełnij formularz zamówienia, podając adres oraz preferowaną datę i godzinę dostawy. Skontaktujemy się, aby potwierdzić szczegóły.",
+        "en": "We deliver bouquets to your chosen address. Select a bouquet, add it to your cart, and complete the order form with your address and preferred delivery date and time. We will contact you to confirm the details."
+      },
+      "secondary": {
+        "pl": "Informacje o dostępnych terminach i kosztach dostawy potwierdzimy podczas składania zamówienia.",
+        "en": "We will confirm available delivery dates and costs when you place your order."
+      },
+      "button_label": {
+        "pl": "Zobacz bukiety",
+        "en": "Browse bouquets"
+      },
+      "button_url": "./shop.html"
+    }
+  },
+  "footer_navigation": [
+    {
+      "label": {
+        "pl": "Start",
+        "en": "Home"
+      },
+      "url": "./index.html"
+    },
+    {
+      "label": {
+        "pl": "Katalog",
+        "en": "Catalog"
+      },
+      "url": "./shop.html"
+    },
+    {
+      "label": {
+        "pl": "O nas",
+        "en": "About us"
+      },
+      "url": "./about.html"
+    },
+    {
+      "label": {
+        "pl": "Dostawa i płatność",
+        "en": "Delivery & payment"
+      },
+      "url": "./delivery.html"
+    },
+    {
+      "label": {
+        "pl": "Kontakt",
+        "en": "Contact"
+      },
+      "url": "./contacts.html"
+    }
+  ],
+  "extra_blocks": []
 }
