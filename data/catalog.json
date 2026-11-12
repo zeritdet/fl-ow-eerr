@@ -1,0 +1,368 @@
+{
+  "collections": [
+    {
+      "title": {
+        "pl": "Bukiety autorskie",
+        "en": "Signature bouquets"
+      },
+      "subtitle": {
+        "pl": "Ręcznie układane · od 190 zł",
+        "en": "Hand-arranged · from 190 zł"
+      },
+      "image": "/assets/images/bukiety autorskie.png",
+      "alt": {
+        "pl": "Autorska kompozycja kwiatowa",
+        "en": "Signature floral arrangement"
+      },
+      "url": "#shop"
+    },
+    {
+      "title": {
+        "pl": "Chwila czułości",
+        "en": "A tender moment"
+      },
+      "subtitle": {
+        "pl": "Róże i sezonowe kwiaty",
+        "en": "Roses and seasonal flowers"
+      },
+      "image": "/media/seasonbouquet.png",
+      "alt": {
+        "pl": "Delikatny bukiet róż",
+        "en": "A delicate rose bouquet"
+      },
+      "url": "#shop"
+    },
+    {
+      "title": {
+        "pl": "Kwiaty do domu",
+        "en": "Flowers for home"
+      },
+      "subtitle": {
+        "pl": "Kompozycje w wazonie",
+        "en": "Arrangements in a vase"
+      },
+      "image": "/media/flowerforhome.png",
+      "alt": {
+        "pl": "Kwiaty w wazonie",
+        "en": "Flowers in a vase"
+      },
+      "url": "#shop"
+    }
+  ],
+  "products": [
+    {
+      "name": {
+        "pl": "Różowa chmurka",
+        "en": "Pink cloud"
+      },
+      "subtitle": {
+        "pl": "Róże piwoniowe · 15 szt.",
+        "en": "Peony roses · 15 stems"
+      },
+      "description": {
+        "pl": "Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie.",
+        "en": "A hand-tied bouquet of peonies and roses in soft blush tones. Made to order."
+      },
+      "price": 350,
+      "currency": "zł",
+      "image": "/assets/images/rozowa-chmurka.png",
+      "alt": {
+        "pl": "Bukiet różowych piwonii i róż w pudrowych odcieniach",
+        "en": "A bouquet of pink peonies and roses in soft blush tones"
+      },
+      "badge": {
+        "pl": "Bestseller",
+        "en": "Bestseller"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Kremowy",
+            "en": "Cream"
+          },
+          "hex": "#e9d8bd"
+        },
+        {
+          "name": {
+            "pl": "Brzoskwiniowy",
+            "en": "Peach"
+          },
+          "hex": "#efb9a2"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Cicha delikatność",
+        "en": "Quiet tenderness"
+      },
+      "subtitle": {
+        "pl": "Jaskry · 11 szt.",
+        "en": "Ranunculus · 11 stems"
+      },
+      "description": {
+        "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
+        "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
+      },
+      "price": 320,
+      "currency": "zł",
+      "image": "/assets/images/Cicha-delikatnosc.png",
+      "alt": {
+        "pl": "Jasna kompozycja z białych kwiatów",
+        "en": "A light arrangement of white flowers"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Kremowy",
+            "en": "Cream"
+          },
+          "hex": "#e9d8bd"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Brzoskwiniowy",
+            "en": "Peach"
+          },
+          "hex": "#efb9a2"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Pierwszy pocałunek",
+        "en": "First kiss"
+      },
+      "subtitle": {
+        "pl": "Tulipany · 25 szt.",
+        "en": "Tulips · 25 stems"
+      },
+      "description": {
+        "pl": "Wyraziste tulipany, które wnoszą do domu kolor i wiosenną energię.",
+        "en": "Bright tulips that bring colour and springtime energy into your home."
+      },
+      "price": 240,
+      "currency": "zł",
+      "image": "/assets/images/Pierwszy-pocalunek.png",
+      "alt": {
+        "pl": "Czerwone tulipany",
+        "en": "Red tulips"
+      },
+      "badge": {
+        "pl": "Nowość",
+        "en": "New"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#bd3446"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#d993a2"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4c568"
+        },
+        {
+          "name": {
+            "pl": "Fioletowy",
+            "en": "Purple"
+          },
+          "hex": "#7861a8"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Poranek w ogrodzie",
+        "en": "Morning in the garden"
+      },
+      "subtitle": {
+        "pl": "Sezonowy bukiet · min. 17 kwiatów",
+        "en": "Seasonal mix · 17+ stems"
+      },
+      "description": {
+        "pl": "Lekka, naturalna kompozycja inspirowana ogrodem o poranku. Każdy bukiet jest nieco inny.",
+        "en": "An airy, natural arrangement inspired by a garden at sunrise. Every bouquet is one of a kind."
+      },
+      "price": 280,
+      "currency": "zł",
+      "image": "/assets/images/Poranek-w-ogrodzie.png",
+      "alt": {
+        "pl": "Polny bukiet w pastelowych odcieniach",
+        "en": "A pastel wildflower bouquet"
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Pastelowy",
+            "en": "Pastel"
+          },
+          "hex": "#dcaab3"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#f5f1e9"
+        },
+        {
+          "name": {
+            "pl": "Lawendowy",
+            "en": "Lavender"
+          },
+          "hex": "#9b88b5"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4c568"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Student Classic",
+        "en": "Student Classic"
+      },
+      "subtitle": {
+        "pl": "Róże · 7 szt.",
+        "en": "Roses · 7 stems"
+      },
+      "description": {
+        "pl": "Bukiet siedmiu białych róż w eleganckim opakowaniu. Ręcznie układany na zamówienie.",
+        "en": "A bouquet of seven white roses in elegant packaging. Hand-arranged to order."
+      },
+      "price": 45,
+      "currency": "zł",
+      "image": "/assets/images/Student Classic.png",
+      "alt": {
+        "pl": "Elegancki bukiet 7 białych róż, ozdobiony delikatnym papierem i satynową wstążką. Idealny na wyjątkowe okazje i jako wyraz pięknych uczuć.",
+        "en": "An elegant bouquet of 7 white roses, adorned with delicate paper and a satin ribbon. Perfect for special occasions and as an expression of beautiful sentiments."
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#5e091a"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#ffafc1"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#e4b541"
+        },
+        {
+          "name": {
+            "pl": "kremowy",
+            "en": "Сream"
+          },
+          "hex": "#fffdf2"
+        }
+      ]
+    },
+    {
+      "name": {
+        "pl": "Mały Gest",
+        "en": "Small Gift"
+      },
+      "subtitle": {
+        "pl": "Tulipany · 7 szt.",
+        "en": "Tulip · 7 stems"
+      },
+      "description": {
+        "pl": "Bukiet siedmiu białych tulipanów w eleganckim opakowaniu. Ręcznie układany na zamówienie, idealny na wyjątkowe okazje i jako subtelny wyraz pięknych uczuć.",
+        "en": "A bouquet of seven white tulips in elegant packaging. Arranged by hand to order, it is perfect for special occasions and serves as a subtle expression of beautiful sentiments."
+      },
+      "price": 50,
+      "currency": "zł",
+      "image": "/media/7 tulip.png",
+      "alt": {
+        "pl": "Elegancki bukiet 7 białych tulipanów, ozdobiony delikatnym papierem i satynową wstążką. Subtelny, ponadczasowy i pełen uroku — idealny, by wywołać uśmiech, wyrazić wdzięczność lub po prostu sprawić komuś małą, piękną niespodziankę.",
+        "en": "An elegant bouquet of 7 white tulips, wrapped in delicate paper and finished with a satin ribbon. Subtle, timeless, and full of charm—perfect for bringing a smile to someone’s face, expressing gratitude, or simply offering a lovely little surprise."
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#f05c31"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#ecadff"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#ffeddb"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#f5b54b"
+        }
+      ]
+    }
+  ]
+}

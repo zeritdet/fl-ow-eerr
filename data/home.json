@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "eyebrow": "Gent Flowers",
+    "image_alt": {
+      "pl": "Delikatny bukiet różowych kwiatów",
+      "en": "A delicate bouquet of pink flowers"
+    }
+  },
+  "hero_button": {
+    "label": {
+      "pl": "Wybierz bukiet",
+      "en": "Choose a bouquet"
+    },
+    "url": "#shop"
+  }
+}

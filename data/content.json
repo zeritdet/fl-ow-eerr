@@ -1,0 +1,106 @@
+{
+  "texts": {
+    "delivery": {
+      "pl": "Zamów do 21:00 -  dostarczymy kwiaty następnego dnia rano!",
+      "en": "Order by 9:00 PM – we’ll deliver the flowers the next morning!"
+    },
+    "contact": {
+      "pl": "Napisz do nas ↗",
+      "en": "Get in touch ↗"
+    },
+    "studio": {
+      "pl": "pracownia florystyczna",
+      "en": "flower studio"
+    },
+    "heroTitle": {
+      "pl": "Kwiaty, które mówią za Ciebie",
+      "en": "Flowers that speak for you"
+    },
+    "heroText": {
+      "pl": "Tworzymy wyjątkowe bukiety z sezonowych kwiatów. Na ważne spotkania, małe radości i zupełnie bez okazji.",
+      "en": "Distinctive bouquets made with seasonal flowers. For meaningful meetings, little joys, and everything in between."
+    },
+    "heroNote": {
+      "pl": "Z miłością, każdego dnia",
+      "en": "Made with love, every day"
+    },
+    "findOccasion": {
+      "pl": "Znajdź swój powód",
+      "en": "Find your moment"
+    },
+    "collectionsTitle": {
+      "pl": "Kolekcje",
+      "en": "Collections"
+    },
+    "collectionIntro": {
+      "pl": "Kwiaty na małe i wielkie chwile",
+      "en": "Flowers for little and big moments"
+    },
+    "pickedForYou": {
+      "pl": "Wybrane dla Ciebie",
+      "en": "Picked for you"
+    },
+    "favoriteBouquets": {
+      "pl": "Ulubione bukiety",
+      "en": "Customer favourites"
+    },
+    "freshDaily": {
+      "pl": "Świeże kwiaty każdego dnia",
+      "en": "Fresh flowers every day"
+    },
+    "ourStudio": {
+      "pl": "Nasza pracownia",
+      "en": "Our studio"
+    },
+    "storyTitle": {
+      "pl": "Piękno tkwi w prostocie",
+      "en": "Beauty in the little details"
+    },
+    "storyText": {
+      "pl": "Jesteśmy Gent Flowers — małą, studencką inicjatywą z Wrocławia, która powstała z jednej prostej myśli: piękne gesty nie muszą kosztować fortuny.\n\nWierzymy, że czasem wystarczy kilka kwiatów, żeby poprawić komuś dzień, wywołać szczery uśmiech albo sprawić, że zwykłe spotkanie stanie się wyjątkowym wspomnieniem.\n\nNie jesteśmy wielką siecią kwiaciarni. Jesteśmy grupą studentów, którzy postanowili stworzyć coś swojego — z pasją, pomysłem i odrobiną romantyzmu.\n\nWiemy, jak wygląda studencki budżet. Dlatego chcemy, żeby nasze bukiety były nie tylko piękne, ale też dostępne cenowo. Bez niepotrzebnych marż, bez przepłacania. Po prostu świeże kwiaty, starannie przygotowane i dostarczone prosto do Ciebie lub bliskiej Ci osoby.\n\nNa pierwszą randkę. Na urodziny. Na przeprosiny. Albo tak po prostu — bez okazji.\n\nBo naszym zdaniem najlepsze prezenty to nie te najdroższe, ale te, za którymi stoją prawdziwe emocje.\n\nGent Flowers — więcej uśmiechów, mniej wydatków.",
+      "en": "We are Gent Flowers — a small initiative started by students in Wrocław. Our philosophy is simple: beautiful gestures don’t have to cost a fortune.\n\nWe believe that sometimes, just a few flowers are enough to brighten someone’s mood, spark a genuine smile, or turn an ordinary encounter into a special memory.\n\nWe aren’t a large chain of flower shops. We are a group of students who decided to build something of our own—fueled by passion, creativity, and a touch of romance.\n\nWe know all too well what a student budget looks like. That’s why we want our bouquets to be not only beautiful but also affordable. No unnecessary markups or overpaying—just fresh flowers, carefully arranged and delivered straight to you or someone special.\n\nFor a first date. For a birthday. As an apology. Or simply \"just because\"—no special occasion required.\n\nBecause, in our view, the best gifts aren’t the most expensive ones; they’re the ones that carry real emotion.\n\nGent Flowers — more smiles, less expense."
+    },
+    "meetGent": {
+      "pl": "Poznaj Gent →",
+      "en": "Meet Gent →"
+    },
+    "footerLine": {
+      "pl": "Świeże kwiaty. Ciepłe emocje.",
+      "en": "Fresh flowers. Warm feelings."
+    },
+    "hours": {
+      "pl": "Codziennie · 9:00–21:00",
+      "en": "Daily · 9 am–9 pm"
+    }
+  },
+  "navigation": [
+    {
+      "label": {
+        "pl": "Start",
+        "en": "Home"
+      },
+      "url": "./index.html"
+    },
+    {
+      "label": {
+        "pl": "Katalog",
+        "en": "Catalog"
+      },
+      "url": "./shop.html"
+    },
+    {
+      "label": {
+        "pl": "Kolekcje",
+        "en": "Collections"
+      },
+      "url": "./index.html#collections"
+    },
+    {
+      "label": {
+        "pl": "O nas",
+        "en": "About us"
+      },
+      "url": "./about.html"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "brand": {
+    "name": "Gent Flowers",
+    "logo": "/assets/images/gent-flowers-logo.png"
+  },
+  "theme": {
+    "page_background": "#f8f6f3",
+    "ink": "#24211f",
+    "muted": "#77716e",
+    "hero_background": "#f6e6e7",
+    "green": "#66735c",
+    "accent": "#bd777e",
+    "line": "#eee9e5"
+  }
+}

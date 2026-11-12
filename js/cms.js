@@ -1,7 +1,13 @@
 (async function () {
-  const response = await fetch("./data/site.json", { cache: "no-cache" });
-  if (!response.ok) throw new Error("Nie udało się pobrać data/site.json");
-  const data = await response.json();
+  // Content is split into clear CMS sections; merge them into the same
+  // runtime shape so storefront behaviour remains unchanged.
+  const cmsSections = ["brand", "content", "home", "catalog", "about"];
+  const sectionResponses = await Promise.all(cmsSections.map(async section => {
+    const response = await fetch(`./data/${section}.json`, { cache: "no-cache" });
+    if (!response.ok) throw new Error(`Nie udało się pobrać data/${section}.json`);
+    return response.json();
+  }));
+  const data = Object.assign({}, ...sectionResponses);
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   let lang = localStorage.getItem("gent-language") || "pl";
