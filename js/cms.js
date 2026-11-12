@@ -337,6 +337,9 @@
       );
     });
 
+    const languageSwitch = languageButtons[0]?.closest(".language");
+    if (languageSwitch) languageSwitch.classList.toggle("is-en", lang === "en");
+
     renderProducts();
     const modalButton = $("#modalAdd");
     if (modalButton) modalButton.textContent = addLabel();
