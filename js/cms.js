@@ -84,8 +84,8 @@
   };
   const navFallbacks = {
     home: { label: { pl: "Start", en: "Home" }, url: "./index.html" },
-    bouquets: { label: { pl: "Katalog", en: "Catalog" }, url: "./index.html#collections" },
-    collections: { label: { pl: "Kolekcje", en: "Collections" }, url: "./shop.html" },
+    bouquets: { label: { pl: "Katalog", en: "Catalog" }, url: "./shop.html" },
+    collections: { label: { pl: "Kolekcje", en: "Collections" }, url: "./index.html#collections" },
     about: { label: { pl: "O nas", en: "About us" }, url: "./about.html" }
   };
   const navItemsByKey = {};
@@ -99,8 +99,8 @@
 
   const canonicalNavUrls = {
     home: "./index.html",
-    bouquets: "./index.html#collections",
-    collections: "./shop.html",
+    bouquets: "./shop.html",
+    collections: "./index.html#collections",
     about: "./about.html"
   };
   navLinks.forEach(a => {
