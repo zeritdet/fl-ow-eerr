@@ -441,6 +441,57 @@
           "hex": "#fffdf2"
         }
       ]
+    },
+    {
+      "name": {
+        "pl": "Mały Gest",
+        "en": "Small Gift"
+      },
+      "subtitle": {
+        "pl": "Tulipany · 7 szt.",
+        "en": "Tulip · 7 stems"
+      },
+      "description": {
+        "pl": "Bukiet siedmiu białych tulipanów w eleganckim opakowaniu. Ręcznie układany na zamówienie, idealny na wyjątkowe okazje i jako subtelny wyraz pięknych uczuć.",
+        "en": "A bouquet of seven white tulips in elegant packaging. Arranged by hand to order, it is perfect for special occasions and serves as a subtle expression of beautiful sentiments."
+      },
+      "price": 50,
+      "currency": "zł",
+      "image": "/media/7 tulip.png",
+      "alt": {
+        "pl": "Elegancki bukiet 7 białych tulipanów, ozdobiony delikatnym papierem i satynową wstążką. Subtelny, ponadczasowy i pełen uroku — idealny, by wywołać uśmiech, wyrazić wdzięczność lub po prostu sprawić komuś małą, piękną niespodziankę.",
+        "en": "An elegant bouquet of 7 white tulips, wrapped in delicate paper and finished with a satin ribbon. Subtle, timeless, and full of charm—perfect for bringing a smile to someone’s face, expressing gratitude, or simply offering a lovely little surprise."
+      },
+      "palette": [
+        {
+          "name": {
+            "pl": "Czerwony",
+            "en": "Red"
+          },
+          "hex": "#f05c31"
+        },
+        {
+          "name": {
+            "pl": "Różowy",
+            "en": "Pink"
+          },
+          "hex": "#ecadff"
+        },
+        {
+          "name": {
+            "pl": "Biały",
+            "en": "White"
+          },
+          "hex": "#ffeddb"
+        },
+        {
+          "name": {
+            "pl": "Żółty",
+            "en": "Yellow"
+          },
+          "hex": "#f5b54b"
+        }
+      ]
     }
   ],
   "story": {
