@@ -84,7 +84,7 @@
   let overlay = $("#gentCart");
   if (!overlay) {
     overlay = document.createElement("div"); overlay.id = "gentCart"; overlay.className = "cart-overlay"; overlay.hidden = true;
-    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label>${text("Data dostawy", "Delivery date")}<input name="deliveryDate" type="date" required></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
+    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label class="delivery-date-field">${text("Data dostawy", "Delivery date")}<div class="delivery-date-picker"><select id="deliveryMonth" aria-label="${text("Miesiąc dostawy", "Delivery month")}" required><option value="">${text("Miesiąc", "Month")}</option></select><select id="deliveryDay" aria-label="${text("Dzień dostawy", "Delivery day")}" required disabled><option value="">${text("Dzień", "Day")}</option></select></div><input name="deliveryDate" type="hidden"></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
     document.body.append(overlay);
   }
   const itemsNode = $("#cartItems"), emptyNode = $("#cartEmpty"), footerNode = $("#cartFooter");
@@ -138,10 +138,46 @@
   const checkoutMessage = $("#checkoutMessage");
   const checkoutBack = $("#checkoutBack");
   const dateInput = checkoutForm?.elements.deliveryDate;
-  if (dateInput) {
-    const today = new Date();
-    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0,10);
-    dateInput.min = localToday;
+  const monthSelect = $("#deliveryMonth", checkoutForm);
+  const daySelect = $("#deliveryDay", checkoutForm);
+  if (dateInput && monthSelect && daySelect) {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const locale = lang() === "en" ? "en-US" : "pl-PL";
+    const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
+    const months = Array.from({ length: 12 }, (_, offset) => {
+      const date = new Date(today.getFullYear(), today.getMonth() + offset, 1);
+      return { year: date.getFullYear(), month: date.getMonth(), label: monthFormatter.format(date) };
+    });
+    months.forEach((item, index) => {
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = item.label;
+      monthSelect.append(option);
+    });
+    const updateDays = () => {
+      const selectedMonth = months[Number(monthSelect.value)];
+      daySelect.replaceChildren(new Option(text("Dzień", "Day"), ""));
+      dateInput.value = "";
+      if (!selectedMonth) {
+        daySelect.disabled = true;
+        return;
+      }
+      const daysInMonth = new Date(selectedMonth.year, selectedMonth.month + 1, 0).getDate();
+      const firstDay = selectedMonth.year === today.getFullYear() && selectedMonth.month === today.getMonth()
+        ? today.getDate() : 1;
+      for (let day = firstDay; day <= daysInMonth; day++) {
+        daySelect.add(new Option(String(day), String(day)));
+      }
+      daySelect.disabled = false;
+    };
+    monthSelect.addEventListener("change", updateDays);
+    daySelect.addEventListener("change", () => {
+      const selectedMonth = months[Number(monthSelect.value)];
+      dateInput.value = selectedMonth && daySelect.value
+        ? `${selectedMonth.year}-${String(selectedMonth.month + 1).padStart(2, "0")}-${String(Number(daySelect.value)).padStart(2, "0")}`
+        : "";
+    });
   }
   checkoutOpen?.addEventListener("click", () => {
     if (!cart.length) return;
@@ -161,6 +197,7 @@
   checkoutForm?.addEventListener("submit", async event => {
     event.preventDefault();
     if (!cart.length || !checkoutForm.reportValidity()) return;
+    if (!dateInput?.value) { monthSelect?.focus(); return; }
     const submit = $("#cartSubmitOrder");
     const formData = new FormData(checkoutForm);
     const payload = {
