@@ -156,6 +156,7 @@
         "pl": "Róże i sezonowe kwiaty",
         "en": "Roses and seasonal flowers"
       },
+      "image": "/media/seasonbouquet.png",
       "alt": {
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
@@ -171,6 +172,7 @@
         "pl": "Kompozycje w wazonie",
         "en": "Arrangements in a vase"
       },
+      "image": "/media/flowerforhome.png",
       "alt": {
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
