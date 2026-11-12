@@ -75,3 +75,6 @@
 @media (max-width: 700px) {
  .footer-pages { gap:10px 16px; }
 }
+
+/* Header icon artwork */
+.tools .icon > img { display:block; width:19px; height:19px; object-fit:contain; pointer-events:none; }
