@@ -126,3 +126,77 @@ body.cart-open { overflow: hidden; }
 .order-confirmation-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 16px; border: 1px solid #c9d7c8; border-radius: 50%; color: #58785b; font-size: 24px; }
 .order-confirmation h3 { margin: 0 0 10px; font: 500 25px/1.2 var(--serif); }
 .order-confirmation p { max-width: 330px; margin: 0 auto; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+
+/* iPhone / iOS: reliable drawer sizing and independent touch scrolling */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+.cart-drawer {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  min-height: 0;
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+}
+.cart-items {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.cart-footer {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: min(58dvh, 560px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: 4px;
+}
+.checkout-form {
+  min-width: 0;
+}
+.checkout-form label,
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea,
+.cart-submit-order,
+.cart-checkout-open {
+  min-width: 0;
+}
+@supports (-webkit-touch-callout: none) {
+  body.cart-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+  }
+  .cart-drawer {
+    height: 100vh;
+    height: 100dvh;
+    padding-top: max(18px, env(safe-area-inset-top));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+}
+@media (max-width: 700px) {
+  .cart-drawer { width: 100%; padding-left: 18px; padding-right: 18px; }
+  .cart-drawer-head { flex: 0 0 auto; padding-bottom: 14px; }
+  .cart-items { min-height: 72px; }
+  .cart-footer { max-height: 62dvh; padding-top: 12px; }
+  .cart-total { margin-bottom: 10px; }
+  .checkout-form { gap: 9px; padding-top: 12px; }
+  .checkout-form h3 { font-size: 19px; }
+  .checkout-form input, .checkout-form select, .checkout-form textarea { min-height: 42px; font-size: 16px; }
+  .checkout-form textarea { min-height: 76px; }
+  .cart-submit-order, .cart-checkout-open { min-height: 46px; align-items: center; }
+}

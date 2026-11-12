@@ -80,3 +80,46 @@
 
 /* Header icon artwork */
 .tools .icon > img { display:block; width:19px; height:19px; object-fit:contain; pointer-events:none; }
+
+
+/* Mobile layout polish: consistent edges, spacing and readable type */
+@media (max-width: 560px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  .shell { width: 100%; max-width: 100%; padding-left: 14px; padding-right: 14px; }
+  .topline { min-height: 32px; height: auto; gap: 8px; line-height: 1.45; }
+  .hero { border-radius: 16px; }
+  .hero h1 { font-size: clamp(36px, 10vw, 46px); line-height: 1.06; overflow-wrap: anywhere; }
+  .hero p { font-size: 12px; line-height: 1.7; }
+  .nav { width: 100%; grid-template-columns: minmax(0,1fr) auto; gap: 10px; padding: 13px 12px; }
+  .brand-logo { width: min(170px, 100%); }
+  .links { min-width: 0; flex-wrap: wrap; gap: 10px 18px; padding-top: 12px; margin-top: 8px; font-size: 11px; }
+  .links a { white-space: nowrap; }
+  .tools { min-width: 0; gap: 5px; }
+  .language { margin-right: 0; }
+  .section { width: 100%; padding: 23px 15px; border-radius: 14px; }
+  .section-head { align-items: flex-start; gap: 10px; }
+  .section h2 { font-size: 25px; line-height: 1.15; }
+  .section-head p { max-width: 42%; font-size: 10px; }
+  .collections { gap: 9px; }
+  .collection { min-width: 0; }
+  .products { min-width: 0; }
+  .product-info { min-width: 0; }
+  .product-name, .product-sub, .product-description { overflow-wrap: anywhere; }
+  .price { white-space: nowrap; }
+  .story-copy { min-width: 0; }
+  .story-copy h2 { font-size: 28px; line-height: 1.15; }
+  .story-copy p { line-height: 1.7; }
+  .footer { align-items: flex-start; }
+  .footer > * { min-width: 0; }
+}
+@media (max-width: 380px) {
+  .shell { padding-left: 10px; padding-right: 10px; }
+  .nav { padding-left: 9px; padding-right: 9px; }
+  .brand-logo { width: 145px; }
+  .links { gap: 9px 13px; font-size: 10px; }
+  .tools { gap: 4px; }
+  .icon { width: 28px; height: 28px; }
+  .section { padding-left: 12px; padding-right: 12px; }
+  .products { gap: 9px; }
+  .product-photo { height: 165px; }
+}
