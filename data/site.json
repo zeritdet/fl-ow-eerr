@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Gent Flowers",
-    "logo": "/assets/images/gent-flowers-logo.png"
+    "logo": "/media/Логотип Gent flowers с чёрной розой.png"
   },
   "theme": {
     "page_background": "#f8f6f3",
@@ -84,47 +84,15 @@
     "hours": {
       "pl": "Codziennie · 9:00–21:00",
       "en": "Daily · 9 am–9 pm"
-    },
-    "palette": {
-      "pl": "Paleta",
-      "en": "Palette"
-    },
-    "tile": {
-      "pl": "Siatka",
-      "en": "Grid"
-    },
-    "list": {
-      "pl": "Lista",
-      "en": "List"
-    },
-    "carousel": {
-      "pl": "Karuzela",
-      "en": "Carousel"
-    },
-    "productDetails": {
-      "pl": "Szczegóły bukietu",
-      "en": "Bouquet details"
-    },
-    "add": {
-      "pl": "Dodaj do koszyka",
-      "en": "Add to cart"
-    },
-    "bestseller": {
-      "pl": "Bestseller",
-      "en": "Bestseller"
-    },
-    "new": {
-      "pl": "Nowość",
-      "en": "New"
     }
   },
   "hero": {
     "eyebrow": "Gent Flowers",
+    "image": "assets/images/pink-tulip-bouquet.png",
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
       "en": "A delicate bouquet of pink flowers"
-    },
-    "image": "./assets/images/pink-tulip-bouquet.png"
+    }
   },
   "hero_button": {
     "label": {
@@ -530,98 +498,11 @@
     }
   ],
   "story": {
+    "image": "/media/Логотип Gent flowers с чёрной розой-1.png",
     "alt": {
       "pl": "Florystka starannie układa bukiet",
       "en": "A florist carefully arranging a bouquet"
     },
-    "button_url": "#footer",
-    "image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1000&q=85"
-  },
-  "pages": {
-    "contacts": {
-      "eyebrow": {
-        "pl": "Gent Flowers",
-        "en": "Gent Flowers"
-      },
-      "title": {
-        "pl": "Kontakt",
-        "en": "Contact"
-      },
-      "body": {
-        "pl": "Masz pytania dotyczące bukietu lub dostawy? Napisz do nas — chętnie pomożemy wybrać kompozycję i ustalić szczegóły zamówienia.",
-        "en": "Have questions about a bouquet or delivery? Get in touch — we will be happy to help you choose an arrangement and confirm your order details."
-      },
-      "link_label": {
-        "pl": "Napisz do nas →",
-        "en": "Email us →"
-      },
-      "email": "kontakt@gentflowers.com",
-      "telegram": "https://t.me/gentflowers",
-      "telegram_label": {
-        "pl": "Telegram →",
-        "en": "Telegram →"
-      }
-    },
-    "delivery": {
-      "eyebrow": {
-        "pl": "Gent Flowers",
-        "en": "Gent Flowers"
-      },
-      "title": {
-        "pl": "Dostawa i płatność",
-        "en": "Delivery & payment"
-      },
-      "body": {
-        "pl": "Tworzymy i dostarczamy wyjątkowe bukiety na terenie Wrocławia, prosto pod wskazany przez Ciebie adres. Niezależnie od okazji, zadbamy o to, aby kwiaty dotarły świeże i pięknie przygotowane. Nie prowadzimy odbioru osobistego – realizujemy wyłącznie dostawy na terenie miasta. Wystarczy wybrać wymarzony bukiet, dodać go do koszyka i wypełnić formularz zamówienia, podając adres oraz preferowaną datę i godzinę dostawy.",
-        "en": "We create and deliver exceptional bouquets throughout Wrocław, straight to the address you provide. Whatever the occasion, we make sure your flowers arrive fresh and beautifully prepared. We do not offer in-person collection; we provide delivery within the city only. Simply choose your favourite bouquet, add it to your cart and complete the order form with your address and preferred delivery date and time."
-      },
-      "secondary": {
-        "pl": "Dbamy o wygodę i bezpieczeństwo każdego zamówienia, dlatego płatność odbywa się wyłącznie przy dostawie – bezpośrednio u kuriera, po otrzymaniu bukietu. Nie musisz dokonywać żadnych przedpłat ani płacić online. Informacje dotyczące dostępności wybranego terminu oraz ewentualnego kosztu dostawy potwierdzimy podczas kontaktu w sprawie zamówienia. Z nami zamawianie kwiatów jest proste, wygodne i bez zbędnych formalności.",
-        "en": "For your convenience and security, payment is made only upon delivery, directly to the courier after you receive your bouquet. No prepayment or online payment is required. We will confirm the availability of your preferred delivery time and any applicable delivery fee when we contact you about the order. With us, ordering flowers is simple, convenient and free from unnecessary formalities."
-      },
-      "button_label": {
-        "pl": "Zobacz bukiety",
-        "en": "Browse bouquets"
-      },
-      "button_url": "./shop.html"
-    }
-  },
-  "footer_navigation": [
-    {
-      "label": {
-        "pl": "Start",
-        "en": "Home"
-      },
-      "url": "./index.html"
-    },
-    {
-      "label": {
-        "pl": "Katalog",
-        "en": "Catalog"
-      },
-      "url": "./shop.html"
-    },
-    {
-      "label": {
-        "pl": "O nas",
-        "en": "About us"
-      },
-      "url": "./about.html"
-    },
-    {
-      "label": {
-        "pl": "Dostawa i płatność",
-        "en": "Delivery & payment"
-      },
-      "url": "./delivery.html"
-    },
-    {
-      "label": {
-        "pl": "Kontakt",
-        "en": "Contact"
-      },
-      "url": "./contacts.html"
-    }
-  ],
-  "extra_blocks": []
+    "button_url": "#footer"
+  }
 }
