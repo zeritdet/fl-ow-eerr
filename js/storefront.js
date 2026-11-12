@@ -84,7 +84,7 @@
   let overlay = $("#gentCart");
   if (!overlay) {
     overlay = document.createElement("div"); overlay.id = "gentCart"; overlay.className = "cart-overlay"; overlay.hidden = true;
-    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-copy-order" id="cartCopyOrder" type="button">${text("Skopiuj podsumowanie zamówienia", "Copy order summary")} <span>→</span></button><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label>${text("Data dostawy", "Delivery date")}<input name="deliveryDate" type="date" required></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
+    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label>${text("Data dostawy", "Delivery date")}<input name="deliveryDate" type="date" required></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
     document.body.append(overlay);
   }
   const itemsNode = $("#cartItems"), emptyNode = $("#cartEmpty"), footerNode = $("#cartFooter");
@@ -133,13 +133,6 @@
   overlay.addEventListener("click", e => { if (e.target.closest("[data-cart-close]")) closeCart(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !overlay.hidden) closeCart(); });
   $("#cartClear")?.addEventListener("click", () => { cart = []; save(); renderCart(); });
-  $("#cartCopyOrder")?.addEventListener("click", async () => {
-    const lines = cart.map(({product:p,qty}) => `${p.name?.[lang()] || p.name?.pl} — ${qty} × ${money(p.price)} = ${money(p.price*qty)}`);
-    const total = cart.reduce((n,x) => n+x.qty*x.product.price,0);
-    const summary = `${text("Zamówienie Gent Flowers", "Gent Flowers order")}\n${lines.join("\n")}\n${text("Razem", "Total")}: ${money(total)}`;
-    try { await navigator.clipboard.writeText(summary); toast(text("Podsumowanie skopiowane", "Order summary copied")); }
-    catch { toast(text("Nie udało się skopiować podsumowania", "Could not copy the summary")); }
-  });
   const checkoutForm = $("#checkoutForm");
   const checkoutOpen = $("#cartCheckoutOpen");
   const checkoutMessage = $("#checkoutMessage");
@@ -156,14 +149,12 @@
     if (emptyNode) emptyNode.hidden = true;
     checkoutForm.hidden = false;
     checkoutOpen.hidden = true;
-    $("#cartCopyOrder").hidden = true;
     $("#cartClear").hidden = true;
     checkoutForm.elements.name.focus();
   });
   checkoutBack?.addEventListener("click", () => {
     checkoutForm.hidden = true;
     checkoutOpen.hidden = false;
-    $("#cartCopyOrder").hidden = false;
     $("#cartClear").hidden = false;
     if (checkoutMessage) checkoutMessage.textContent = "";
   });
@@ -204,8 +195,7 @@
       checkoutForm.reset();
       checkoutForm.hidden = true;
       checkoutOpen.hidden = false;
-      $("#cartCopyOrder").hidden = false;
-      $("#cartClear").hidden = false;
+        $("#cartClear").hidden = false;
       if (emptyNode) emptyNode.hidden = true;
       if (confirmationPanel) confirmationPanel.hidden = false;
       toast(text("Zamówienie wysłane! Dziękujemy.", "Order sent! Thank you."));
