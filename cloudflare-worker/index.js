@@ -5,7 +5,7 @@ const getAllowedOrigins = env => {
 };
 const corsHeaders = (request, env) => {
   const origin = request.headers.get("Origin");
-  const h = { Vary: "Origin", "Access-Control-Allow-Methods": "GET, POST, PATCH, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Allow-Credentials": "true" };
+  const h = { Vary: "Origin", "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Allow-Credentials": "true" };
   if (origin && getAllowedOrigins(env).has(origin)) h["Access-Control-Allow-Origin"] = origin;
   return h;
 };
@@ -35,6 +35,17 @@ async function adminRoute(request, env, url) {
   if (request.method === "GET" && url.pathname === "/api/admin/orders") {
     const {results=[]}=await env.DB.prepare("SELECT * FROM orders ORDER BY created_at DESC LIMIT 500").all();
     return json({orders:results.map(o=>({...o,items:JSON.parse(o.items_json||"[]")}))},200,request,env);
+  }
+  const deleteMatch = url.pathname.match(/^\/api\/admin\/orders\/([^/]+)$/);
+  if (request.method === "DELETE" && deleteMatch) {
+    const id = decodeURIComponent(deleteMatch[1]);
+    const order = await env.DB.prepare("SELECT id FROM orders WHERE id=?").bind(id).first();
+    if (!order) return json({ error: "Заказ не найден." }, 404, request, env);
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM order_status_history WHERE order_id=?").bind(id),
+      env.DB.prepare("DELETE FROM orders WHERE id=?").bind(id)
+    ]);
+    return json({ success: true, deletedId: id }, 200, request, env);
   }
   const match=url.pathname.match(/^\/api\/admin\/orders\/([^/]+)\/status$/);
   if (request.method === "PATCH" && match) {
@@ -101,7 +112,7 @@ export default {
    await env.DB.prepare("INSERT INTO orders (id,customer_name,customer_phone,customer_address,delivery_date,delivery_time,notes,language,items_json,total,status,ordered_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)").bind(orderId,name,phone,address,deliveryDate,deliveryTime,notes,language,JSON.stringify(verifiedItems),total,"NEW",orderedAt).run();
    await env.DB.prepare("INSERT INTO order_status_history(order_id,old_status,new_status) VALUES(?,?,?)").bind(orderId,null,"NEW").run();
    const itemLines=verifiedItems.map(i=>`• ${esc(i.name)} — ${i.quantity} × ${i.price} zł = ${i.quantity*i.price} zł`).join("\n");
-   const message=["🌸 <b>NOWE ZAMÓWIENIE — GENT FLOWERS</b>",`<b>Numer:</b> ${esc(orderId)}`,`<b>Data i godzina zamówienia:</b> ${esc(orderedAt)}`,"","<b>BUKIETY:</b>",itemLines,"",`<b>RAZEM: ${total} zł</b>`,"","<b>DOSTAWA:</b>`,`<b>Imię i nazwisko:</b> ${esc(name)}`,`<b>Telefon:</b> ${esc(phone)}`,`<b>Adres:</b> ${esc(address)}`,`<b>Data:</b> ${esc(deliveryDate)}`,`<b>Godzina:</b> ${esc(deliveryTime)}`,notes?`<b>Uwagi:</b> ${esc(notes)}`:""].filter(Boolean).join("\n");
+   const message=["🌸 <b>NOWE ZAMÓWIENIE — GENT FLOWERS</b>",`<b>Numer:</b> ${esc(orderId)}`,`<b>Data i godzina zamówienia:</b> ${esc(orderedAt)}`,"","<b>BUKIETY:</b>",itemLines,"",`<b>RAZEM: ${total} zł</b>`,"","<b>DOSTAWA:</b>",`<b>Imię i nazwisko:</b> ${esc(name)}`,`<b>Telefon:</b> ${esc(phone)}`,`<b>Adres:</b> ${esc(address)}`,`<b>Data:</b> ${esc(deliveryDate)}`,`<b>Godzina:</b> ${esc(deliveryTime)}`,notes?`<b>Uwagi:</b> ${esc(notes)}`:""].filter(Boolean).join("\n");
    const tg=await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,parse_mode:"HTML"})}); const result=await tg.json();
    if(!tg.ok||!result.ok){console.error("Telegram notification failed for saved order",orderId);return json({success:true,orderId,notificationPending:true},200,request,env);}
    return json({success:true,orderId},200,request,env);
