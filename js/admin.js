@@ -1,0 +1,16 @@
+(() => {
+const API="https://api.gentflowers.com";
+const $=s=>document.querySelector(s);let orders=[],filter="ALL";
+const labels={NEW:"Nowe",CONFIRMED:"Potwierdzone",PREPARING:"W przygotowaniu",DELIVERING:"W dostawie",COMPLETED:"Zakończone",CANCELLED:"Anulowane"};
+async function api(path,options={}){const r=await fetch(API+path,{...options,credentials:"include",headers:{"Content-Type":"application/json",...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||"Błąd połączenia");return data}
+function showLogin(){ $("#login").hidden=false;$("#dashboard").hidden=true }
+function showDashboard(){ $("#login").hidden=true;$("#dashboard").hidden=false }
+function render(){const visible=orders.filter(o=>filter==="ALL"||(filter==="IN_PROGRESS"?["CONFIRMED","PREPARING","DELIVERING"].includes(o.status):o.status===filter));$("#count").textContent=`Zamówień: ${orders.length}`;$("#orders").innerHTML=visible.length?visible.map(o=>`<article class="order"><div class="order-top"><div><h2>${esc(o.id)}</h2><div class="muted">${esc(o.ordered_at||"")}</div></div><strong>${Number(o.total).toFixed(2)} zł</strong></div><div class="order-grid"><p><b>Klient:</b> ${esc(o.customer_name)}<br><b>Telefon:</b> ${esc(o.phone)}</p><p><b>Adres:</b> ${esc(o.address)}<br><b>Dostawa:</b> ${esc(o.delivery_date)} · ${esc(o.delivery_time)}</p></div><b>Букеты / Produkty:</b><ul>${(o.items||[]).map(i=>`<li>${esc(i.name)} — ${i.quantity} × ${i.price} zł</li>`).join("")}</ul>${o.notes?`<p><b>Uwagi:</b> ${esc(o.notes)}</p>`:""}<div class="order-bottom"><span class="muted">Status: ${labels[o.status]||o.status}</span><select class="status" data-id="${esc(o.id)}">${Object.entries(labels).map(([v,l])=>`<option value="${v}" ${o.status===v?"selected":""}>${l}</option>`).join("")}</select></div></article>`).join(""):'<div class="panel">Brak zamówień w tej kategorii.</div>'}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function load(){const d=await api("/api/admin/orders");orders=d.orders||[];render()}
+$("#login-form").addEventListener("submit",async e=>{e.preventDefault();$("#login-error").textContent="";const f=new FormData(e.currentTarget);try{await api("/api/admin/login",{method:"POST",body:JSON.stringify({username:f.get("username"),password:f.get("password")})});showDashboard();await load()}catch(err){$("#login-error").textContent=err.message}});
+$("#logout").addEventListener("click",async()=>{try{await api("/api/admin/logout",{method:"POST"})}finally{showLogin()}});
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));render()}));
+$("#orders").addEventListener("change",async e=>{if(!e.target.matches("select[data-id]"))return;try{await api(`/api/admin/orders/${encodeURIComponent(e.target.dataset.id)}/status`,{method:"PATCH",body:JSON.stringify({status:e.target.value})});const o=orders.find(x=>x.id===e.target.dataset.id);if(o)o.status=e.target.value;render()}catch(err){$("#notice").textContent=err.message}});
+api("/api/admin/me").then(()=>{showDashboard();return load()}).catch(showLogin);
+})();
