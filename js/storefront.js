@@ -117,9 +117,26 @@
     confirmationPanel.hidden = true;
     confirmationPanel.setAttribute("role", "status");
     confirmationPanel.setAttribute("aria-live", "polite");
-    confirmationPanel.innerHTML = `<div class="order-confirmation-icon" aria-hidden="true">✓</div><h3>${text("Dziękujemy za zamówienie!", "Thank you for your order!")}</h3><p>${text("Twoje zamówienie zostało wysłane. Zachowaj numer zamówienia, aby śledzić jego status.", "Your order has been sent. Keep your order number to track its status.")}</p><p class="order-confirmation-number" id="confirmationOrderNumber"></p><a class="button order-track-link" href="./tracking.html">${text("Śledź zamówienie", "Track your order")} →</a>`;
+    confirmationPanel.innerHTML = `<div class="order-confirmation-icon" aria-hidden="true">✓</div><h3>${text("Dziękujemy za zamówienie!", "Thank you for your order!")}</h3><p>${text("Twoje zamówienie zostało wysłane. Zachowaj numer zamówienia, aby śledzić jego status.", "Your order has been sent. Keep your order number to track its status.")}</p><p class="order-confirmation-number-label">${text("Twój numer zamówienia:", "Your order number:")}</p><p class="order-confirmation-number" id="confirmationOrderNumber"></p><p class="order-confirmation-hint">${text("Zapisz ten numer — będzie potrzebny do śledzenia zamówienia.", "Save this number — you will need it to track your order.")}</p><button class="order-copy-number" id="copyOrderNumber" type="button">${text("Kopiuj numer", "Copy order number")}</button><a class="button order-track-link" href="./tracking.html">${text("Śledź zamówienie", "Track your order")} →</a>`;
     cartDrawer.append(confirmationPanel);
   }
+  confirmationPanel?.addEventListener("click", async event => {
+    const copyButton = event.target.closest("#copyOrderNumber");
+    if (!copyButton) return;
+    const orderNumber = $("#confirmationOrderNumber", confirmationPanel)?.textContent?.trim();
+    if (!orderNumber) return;
+    try {
+      await navigator.clipboard.writeText(orderNumber);
+      copyButton.textContent = text("Skopiowano!", "Copied!");
+    } catch {
+      const helper = document.createElement("textarea");
+      helper.value = orderNumber; helper.setAttribute("readonly", "");
+      helper.style.position = "absolute"; helper.style.left = "-9999px";
+      document.body.append(helper); helper.select();
+      const copied = document.execCommand("copy"); helper.remove();
+      copyButton.textContent = copied ? text("Skopiowano!", "Copied!") : text("Skopiuj ręcznie", "Copy manually");
+    }
+  });
   function renderCart() {
     if (!itemsNode) return;
     itemsNode.replaceChildren();
