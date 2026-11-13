@@ -180,11 +180,16 @@
       photo.append(badge);
     }
 
+    const quickActions = el("div", "product-quick-actions");
     const quick = el("button", "quick", addLabel());
     quick.type = "button";
     quick.dataset.price = item.price;
     quick.dataset.label = addLabel();
-    photo.append(quick);
+    const buyNow = el("button", "buy-now", lang === "en" ? "Buy now" : "Kup teraz");
+    buyNow.type = "button";
+    buyNow.dataset.action = "buy-now";
+    quickActions.append(quick, buyNow);
+    photo.append(quickActions);
     article.append(photo);
 
     const info = el("div", "product-info");
@@ -375,7 +380,8 @@
       hours: data.texts?.hours,
       palette: data.texts?.palette,
       productDetails: data.texts?.productDetails,
-      add: addLabel()
+      add: addLabel(),
+      buyNow: lang === "en" ? "Buy now" : "Kup teraz"
     };
 
     $$("[data-i18n]").forEach(node => {
@@ -396,6 +402,8 @@
     renderProducts();
     const modalButton = $("#modalAdd");
     if (modalButton) modalButton.textContent = addLabel();
+    const modalBuyNow = $("#modalBuyNow");
+    if (modalBuyNow) modalBuyNow.textContent = lang === "en" ? "Buy now" : "Kup teraz";
 
     localStorage.setItem("gent-language", lang);
   }
@@ -457,7 +465,17 @@
   const modalPrice = $("#modalPrice");
   const modalSwatches = $("#modalSwatches");
   const modalAddButton = $("#modalAdd");
+  const modalBuyNowButton = $("#modalBuyNow");
   if (modalAddButton) modalAddButton.textContent = addLabel();
+  if (modalBuyNowButton) modalBuyNowButton.textContent = lang === "en" ? "Buy now" : "Kup teraz";
+  modalBuyNowButton?.addEventListener("click", () => {
+    const item = activeCard?._productData;
+    if (!item) return;
+    if (window.GentStore?.buyNow) {
+      closeProduct();
+      window.GentStore.buyNow(item);
+    }
+  });
 
   let activeCard = null;
 
@@ -535,6 +553,14 @@
 
       const card = target?.closest(".product");
       if (!card) return;
+
+      const buyNow = target.closest("[data-action=\"buy-now\"]");
+      if (buyNow) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (window.GentStore?.buyNow) window.GentStore.buyNow(card._productData);
+        return;
+      }
 
       const quick = target.closest(".quick");
 

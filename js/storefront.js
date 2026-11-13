@@ -4,6 +4,7 @@
   const KEY = "gent-cart-v1";
   const ORDER_API_URL = "https://gent-flowers-orders.zeritdet.workers.dev/api/orders";
   let cart = [];
+  let buyNowBackup = null;
   try { cart = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { cart = []; }
   const lang = () => localStorage.getItem("gent-language") || document.documentElement.lang || "pl";
   const text = (pl, en) => lang() === "en" ? en : pl;
@@ -35,7 +36,26 @@
     save(); renderCart();
     toast(text("Dodano do koszyka", "Added to cart"));
   }
-  window.GentStore = { add };
+  function buyNow(product) {
+    if (!product) return;
+    buyNowBackup = cart.map(item => ({ ...item }));
+    cart = [{ id: productId(product), product, qty: 1 }];
+    if (confirmationPanel) confirmationPanel.hidden = true;
+    save(); renderCart(); openCart();
+    if (checkoutForm) {
+      checkoutForm.hidden = false;
+      if (checkoutOpen) checkoutOpen.hidden = true;
+      if ($("#cartClear")) $("#cartClear").hidden = true;
+      checkoutForm.elements.name.focus();
+    }
+  }
+  function restoreBuyNowCart() {
+    if (!buyNowBackup) return;
+    cart = buyNowBackup;
+    buyNowBackup = null;
+    save(); renderCart();
+  }
+  window.GentStore = { add, buyNow };
 
   // Search panel
   const searchButton = $$("button.icon").find(b => /szukaj|search/i.test(b.getAttribute("aria-label") || ""));
@@ -128,7 +148,15 @@
     save(); renderCart();
   }
   function openCart() { overlay.hidden = false; document.body.classList.add("cart-open"); $(".cart-drawer", overlay)?.focus(); }
-  function closeCart() { overlay.hidden = true; document.body.classList.remove("cart-open"); cartButton?.focus(); }
+  function closeCart() {
+    if (buyNowBackup) {
+      restoreBuyNowCart();
+      checkoutForm.hidden = true;
+      if (checkoutOpen) checkoutOpen.hidden = false;
+      if ($("#cartClear")) $("#cartClear").hidden = false;
+    }
+    overlay.hidden = true; document.body.classList.remove("cart-open"); cartButton?.focus();
+  }
   cartButton?.addEventListener("click", openCart);
   overlay.addEventListener("click", e => { if (e.target.closest("[data-cart-close]")) closeCart(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !overlay.hidden) closeCart(); });
@@ -192,6 +220,7 @@
     checkoutForm.hidden = true;
     checkoutOpen.hidden = false;
     $("#cartClear").hidden = false;
+    if (buyNowBackup) restoreBuyNowCart();
     if (checkoutMessage) checkoutMessage.textContent = "";
   });
   checkoutForm?.addEventListener("submit", async event => {
@@ -227,7 +256,8 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.success) throw new Error(result.error || text("Nie udało się wysłać zamówienia. Spróbuj ponownie.", "Could not submit the order. Please try again."));
-      cart = [];
+      cart = buyNowBackup ? buyNowBackup : [];
+      buyNowBackup = null;
       save(); renderCart();
       checkoutForm.reset();
       checkoutForm.hidden = true;

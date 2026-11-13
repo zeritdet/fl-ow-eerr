@@ -138,3 +138,13 @@ summary,
 label {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Gent Flowers: paired product actions */
+.product-quick-actions{position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:7px;opacity:0;transform:translateY(5px);transition:opacity .2s,transform .2s;z-index:2}
+.product:hover .product-quick-actions,.product-quick-actions:focus-within{opacity:1;transform:none}
+.product-quick-actions .quick{position:static;flex:1;min-width:0;opacity:1;transform:none;padding:11px 7px;font-size:10px}
+.product-quick-actions .buy-now{flex:1;min-width:0;border:0;background:#a65d65;color:#fff;padding:11px 7px;cursor:pointer;font:600 10px var(--sans);letter-spacing:.03em}
+.product-quick-actions .buy-now:hover{background:#87464e}
+.modal-buy-now{display:block;width:100%;margin-top:9px;background:#a65d65;color:#fff;border:0;padding:13px 16px;cursor:pointer}
+.modal-buy-now:hover{background:#87464e}
+@media(max-width:700px){.product-quick-actions{opacity:1;transform:none;left:8px;right:8px;bottom:8px;gap:5px}.product-quick-actions .quick,.product-quick-actions .buy-now{padding:9px 5px;font-size:9px}.modal-buy-now{margin-top:8px}}
