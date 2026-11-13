@@ -124,3 +124,5 @@
   .products { gap: 9px; }
   .product-photo { height: 165px; }
 }
+
+.footer-legal{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.footer-legal a{color:inherit;text-decoration:none}.footer-legal a:hover{text-decoration:underline}@media(max-width:560px){.footer{flex-wrap:wrap;gap:14px}.footer-legal{width:100%;padding-top:8px}}
