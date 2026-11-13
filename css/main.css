@@ -125,4 +125,16 @@
   .product-photo { height: 165px; }
 }
 
-.footer-legal{display:flex;gap:16px;flex-wrap:wrap;align-items:center}.footer-legal a{color:inherit;text-decoration:none}.footer-legal a:hover{text-decoration:underline}@media(max-width:560px){.footer{flex-wrap:wrap;gap:14px}.footer-legal{width:100%;padding-top:8px}}
+
+/* Remove the default blue/gray tap flash on touch devices.
+   Keep keyboard focus indicators and native form behavior intact. */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+summary,
+label {
+  -webkit-tap-highlight-color: transparent;
+}
