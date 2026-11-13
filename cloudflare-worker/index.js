@@ -52,7 +52,7 @@ async function admin(request,env,url) {
   if(url.pathname==="/api/admin/me"&&request.method==="GET")return json({success:true,username:env.ADMIN_USERNAME||"gentflower!"},200,request,env);
   if(url.pathname==="/api/admin/orders"&&request.method==="GET"){
     const limit=Math.min(Math.max(Number(url.searchParams.get("limit"))||100,1),200);
-    const {results=[]}=await env.DB.prepare("SELECT id, customer_name, phone, address, delivery_date, delivery_time, notes, items_json, total, language, status, ordered_at FROM orders ORDER BY created_at DESC LIMIT ?").bind(limit).all();
+    const {results=[]}=await env.DB.prepare("SELECT id, customer_name, customer_phone AS phone, customer_address AS address, delivery_date, delivery_time, notes, items_json, total, language, status, ordered_at FROM orders ORDER BY created_at DESC LIMIT ?").bind(limit).all();
     return json({success:true,orders:results.map(r=>({...r,items:JSON.parse(r.items_json||"[]")}))},200,request,env);
   }
   const match=url.pathname.match(/^\/api\/admin\/orders\/([A-Za-z0-9-]+)\/status$/);
@@ -60,8 +60,10 @@ async function admin(request,env,url) {
     const body=await request.json().catch(()=>({}));
     const allowed=["NEW","CONFIRMED","PREPARING","DELIVERING","COMPLETED","CANCELLED"];
     if(!allowed.includes(body.status))return json({success:false,error:"Invalid status"},400,request,env);
-    const result=await env.DB.prepare("UPDATE orders SET status=?, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(body.status,match[1]).run();
-    if(!result.meta?.changes)return json({success:false,error:"Order not found"},404,request,env);
+    const previous=await env.DB.prepare("SELECT status FROM orders WHERE id=?").bind(match[1]).first();
+    if(!previous)return json({success:false,error:"Order not found"},404,request,env);
+    await env.DB.prepare("UPDATE orders SET status=?, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(body.status,match[1]).run();
+    await env.DB.prepare("INSERT INTO order_status_history (order_id, old_status, new_status) VALUES (?, ?, ?)").bind(match[1],previous.status,body.status).run();
     return json({success:true},200,request,env);
   }
   return json({success:false,error:"Not found"},404,request,env);
@@ -101,7 +103,7 @@ export default {
    const orderedAt=new Intl.DateTimeFormat("pl-PL",{timeZone:"Europe/Warsaw",dateStyle:"short",timeStyle:"short"}).format(new Date());
    const itemLines=verifiedItems.map(i=>`• ${escapeHtml(i.name)} — ${i.quantity} × ${i.price} zł = ${i.quantity*i.price} zł`).join("\n");
    const message=["🌸 <b>NOWE ZAMÓWIENIE — GENT FLOWERS</b>",`<b>Numer:</b> ${escapeHtml(orderId)}`,`<b>Data i godzina zamówienia:</b> ${escapeHtml(orderedAt)}`,"","<b>BUKIETY:</b>",itemLines,"",`<b>RAZEM: ${total} zł</b>`,"","<b>DOSTAWA:</b>",`<b>Imię i nazwisko:</b> ${escapeHtml(name)}`,`<b>Telefon:</b> ${escapeHtml(phone)}`,`<b>Adres:</b> ${escapeHtml(address)}`,`<b>Data:</b> ${escapeHtml(deliveryDate)}`,`<b>Godzina:</b> ${escapeHtml(deliveryTime)}`,notes?`<b>Uwagi:</b> ${escapeHtml(notes)}`:""].filter(Boolean).join("\n");
-   if(env.DB)await env.DB.prepare("INSERT INTO orders (id,customer_name,phone,address,delivery_date,delivery_time,notes,items_json,total,language,status,ordered_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)").bind(orderId,name,phone,address,deliveryDate,deliveryTime,notes,JSON.stringify(verifiedItems),total,language,"NEW",orderedAt).run();
+   if(env.DB)await env.DB.prepare("INSERT INTO orders (id,customer_name,customer_phone,customer_address,delivery_date,delivery_time,notes,items_json,total,language,status,ordered_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)").bind(orderId,name,phone,address,deliveryDate,deliveryTime,notes,JSON.stringify(verifiedItems),total,language,"NEW",orderedAt).run();
    const tr=await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,parse_mode:"HTML"})});
    const telegramResult=await tr.json();if(!tr.ok||!telegramResult.ok)throw new Error("Telegram delivery failed");
    return json({success:true,orderId},200,request,env);

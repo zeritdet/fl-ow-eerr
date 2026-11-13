@@ -1,5 +1,5 @@
 (() => {
-const API="https://api.gentflowers.com";
+const API="https://gent-flowers-orders.zeritdet.workers.dev";
 const $=s=>document.querySelector(s);let orders=[],filter="ALL";
 const labels={NEW:"Nowe",CONFIRMED:"Potwierdzone",PREPARING:"W przygotowaniu",DELIVERING:"W dostawie",COMPLETED:"Zakończone",CANCELLED:"Anulowane"};
 async function api(path,options={}){const r=await fetch(API+path,{...options,credentials:"include",headers:{"Content-Type":"application/json",...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||"Błąd połączenia");return data}
