@@ -57,6 +57,33 @@ export default {
   const url=new URL(request.url);
   if(request.method==="OPTIONS"){const origin=request.headers.get("Origin"); if(origin&&!getAllowedOrigins(env).has(origin)) return new Response(null,{status:403,headers:corsHeaders(request,env)}); return new Response(null,{status:204,headers:corsHeaders(request,env)});}
   const origin=request.headers.get("Origin"); if(origin&&!getAllowedOrigins(env).has(origin)) return json({success:false,error:"Origin not allowed"},403,request,env);
+  if (request.method === "GET" && url.pathname === "/api/track") {
+    try {
+      const orderId = clean(url.searchParams.get("orderId"), 40).toUpperCase();
+      const phone = clean(url.searchParams.get("phone"), 30).replace(/[^0-9]/g, "");
+      if (!/^GF-[A-Z0-9]+$/.test(orderId) || phone.length < 6) {
+        return json({ success:false, error:"Podaj poprawny numer zamówienia i telefon." },400,request,env);
+      }
+      const order = await env.DB.prepare(
+        "SELECT id, customer_phone, status, ordered_at, delivery_date, delivery_time FROM orders WHERE id=?"
+      ).bind(orderId).first();
+      const storedPhone = String(order?.customer_phone || "").replace(/[^0-9]/g, "");
+      if (!order || storedPhone !== phone) {
+        return json({ success:false, error:"Nie znaleziono zamówienia. Sprawdź numer i telefon." },404,request,env);
+      }
+      const { results=[] } = await env.DB.prepare(
+        "SELECT new_status, changed_at FROM order_status_history WHERE order_id=? ORDER BY changed_at ASC, id ASC"
+      ).bind(orderId).all();
+      return json({ success:true, order:{
+        id:order.id, status:order.status, orderedAt:order.ordered_at,
+        deliveryDate:order.delivery_date, deliveryTime:order.delivery_time,
+        history:results
+      }},200,request,env);
+    } catch(error) {
+      console.error("Order tracking failed:",error?.message||error);
+      return json({success:false,error:"Nie udało się pobrać statusu zamówienia."},500,request,env);
+    }
+  }
   if(url.pathname.startsWith("/api/admin/")) { try{return await adminRoute(request,env,url);}catch(e){console.error("Admin API failed",e?.message||e);return json({error:"Ошибка административного API."},500,request,env);} }
   if(url.pathname!=="/api/orders"||request.method!=="POST") return json({success:false,error:"Not found"},404,request,env);
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID||!env.SITE_JSON_URL||!env.DB) return json({success:false,error:"Order service is not configured."},503,request,env);

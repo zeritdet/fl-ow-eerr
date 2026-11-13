@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7eeee">
+<title>Śledź zamówienie — Gent Flowers</title>
+<link rel="stylesheet" href="./css/tracking.css">
+</head>
+<body>
+<main class="tracking-shell">
+<a class="tracking-brand" href="./index.html">GENT <span>FLOWERS</span></a>
+<p class="eyebrow">PANEL KLIENTA</p>
+<section class="tracking-card">
+<p class="eyebrow">GENT FLOWERS</p>
+<h1>Śledź swoje zamówienie</h1>
+<p class="intro">Wpisz numer zamówienia i numer telefonu podany podczas składania zamówienia, aby sprawdzić aktualny status.</p>
+<form id="trackingForm">
+<label>Numer zamówienia<input name="orderId" required placeholder="GF-..." autocomplete="off"></label>
+<label>Numer telefonu<input name="phone" type="tel" required placeholder="+48 ..." autocomplete="tel"></label>
+<button type="submit" id="trackButton">Sprawdź status <span>→</span></button>
+<p id="trackingMessage" role="status" aria-live="polite"></p>
+</form>
+<section id="trackingResult" class="tracking-result" hidden aria-live="polite"></section>
+<a class="back-link" href="./index.html">← Wróć na stronę główną</a>
+</section>
+</main>
+<script src="./js/tracking.js"></script>
+</body>
+</html>

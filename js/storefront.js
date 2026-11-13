@@ -117,7 +117,7 @@
     confirmationPanel.hidden = true;
     confirmationPanel.setAttribute("role", "status");
     confirmationPanel.setAttribute("aria-live", "polite");
-    confirmationPanel.innerHTML = `<div class="order-confirmation-icon" aria-hidden="true">✓</div><h3>${text("Dziękujemy za zamówienie!", "Thank you for your order!")}</h3><p>${text("Twoje zamówienie zostało wysłane. Oczekuj telefonu od kuriera w celu potwierdzenia dostawy.", "Your order has been sent. Please expect a call from the courier to confirm delivery.")}</p>`;
+    confirmationPanel.innerHTML = `<div class="order-confirmation-icon" aria-hidden="true">✓</div><h3>${text("Dziękujemy za zamówienie!", "Thank you for your order!")}</h3><p>${text("Twoje zamówienie zostało wysłane. Zachowaj numer zamówienia, aby śledzić jego status.", "Your order has been sent. Keep your order number to track its status.")}</p><p class="order-confirmation-number" id="confirmationOrderNumber"></p><a class="button order-track-link" href="./tracking.html">${text("Śledź zamówienie", "Track your order")} →</a>`;
     cartDrawer.append(confirmationPanel);
   }
   function renderCart() {
@@ -264,7 +264,11 @@
       checkoutOpen.hidden = false;
         $("#cartClear").hidden = false;
       if (emptyNode) emptyNode.hidden = true;
-      if (confirmationPanel) confirmationPanel.hidden = false;
+      if (confirmationPanel) {
+        const number = $("#confirmationOrderNumber", confirmationPanel);
+        if (number) number.textContent = `${text("Numer zamówienia:", "Order number:")} ${result.orderId}`;
+        confirmationPanel.hidden = false;
+      }
       toast(text("Zamówienie wysłane! Dziękujemy.", "Order sent! Thank you."));
     } catch (error) {
       if (checkoutMessage) checkoutMessage.textContent = error.message || text("Błąd połączenia. Spróbuj ponownie.", "Connection error. Please try again.");
