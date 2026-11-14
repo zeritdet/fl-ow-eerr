@@ -498,12 +498,31 @@
     const item = activeCard?._productData;
     if (!item) return;
     if (window.GentStore?.buyNow) {
+      const selectedProduct = getSelectedProduct();
       closeProduct();
-      window.GentStore.buyNow({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}, bouquetColor: window.GentSelectedBouquetColor?.() || null});
+      window.GentStore.buyNow(selectedProduct);
     }
   });
 
   let activeCard = null;
+  let selectedQuantityVariant = null;
+
+  function getSelectedProduct() {
+    const item = activeCard?._productData;
+    if (!item) return null;
+    return {
+      ...item,
+      ...(selectedQuantityVariant ? {
+        price: Number(selectedQuantityVariant.price),
+        flowerCount: Number(selectedQuantityVariant.count),
+        flowerCountLabel: lang === "en"
+          ? `${Number(selectedQuantityVariant.count)} flowers`
+          : `${Number(selectedQuantityVariant.count)} kwiatów`
+      } : {}),
+      celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"},
+      bouquetColor: window.GentSelectedBouquetColor?.() || null
+    };
+  }
 
   function openProduct(card) {
     if (
@@ -524,6 +543,39 @@
     modalTitle.textContent = tr(item.name);
     modalDesc.textContent = tr(item.description);
     modalPrice.textContent = `${item.price} ${item.currency || "zł"}`;
+
+    const oldQuantityPicker = $("#flowerQuantityPicker");
+    if (oldQuantityPicker) oldQuantityPicker.remove();
+    selectedQuantityVariant = null;
+    const quantityVariants = Array.isArray(item.quantity_variants)
+      ? item.quantity_variants.filter(v => Number.isInteger(Number(v.count)) && Number(v.count) > 0 && Number.isFinite(Number(v.price)) && Number(v.price) > 0)
+      : [];
+    if (quantityVariants.length) {
+      const quantityPicker = el("div", "flower-quantity-picker");
+      quantityPicker.id = "flowerQuantityPicker";
+      const quantityLabel = el("div", "celofan-label", lang === "en" ? "Choose number of flowers" : "Wybierz liczbę kwiatów");
+      const segmented = el("div", "flower-quantity-segmented");
+      segmented.setAttribute("role", "group");
+      segmented.setAttribute("aria-label", quantityLabel.textContent);
+      quantityVariants.forEach((variant, index) => {
+        const button = el("button", "flower-quantity-option");
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(index === 0));
+        button.textContent = String(Number(variant.count));
+        button.addEventListener("click", () => {
+          selectedQuantityVariant = variant;
+          $$(".flower-quantity-option", segmented).forEach(option => option.setAttribute("aria-pressed", String(option === button)));
+          modalPrice.textContent = `${Number(variant.price)} ${item.currency || "zł"}`;
+        });
+        segmented.append(button);
+      });
+      selectedQuantityVariant = quantityVariants[0];
+      modalPrice.textContent = `${Number(selectedQuantityVariant.price)} ${item.currency || "zł"}`;
+      segmented.querySelector(".flower-quantity-option")?.setAttribute("aria-pressed", "true");
+      quantityPicker.append(quantityLabel, segmented);
+      modalPrice.after(quantityPicker);
+    }
+
     const wrap = $("#celofanPicker");
     if (wrap) wrap.remove();
     const picker = el("div", "celofan-picker");
@@ -615,6 +667,7 @@
 
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
+    selectedQuantityVariant = null;
     document.body.style.overflow = "";
 
     if (activeCard?.isConnected) activeCard.focus();
@@ -624,7 +677,7 @@
     const item = activeCard?._productData;
     if (!item) return;
     if (window.GentStore?.add) {
-      window.GentStore.add({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}, bouquetColor: window.GentSelectedBouquetColor?.() || null});
+      window.GentStore.add(getSelectedProduct());
       closeProduct();
     } else {
       console.error("Gent Flowers cart is not ready: window.GentStore.add is unavailable");

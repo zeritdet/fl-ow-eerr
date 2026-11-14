@@ -293,3 +293,45 @@ body.cart-open { overflow: hidden; }
 }
 .modal-gallery-arrow[hidden] { display: none; }
 #modalImage { touch-action: pan-y; }
+
+
+/* Per-product flower quantity segmented control */
+.flower-quantity-picker {
+  margin: 18px 0;
+}
+.flower-quantity-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  margin-top: 9px;
+  border: 1px solid var(--line, #e8e1dc);
+  border-radius: 999px;
+  background: #f7f4f1;
+}
+.flower-quantity-option {
+  min-width: 42px;
+  min-height: 36px;
+  padding: 7px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink, #252321);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color .22s ease, color .22s ease, box-shadow .22s ease;
+}
+.flower-quantity-option[aria-pressed="true"] {
+  background: #252321;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(35, 28, 25, .12);
+}
+.flower-quantity-option:focus-visible {
+  outline: 2px solid var(--accent, #bd7b83);
+  outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  .flower-quantity-segmented { max-width: 100%; }
+  .flower-quantity-option { min-width: 38px; padding-inline: 10px; }
+}
