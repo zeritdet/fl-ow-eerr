@@ -542,6 +542,21 @@
       ["bez", "Bez celofanu", "No wrapping", "transparent"]
     ];
     let selectedWrap = options[0];
+    let selectedBouquetColor = null;
+    const updateVariantImage = () => {
+      const wrapId = selectedWrap?.[0] || "transparentny";
+      const colorHex = selectedBouquetColor?.hex || "";
+      const combination = (item.imageVariants || []).find(v =>
+        String(v.celofanId || "").toLowerCase() === wrapId &&
+        String(v.bouquetColorHex || "").toLowerCase() === colorHex.toLowerCase() && v.image
+      );
+      const colorVariant = selectedBouquetColor?.image;
+      const wrapVariant = (item.celofanVariants || []).find(v =>
+        String(v.celofanId || "").toLowerCase() === wrapId && v.image
+      )?.image;
+      modalImage.src = getImageUrl(combination?.image || colorVariant || wrapVariant || item.image);
+      modalImage.classList.toggle("no-celofan", wrapId === "bez");
+    };
     const choices = el("div", "celofan-options");
     options.forEach(option => {
       const button = el("button", "celofan-option");
@@ -552,10 +567,7 @@
       button.addEventListener("click", () => {
         selectedWrap = option;
         $$(".celofan-option", choices).forEach(x => x.setAttribute("aria-pressed", String(x === button)));
-        const variants = item.celofanImages || {};
-        const variant = variants[option[0]];
-        modalImage.src = getImageUrl(variant || item.image);
-        modalImage.classList.toggle("no-celofan", option[0] === "bez");
+        updateVariantImage();
       });
       choices.append(button);
     });
@@ -570,7 +582,7 @@
     bouquetLabel.textContent = lang === "en" ? "Choose bouquet color" : "Wybierz kolor bukietu";
     bouquetPicker.append(bouquetLabel);
     const bouquetOptions = Array.isArray(item.palette) ? item.palette : [];
-    let selectedBouquetColor = bouquetOptions[0] || null;
+    selectedBouquetColor = bouquetOptions[0] || null;
     const bouquetChoices = el("div", "celofan-options bouquet-color-options");
     bouquetOptions.forEach((color, i) => {
       const button = el("button", "celofan-option bouquet-color-option");
@@ -584,11 +596,13 @@
       button.addEventListener("click", () => {
         selectedBouquetColor = color;
         $$(".bouquet-color-option", bouquetChoices).forEach(x => x.setAttribute("aria-pressed", String(x === button)));
+        updateVariantImage();
       });
       bouquetChoices.append(button);
     });
     bouquetPicker.append(bouquetChoices);
     picker.after(bouquetPicker);
+    updateVariantImage();
     modalSwatches.replaceChildren();
     window.GentSelectedCelofan = () => ({id:selectedWrap[0], name:selectedWrap[1]});
     window.GentSelectedBouquetColor = () => selectedBouquetColor ? ({

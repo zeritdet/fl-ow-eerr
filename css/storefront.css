@@ -229,3 +229,38 @@ body.cart-open { overflow: hidden; }
 .bouquet-color-chip { flex: 0 0 15px; width: 15px; height: 15px; border: 1px solid rgba(40,35,35,.2); border-radius: 50%; }
 .cart-item-options { margin: 4px 0 8px; color: #766d6b; font-size: 12px; line-height: 1.5; }
 @media (max-width: 520px) { .bouquet-color-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+
+/* Color selectors: centered swatches with labels below, preventing text overflow */
+.celofan-option,
+.bouquet-color-option {
+  min-width: 0;
+  min-height: 58px;
+  padding: 7px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.celofan-chip,
+.bouquet-color-chip {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  flex: 0 0 20px;
+  display: block;
+  border-radius: 50%;
+}
+.celofan-option > span:last-child,
+.bouquet-color-option > span:last-child {
+  display: block;
+  max-width: 100%;
+  font-size: 10px;
+}
