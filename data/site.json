@@ -87,7 +87,10 @@
     }
   },
   "hero": {
-    "eyebrow": "Gent Flowers",
+    "eyebrow": {
+      "pl": "Gent Flowers",
+      "en": "Gent Flowers"
+    },
     "image": "assets/images/pink-tulip-bouquet.png",
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
