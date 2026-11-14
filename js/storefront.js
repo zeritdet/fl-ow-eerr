@@ -30,16 +30,19 @@
     if (!product) return;
     if (confirmationPanel) confirmationPanel.hidden = true;
     const id = productId(product);
-    const existing = cart.find(x => x.id === id);
+    const wrap = product.celofan || {id:"transparentny",name:"Transparentny"};
+    const lineId = `${id}::${wrap.id}`;
+    const existing = cart.find(x => x.id === lineId);
     if (existing) existing.qty += 1;
-    else cart.push({ id, product, qty: 1 });
+    else cart.push({ id: lineId, product: {...product, celofan:wrap}, qty: 1 });
     save(); renderCart();
     toast(text("Dodano do koszyka", "Added to cart"));
   }
   function buyNow(product) {
     if (!product) return;
     buyNowBackup = cart.map(item => ({ ...item }));
-    cart = [{ id: productId(product), product, qty: 1 }];
+    const wrap = product.celofan || {id:"transparentny",name:"Transparentny"};
+    cart = [{ id: `${productId(product)}::${wrap.id}`, product: {...product,celofan:wrap}, qty: 1 }];
     if (confirmationPanel) confirmationPanel.hidden = true;
     save(); renderCart(); openCart();
     if (checkoutForm) {
@@ -259,7 +262,9 @@
       items: cart.map(({product, qty}) => ({
         name: product.name?.[lang()] || product.name?.pl || product.name?.en || "",
         quantity: qty,
-        price: Number(product.price)
+        price: Number(product.price),
+        celofan: product.celofan?.name || "Transparentny",
+        celofanId: product.celofan?.id || "transparentny"
       }))
     };
     submit.disabled = true;

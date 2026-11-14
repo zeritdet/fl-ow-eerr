@@ -499,7 +499,7 @@
     if (!item) return;
     if (window.GentStore?.buyNow) {
       closeProduct();
-      window.GentStore.buyNow(item);
+      window.GentStore.buyNow({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}});
     }
   });
 
@@ -524,8 +524,47 @@
     modalTitle.textContent = tr(item.name);
     modalDesc.textContent = tr(item.description);
     modalPrice.textContent = `${item.price} ${item.currency || "zł"}`;
-
+    const wrap = $("#celofanPicker");
+    if (wrap) wrap.remove();
+    const picker = el("div", "celofan-picker");
+    picker.id = "celofanPicker";
+    const label = el("div", "celofan-label");
+    label.textContent = lang === "en" ? "Choose wrapping film color" : "Wybierz kolor celofanu";
+    picker.append(label);
+    const options = [
+      ["transparentny", "Transparentny", "Transparent", "linear-gradient(135deg,#fff8 0 45%,#d8d8d8 46% 52%,#fff8 53%)"],
+      ["bialy", "Biały", "White", "#fff"],
+      ["czarny", "Czarny", "Black", "#252326"],
+      ["rozowy", "Różowy", "Pink", "#d993a2"],
+      ["czerwony", "Czerwony", "Red", "#bd3446"],
+      ["kremowy", "Kremowy", "Cream", "#e9d8bd"],
+      ["jasnorozowy", "Jasnoróżowy", "Light pink", "#f3cbd5"],
+      ["bez", "Bez celofanu", "No wrapping", "transparent"]
+    ];
+    let selectedWrap = options[0];
+    const choices = el("div", "celofan-options");
+    options.forEach(option => {
+      const button = el("button", "celofan-option");
+      button.type = "button";
+      button.dataset.wrap = option[0];
+      button.setAttribute("aria-pressed", String(option === selectedWrap));
+      button.innerHTML = `<span class="celofan-chip" style="--wrap-color:${option[3]}"></span><span>${lang === "en" ? option[2] : option[1]}</span>`;
+      button.addEventListener("click", () => {
+        selectedWrap = option;
+        $$(".celofan-option", choices).forEach(x => x.setAttribute("aria-pressed", String(x === button)));
+        const variants = item.celofanImages || {};
+        const variant = variants[option[0]];
+        modalImage.src = getImageUrl(variant || item.image);
+        modalImage.classList.toggle("no-celofan", option[0] === "bez");
+      });
+      choices.append(button);
+    });
+    picker.append(choices);
+    modalPrice.after(picker);
     modalSwatches.replaceChildren();
+    window.GentSelectedCelofan = () => ({id:selectedWrap[0], name:selectedWrap[1]});
+
+
 
     (item.palette || []).forEach((color, i) => {
       const button = el("button", "color-swatch");
@@ -564,7 +603,7 @@
     const item = activeCard?._productData;
     if (!item) return;
     if (window.GentStore?.add) {
-      window.GentStore.add(item);
+      window.GentStore.add({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}});
       closeProduct();
     } else {
       console.error("Gent Flowers cart is not ready: window.GentStore.add is unavailable");
