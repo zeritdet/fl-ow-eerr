@@ -1,7 +1,20 @@
 (() => {
   const API = "https://gent-flowers-orders.zeritdet.workers.dev";
   const $ = s => document.querySelector(s);
-  let orders = [], filter = "ALL", catalogProducts = [];
+  let orders = [], filter = "ALL", catalogProducts = [], adminTurnstileId = null;
+  function renderAdminTurnstile() {
+    const node = $("#adminTurnstile");
+    if (!node || !window.turnstile || adminTurnstileId !== null) return;
+    adminTurnstileId = window.turnstile.render(node, {
+      sitekey: "0x4AAAAAAGAydmEpIY0_5ffE",
+      theme: "auto"
+    });
+  }
+  const turnstileReady = () => {
+    if (window.turnstile) renderAdminTurnstile();
+    else setTimeout(turnstileReady, 250);
+  };
+  turnstileReady();
   const labels = { NEW:"Nowe", CONFIRMED:"Potwierdzone", PREPARING:"W przygotowaniu", DELIVERING:"W dostawie", COMPLETED:"Dostarczone", CANCELLED:"Anulowane" };
   async function api(path, options = {}) {
     const response = await fetch(API + path, { ...options, credentials:"include", headers:{ "Content-Type":"application/json", ...(options.headers||{}) } });
@@ -43,7 +56,11 @@
     $("#orders").innerHTML = visible.length ? visible.map(o => `<article class="order"><div class="order-top"><div><h2>${esc(o.id)}</h2><div class="muted">${esc(o.ordered_at || o.created_at || "")}</div></div><strong>${Number(o.total).toFixed(2)} zł</strong></div><div class="order-grid"><p><b>Клиент:</b> ${esc(o.customer_name)}<br><b>Телефон:</b> <a href="tel:${esc(o.customer_phone)}">${esc(o.customer_phone)}</a></p><p><b>Адрес:</b> ${esc(o.customer_address)}<br><b>Доставка:</b> ${esc(o.delivery_date)} · ${esc(o.delivery_time)}</p></div><b>Товары:</b><ul>${(o.items || []).map(i => `<li>${esc(i.name)} — ${Number(i.quantity)} × ${Number(i.price).toFixed(2)} zł</li>`).join("")}</ul>${o.notes ? `<p><b>Комментарий:</b> ${esc(o.notes)}</p>` : ""}<div class="order-bottom"><label class="status-label">Статус<select class="status" data-id="${esc(o.id)}">${Object.entries(labels).map(([v,l]) => `<option value="${v}" ${o.status === v ? "selected" : ""}>${l}</option>`).join("")}</select></label><div class="order-actions"><button class="secondary history-toggle" data-id="${esc(o.id)}">История статусов</button><button class="danger delete-order" data-id="${esc(o.id)}" type="button">Удалить заказ</button></div></div><div class="history" id="history-${esc(o.id)}" hidden></div></article>`).join("") : '<div class="panel">Заказов в этой категории пока нет.</div>';
   }
   async function load() { $("#notice").textContent = "Загружаем заказы…"; const data = await api("/api/admin/orders"); orders = data.orders || []; render(); $("#notice").textContent = ""; await loadCatalog(); }
-  $("#login-form").addEventListener("submit", async event => { event.preventDefault(); $("#login-error").textContent = ""; const form = new FormData(event.currentTarget); try { await api("/api/admin/login", { method:"POST", body:JSON.stringify({ username:form.get("username"), password:form.get("password") }) }); showDashboard(); await load(); } catch (error) { $("#login-error").textContent = error.message; } });
+  $("#login-form").addEventListener("submit", async event => { event.preventDefault(); $("#login-error").textContent = ""; const form = new FormData(event.currentTarget); try { const token = form.get("cf-turnstile-response");
+      if (!token) throw new Error("Пройдите проверку безопасности.");
+      await api("/api/admin/login", { method:"POST", body:JSON.stringify({ username:form.get("username"), password:form.get("password"), turnstileToken:token }) });
+      if (window.turnstile && adminTurnstileId !== null) window.turnstile.reset(adminTurnstileId);
+      showDashboard(); await load(); } catch (error) { $("#login-error").textContent = error.message; if (window.turnstile && adminTurnstileId !== null) window.turnstile.reset(adminTurnstileId); } });
   $("#logout").addEventListener("click", async () => { try { await api("/api/admin/logout", {method:"POST"}); } finally { showLogin(); } });
   $("#refresh").addEventListener("click", () => load().catch(e => $("#notice").textContent = e.message));
   document.querySelectorAll("[data-filter]").forEach(button => button.addEventListener("click", () => { filter = button.dataset.filter; document.querySelectorAll("[data-filter]").forEach(b => b.classList.toggle("active", b === button)); render(); }));

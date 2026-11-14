@@ -21,11 +21,25 @@ async function makeSession(env) { const payload = b64(new TextEncoder().encode(J
 async function validSession(request, env) { try { const raw = (request.headers.get("Cookie") || "").split(";").map(x=>x.trim()).find(x=>x.startsWith(COOKIE+"="))?.slice(COOKIE.length+1); if(!raw || !env.ADMIN_SESSION_SECRET) return false; const [p,s] = raw.split("."); if(!p || !s || !(await sign(p,env.ADMIN_SESSION_SECRET) === s)) return false; const data=JSON.parse(new TextDecoder().decode(unb64(p))); return data.exp > Date.now(); } catch { return false; } }
 const cookie = value => `${COOKIE}=${value}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=28800`;
 const clearCookie = `${COOKIE}=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0`;
+async function verifyTurnstile(token, request, env) {
+  if (!env.TURNSTILE_SECRET_KEY || !token) return false;
+  try {
+    const form = new FormData();
+    form.append("secret", env.TURNSTILE_SECRET_KEY);
+    form.append("response", token);
+    const ip = request.headers.get("CF-Connecting-IP");
+    if (ip) form.append("remoteip", ip);
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method:"POST", body:form });
+    const result = await response.json();
+    return result.success === true && (!result.hostname || ["gentflowers.com","www.gentflowers.com"].includes(result.hostname));
+  } catch { return false; }
+}
 function authError(req,env){ return json({success:false,error:"Необходима авторизация."},401,req,env); }
 async function adminRoute(request, env, url) {
   if (request.method === "POST" && url.pathname === "/api/admin/login") {
     if (!env.ADMIN_USERNAME || !env.ADMIN_PASSWORD || !env.ADMIN_SESSION_SECRET) return json({error:"Авторизация не настроена."},503,request,env);
     const body=await request.json().catch(()=>({}));
+    if (!(await verifyTurnstile(body.turnstileToken, request, env))) return json({error:"Проверка безопасности не пройдена. Обновите проверку и попробуйте снова."},403,request,env);
     if (clean(body.username,100)!==env.ADMIN_USERNAME || clean(body.password,500)!==env.ADMIN_PASSWORD) return json({error:"Неверный логин или пароль."},401,request,env);
     return json({success:true},200,request,env,{"Set-Cookie":cookie(await makeSession(env))});
   }
@@ -99,7 +113,9 @@ export default {
   if(url.pathname!=="/api/orders"||request.method!=="POST") return json({success:false,error:"Not found"},404,request,env);
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID||!env.SITE_JSON_URL||!env.DB) return json({success:false,error:"Order service is not configured."},503,request,env);
   try{
-   const body=await request.json(); const c=body.customer||{};
+   const body=await request.json();
+   if (!(await verifyTurnstile(body.turnstileToken, request, env))) return json({success:false,error:"Проверка безопасности не пройдена. Обновите проверку и попробуйте снова."},403,request,env);
+   const c=body.customer||{};
    const name=clean(c.name,100),phone=clean(c.phone,30),address=clean(c.address,200),deliveryDate=clean(c.deliveryDate,10),deliveryTime=clean(c.deliveryTime,30),notes=clean(c.notes,500);
    if(name.length<2||phone.length<6||address.length<5||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(deliveryDate)||!["09:00–12:00","12:00–15:00","15:00–18:00","18:00–21:00"].includes(deliveryTime)) return json({success:false,error:"Please complete all required delivery fields."},400,request,env);
    if(!Array.isArray(body.items)||body.items.length<1||body.items.length>30) return json({success:false,error:"The basket is empty or invalid."},400,request,env);

@@ -49,6 +49,7 @@
     save(); renderCart(); openCart();
     if (checkoutForm) {
       checkoutForm.hidden = false;
+      ensureTurnstile();
       if (checkoutOpen) checkoutOpen.hidden = true;
       if ($("#cartClear")) $("#cartClear").hidden = true;
       checkoutForm.elements.name.focus();
@@ -109,7 +110,7 @@
   let overlay = $("#gentCart");
   if (!overlay) {
     overlay = document.createElement("div"); overlay.id = "gentCart"; overlay.className = "cart-overlay"; overlay.hidden = true;
-    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label class="delivery-date-field">${text("Data dostawy", "Delivery date")}<div class="delivery-date-picker"><select id="deliveryMonth" aria-label="${text("Miesiąc dostawy", "Delivery month")}" required><option value="">${text("Miesiąc", "Month")}</option></select><select id="deliveryDay" aria-label="${text("Dzień dostawy", "Delivery day")}" required disabled><option value="">${text("Dzień", "Day")}</option></select></div><input name="deliveryDate" type="hidden"></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
+    overlay.innerHTML = `<div class="cart-backdrop" data-cart-close></div><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1"><div class="cart-drawer-head"><div><div class="eyebrow">${text("GENT FLOWERS", "GENT FLOWERS")}</div><h2 id="cartTitle">${text("Twój koszyk", "Your basket")}</h2></div><button class="drawer-close" type="button" aria-label="${text("Zamknij", "Close")}" data-cart-close>×</button></div><div class="cart-items" id="cartItems"></div><p class="cart-empty" id="cartEmpty">${text("Twój koszyk jest pusty.", "Your basket is empty.")}</p><div class="cart-footer" id="cartFooter"><div class="cart-total"><span>${text("Razem", "Total")}</span><strong id="cartTotal">0 zł</strong></div><button class="button cart-checkout-open" id="cartCheckoutOpen" type="button">${text("Przejdź do zamówienia", "Proceed to checkout")} <span>→</span></button><form class="checkout-form" id="checkoutForm" hidden><h3>${text("Dane do dostawy", "Delivery details")}</h3><label>${text("Imię i nazwisko", "Full name")}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${text("Numer telefonu", "Phone number")}<input name="phone" type="tel" autocomplete="tel" required minlength="6" maxlength="30" placeholder="+48 ..."></label><label>${text("Adres dostawy", "Delivery address")}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200" placeholder="${text("Ulica, numer domu/mieszkania, miasto", "Street, building/apartment number, city")}"></label><label class="delivery-date-field">${text("Data dostawy", "Delivery date")}<div class="delivery-date-picker"><select id="deliveryMonth" aria-label="${text("Miesiąc dostawy", "Delivery month")}" required><option value="">${text("Miesiąc", "Month")}</option></select><select id="deliveryDay" aria-label="${text("Dzień dostawy", "Delivery day")}" required disabled><option value="">${text("Dzień", "Day")}</option></select></div><input name="deliveryDate" type="hidden"></label><label>${text("Preferowana godzina", "Preferred time")}<select name="deliveryTime" required><option value="">${text("Wybierz godzinę", "Choose a time")}</option><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–21:00</option></select></label><label>${text("Uwagi do zamówienia (opcjonalnie)", "Order notes (optional)")}<textarea name="notes" rows="3" maxlength="500"></textarea></label><div class="cf-turnstile" id="checkoutTurnstile" data-sitekey="0x4AAAAAAGAydmEpIY0_5ffE"></div><p class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></p><button class="button cart-submit-order" id="cartSubmitOrder" type="submit">${text("Wyślij zamówienie", "Place order")} <span>→</span></button><button class="cart-clear checkout-back" id="checkoutBack" type="button">${text("Wróć do koszyka", "Back to basket")}</button></form><button class="cart-clear" id="cartClear" type="button">${text("Wyczyść koszyk", "Clear basket")}</button><p>${text("Podsumowanie możesz wysłać nam, aby potwierdzić zamówienie.", "Copy the summary and send it to us to confirm your order.")}</p></div></aside>`;
     document.body.append(overlay);
   }
   const itemsNode = $("#cartItems"), emptyNode = $("#cartEmpty"), footerNode = $("#cartFooter");
@@ -190,6 +191,32 @@
   const checkoutOpen = $("#cartCheckoutOpen");
   const checkoutMessage = $("#checkoutMessage");
   const checkoutBack = $("#checkoutBack");
+  let checkoutTurnstileId = null;
+  function ensureTurnstile() {
+    if (window.turnstile) { renderCheckoutTurnstile(); return; }
+    if (document.querySelector('script[data-gf-turnstile]')) return;
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true; script.defer = true; script.dataset.gfTurnstile = "1";
+    script.onload = renderCheckoutTurnstile;
+    document.head.append(script);
+  }
+  function renderCheckoutTurnstile() {
+    const node = $("#checkoutTurnstile");
+    if (!node || !window.turnstile) return;
+    if (checkoutTurnstileId === null) checkoutTurnstileId = window.turnstile.render(node, {
+      sitekey: "0x4AAAAAAGAydmEpIY0_5ffE",
+      theme: "auto",
+      callback: token => { node.dataset.token = token; },
+      "expired-callback": () => { node.dataset.token = ""; },
+      "error-callback": () => { node.dataset.token = ""; }
+    });
+  }
+  function resetCheckoutTurnstile() {
+    const node = $("#checkoutTurnstile");
+    if (node) node.dataset.token = "";
+    if (window.turnstile && checkoutTurnstileId !== null) window.turnstile.reset(checkoutTurnstileId);
+  }
   const dateInput = checkoutForm?.elements.deliveryDate;
   const monthSelect = $("#deliveryMonth", checkoutForm);
   const daySelect = $("#deliveryDay", checkoutForm);
@@ -237,6 +264,7 @@
     if (confirmationPanel) confirmationPanel.hidden = true;
     if (emptyNode) emptyNode.hidden = true;
     checkoutForm.hidden = false;
+    ensureTurnstile();
     checkoutOpen.hidden = true;
     $("#cartClear").hidden = true;
     checkoutForm.elements.name.focus();
@@ -264,6 +292,7 @@
         notes: String(formData.get("notes") || "").trim()
       },
       language: lang(),
+      turnstileToken: $("#checkoutTurnstile")?.dataset.token || "",
       items: cart.map(({product, qty}) => ({
         name: product.name?.[lang()] || product.name?.pl || product.name?.en || "",
         quantity: qty,
@@ -285,6 +314,7 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.success) throw new Error(result.error || text("Nie udało się wysłać zamówienia. Spróbuj ponownie.", "Could not submit the order. Please try again."));
+      resetCheckoutTurnstile();
       cart = buyNowBackup ? buyNowBackup : [];
       buyNowBackup = null;
       save(); renderCart();
@@ -300,6 +330,7 @@
       }
       toast(text("Zamówienie wysłane! Dziękujemy.", "Order sent! Thank you."));
     } catch (error) {
+      resetCheckoutTurnstile();
       if (checkoutMessage) checkoutMessage.textContent = error.message || text("Błąd połączenia. Spróbuj ponownie.", "Connection error. Please try again.");
     } finally {
       submit.disabled = false;
