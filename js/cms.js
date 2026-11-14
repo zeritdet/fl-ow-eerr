@@ -116,7 +116,7 @@
     collectionRoot.replaceChildren();
     (data.collections || []).slice(0, 3).forEach(item => {
       const a = el("a", "collection");
-      a.href = safeUrl(item.url || (item.id ? `./collection.html?id=${encodeURIComponent(item.id)}` : "#shop"));
+      a.href = safeUrl(item.url || (item.id ? `./collection.html?id=${encodeURIComponent(item.id)}` : "/shop"));
       const img = el("img");
       setImage(img, item.image, item.alt);
       a.append(img);

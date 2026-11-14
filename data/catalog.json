@@ -14,7 +14,7 @@
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
       },
-      "url": "#shop"
+      "url": "/shop"
     },
     {
       "title": {
@@ -30,7 +30,7 @@
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
       },
-      "url": "#shop"
+      "url": "/shop"
     },
     {
       "title": {
@@ -46,7 +46,7 @@
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
       },
-      "url": "#shop"
+      "url": "/shop"
     }
   ],
   "products": [
