@@ -246,7 +246,16 @@ content:
             fields:
               - { name: pl, label: Polski, type: text }
               - { name: en, label: English, type: text }
-          - { name: price, label: Cena, type: number }
+          - { name: price, label: Cena bazowa, type: number }
+          - name: quantity_variants
+            label: Warianty ilościowe — liczba kwiatów i cena
+            type: object
+            list:
+              min: 0
+              collapsible: true
+            fields:
+              - { name: count, label: Liczba kwiatów, type: number }
+              - { name: price, label: Cena dla tego wariantu, type: number }
           - { name: currency, label: Waluta, type: string }
           - { name: image, label: Zdjęcie bukietu, type: image }
           - name: alt
