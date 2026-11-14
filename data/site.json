@@ -87,10 +87,7 @@
     }
   },
   "hero": {
-    "eyebrow": {
-      "pl": "Gent Flowers",
-      "en": "Gent Flowers"
-    },
+    "eyebrow": "First Date?)",
     "image": "assets/images/pink-tulip-bouquet.png",
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
@@ -271,19 +268,19 @@
         "en": "Pink cloud"
       },
       "subtitle": {
-        "pl": "Róże piwoniowe · 7 szt.",
-        "en": "Peony roses · 7 stems"
+        "pl": "Róże piwoniowe · 10 szt.",
+        "en": "Peony roses · 10 qw."
       },
       "description": {
-        "pl": "Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie.",
-        "en": "A hand-tied bouquet of peonies and roses in soft blush tones. Made to order."
+        "pl": "Bukiet róż piwoniowych o miękkich, pudrowych odcieniach. ",
+        "en": "A hand-tied bouquet of peonies and roses in soft blush tones."
       },
-      "price": 99,
+      "price": 90,
       "currency": "zł",
-      "image": "/media/siedem różowych piwonii.png.png",
+      "image": "/media/Розкішний букет рожевих садових троянд.png",
       "alt": {
-        "pl": "Bukiet różowych piwonii i róż w pudrowych odcieniach",
-        "en": "A bouquet of pink peonies and roses in soft blush tones"
+        "pl": "Bukiet różowych róż piwoniowych w pudrowych odcieniach",
+        "en": "A bouquet of pink peon roses in soft blush tones"
       },
       "badge": {
         "pl": "Bestseller",
@@ -295,28 +292,32 @@
             "pl": "Różowy",
             "en": "Pink"
           },
-          "hex": "#d993a2"
+          "hex": "#d993a2",
+          "image": "/media/Розкішний букет рожевих садових троянд-1.png"
         },
         {
           "name": {
             "pl": "Kremowy",
             "en": "Cream"
           },
-          "hex": "#e9d8bd"
+          "hex": "#e9d8bd",
+          "image": "/media/Букет із десяти кремових троянд.png"
         },
         {
           "name": {
             "pl": "Brzoskwiniowy",
             "en": "Peach"
           },
-          "hex": "#efb9a2"
+          "hex": "#efb9a2",
+          "image": "/media/Персиковий букет садових троянд-1.png"
         },
         {
           "name": {
             "pl": "Biały",
             "en": "White"
           },
-          "hex": "#f5f1e9"
+          "hex": "#f5f1e9",
+          "image": "/media/Букет із білих садових троянд у мереживному пакуванні.png"
         }
       ]
     },
