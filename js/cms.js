@@ -543,66 +543,13 @@
     ];
     let selectedWrap = options[0];
     let selectedBouquetColor = null;
-    let activeGallery = [];
-    let galleryIndex = 0;
-    let galleryControls = null;
-    const renderGallery = (images) => {
-      activeGallery = [...new Set((images || []).filter(Boolean))];
-      if (!activeGallery.length) activeGallery = [item.image].filter(Boolean);
-      galleryIndex = 0;
-      const show = () => {
-        const src = activeGallery[galleryIndex] || item.image;
-        modalImage.src = getImageUrl(src);
-        modalImage.alt = tr(item.alt);
-        if (galleryControls) {
-          galleryControls.querySelector("[data-gallery-count]").textContent = `${galleryIndex + 1} / ${activeGallery.length}`;
-          galleryControls.querySelectorAll("[data-gallery-prev], [data-gallery-next]").forEach(btn => btn.hidden = activeGallery.length < 2);
-        }
-      };
-      if (!galleryControls) {
-        galleryControls = el("div", "modal-gallery-controls");
-        const prev = el("button", "modal-gallery-arrow");
-        prev.type = "button"; prev.dataset.galleryPrev = ""; prev.textContent = "‹";
-        prev.setAttribute("aria-label", lang === "en" ? "Previous photo" : "Poprzednie zdjęcie");
-        const count = el("span"); count.dataset.galleryCount = "";
-        const next = el("button", "modal-gallery-arrow");
-        next.type = "button"; next.dataset.galleryNext = ""; next.textContent = "›";
-        next.setAttribute("aria-label", lang === "en" ? "Next photo" : "Następne zdjęcie");
-        prev.addEventListener("click", () => { galleryIndex = (galleryIndex - 1 + activeGallery.length) % activeGallery.length; show(); });
-        next.addEventListener("click", () => { galleryIndex = (galleryIndex + 1) % activeGallery.length; show(); });
-        galleryControls.append(prev, count, next);
-        modalImage.after(galleryControls);
-        let touchStartX = null;
-        modalImage.addEventListener("touchstart", e => { touchStartX = e.touches[0]?.clientX ?? null; }, {passive:true});
-        modalImage.addEventListener("touchend", e => {
-          if (touchStartX === null || activeGallery.length < 2) return;
-          const delta = e.changedTouches[0].clientX - touchStartX;
-          if (Math.abs(delta) > 35) { galleryIndex = (galleryIndex + (delta < 0 ? 1 : -1) + activeGallery.length) % activeGallery.length; show(); }
-          touchStartX = null;
-        }, {passive:true});
-      }
-      show();
-    };
     const updateVariantImage = () => {
-      const wrapId = selectedWrap?.[0] || "transparentny";
-      const colorHex = selectedBouquetColor?.hex || "";
-      const combination = (item.imageVariants || []).find(v =>
-        String(v.celofanId || "").toLowerCase() === wrapId &&
-        String(v.bouquetColorHex || "").toLowerCase() === colorHex.toLowerCase() && v.image
-      );
-      const colorVariant = selectedBouquetColor;
-      const wrapVariant = (item.celofanVariants || []).find(v =>
-        String(v.celofanId || "").toLowerCase() === wrapId && v.image
-      );
-      const images = combination
-        ? [combination.image, ...(combination.gallery || [])]
-        : colorVariant?.image
-          ? [colorVariant.image, ...(colorVariant.gallery || [])]
-          : wrapVariant?.image
-            ? [wrapVariant.image]
-            : [item.image];
-      renderGallery(images);
-      modalImage.classList.toggle("no-celofan", wrapId === "bez");
+      // Use the image attached to the selected bouquet color in PageCMS.
+      // Fall back to the product's original image when no variant image exists.
+      const variantImage = selectedBouquetColor?.image;
+      modalImage.src = getImageUrl(variantImage || item.image);
+      modalImage.alt = tr(item.alt);
+      modalImage.classList.toggle("no-celofan", selectedWrap?.[0] === "bez");
     };
     const choices = el("div", "celofan-options");
     options.forEach(option => {

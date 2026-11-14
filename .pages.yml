@@ -275,6 +275,7 @@ content:
                   - { name: pl, label: Polski, type: string }
                   - { name: en, label: English, type: string }
               - { name: hex, label: Kod koloru HEX, type: string }
+              - { name: image, label: Zdjęcie dla tego koloru bukietu, type: image }
       - name: story
         label: Sekcja O nas — zdjęcie
         type: object
