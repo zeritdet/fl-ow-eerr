@@ -114,7 +114,7 @@
   function renderCollections() {
     if (!collectionRoot) return;
     collectionRoot.replaceChildren();
-    (data.collections || []).forEach(item => {
+    (data.collections || []).slice(0, 3).forEach(item => {
       const a = el("a", "collection");
       a.href = safeUrl(item.url || (item.id ? `./collection.html?id=${encodeURIComponent(item.id)}` : "#shop"));
       const img = el("img");
