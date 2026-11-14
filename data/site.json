@@ -146,12 +146,7 @@
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
       },
-      "url": "./collection.html?id=autorskie",
-      "id": "autorskie",
-      "description": {
-        "pl": "Wyjątkowe kompozycje tworzone ręcznie z dbałością o każdy detal.",
-        "en": "Distinctive arrangements, hand-crafted with care in every detail."
-      }
+      "url": "./collection.html?id=autorskie"
     },
     {
       "title": {
@@ -167,12 +162,7 @@
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
       },
-      "url": "./collection.html?id=czulosc",
-      "id": "czulosc",
-      "description": {
-        "pl": "Delikatne bukiety na randki, rocznice i chwile, które warto zapamiętać.",
-        "en": "Delicate bouquets for dates, anniversaries and moments to remember."
-      }
+      "url": "./collection.html?id=czulosc"
     },
     {
       "title": {
@@ -188,24 +178,14 @@
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
       },
-      "url": "./collection.html?id=dom",
-      "id": "dom",
-      "description": {
-        "pl": "Świeże kompozycje, które dodają wnętrzom koloru i przytulności.",
-        "en": "Fresh arrangements that bring colour and warmth to your home."
-      }
+      "url": "./collection.html?id=dom"
     },
     {
-      "id": "walentynki",
       "title": {
         "pl": "Walentynki",
         "en": "Valentine’s Day"
       },
       "subtitle": {
-        "pl": "Romantyczne bukiety na dzień zakochanych.",
-        "en": "Romantic bouquets for Valentine’s Day."
-      },
-      "description": {
         "pl": "Romantyczne bukiety na dzień zakochanych.",
         "en": "Romantic bouquets for Valentine’s Day."
       },
@@ -217,16 +197,11 @@
       "url": "./collection.html?id=walentynki"
     },
     {
-      "id": "dzien-kobiet",
       "title": {
         "pl": "Dzień Kobiet",
         "en": "Women's Day"
       },
       "subtitle": {
-        "pl": "Kwiaty, które wyrażają wdzięczność i uznanie.",
-        "en": "Flowers to express gratitude and appreciation."
-      },
-      "description": {
         "pl": "Kwiaty, które wyrażają wdzięczność i uznanie.",
         "en": "Flowers to express gratitude and appreciation."
       },
@@ -238,16 +213,11 @@
       "url": "./collection.html?id=dzien-kobiet"
     },
     {
-      "id": "urodziny",
       "title": {
         "pl": "Urodziny",
         "en": "Birthdays"
       },
       "subtitle": {
-        "pl": "Kolorowe bukiety na urodziny i małe wielkie święta.",
-        "en": "Colourful bouquets for birthdays and special celebrations."
-      },
-      "description": {
         "pl": "Kolorowe bukiety na urodziny i małe wielkie święta.",
         "en": "Colourful bouquets for birthdays and special celebrations."
       },
@@ -259,16 +229,11 @@
       "url": "./collection.html?id=urodziny"
     },
     {
-      "id": "slub-rocznica",
       "title": {
         "pl": "Ślub i rocznica",
         "en": "Weddings & anniversaries"
       },
       "subtitle": {
-        "pl": "Eleganckie kompozycje na wyjątkowe wspólne chwile.",
-        "en": "Elegant arrangements for your most meaningful moments."
-      },
-      "description": {
         "pl": "Eleganckie kompozycje na wyjątkowe wspólne chwile.",
         "en": "Elegant arrangements for your most meaningful moments."
       },
@@ -280,16 +245,11 @@
       "url": "./collection.html?id=slub-rocznica"
     },
     {
-      "id": "sezonowa",
       "title": {
         "pl": "Kolekcja sezonowa",
         "en": "Seasonal collection"
       },
       "subtitle": {
-        "pl": "Bukiety inspirowane kwiatami i kolorami aktualnego sezonu.",
-        "en": "Bouquets inspired by the flowers and colours of the season."
-      },
-      "description": {
         "pl": "Bukiety inspirowane kwiatami i kolorami aktualnego sezonu.",
         "en": "Bouquets inspired by the flowers and colours of the season."
       },
@@ -308,16 +268,16 @@
         "en": "Pink cloud"
       },
       "subtitle": {
-        "pl": "Róże piwoniowe · 15 szt.",
-        "en": "Peony roses · 15 stems"
+        "pl": "Róże piwoniowe · 7 szt.",
+        "en": "Peony roses · 7 stems"
       },
       "description": {
         "pl": "Bukiet piwonii i róż o miękkich, pudrowych odcieniach. Ręcznie układany na zamówienie.",
         "en": "A hand-tied bouquet of peonies and roses in soft blush tones. Made to order."
       },
-      "price": 350,
+      "price": 99,
       "currency": "zł",
-      "image": "/assets/images/rozowa-chmurka.png",
+      "image": "/media/siedem różowych piwonii.png.png",
       "alt": {
         "pl": "Bukiet różowych piwonii i róż w pudrowych odcieniach",
         "en": "A bouquet of pink peonies and roses in soft blush tones"
@@ -355,13 +315,6 @@
           },
           "hex": "#f5f1e9"
         }
-      ],
-      "collections": [
-        "autorskie",
-        "czulosc",
-        "walentynki",
-        "urodziny",
-        "slub-rocznica"
       ]
     },
     {
@@ -370,16 +323,16 @@
         "en": "Quiet tenderness"
       },
       "subtitle": {
-        "pl": "Jaskry · 11 szt.",
-        "en": "Ranunculus · 11 stems"
+        "pl": "Jaskry · 7 szt.",
+        "en": "Ranunculus · 7 stems"
       },
       "description": {
         "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
         "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
       },
-      "price": 320,
+      "price": 79,
       "currency": "zł",
-      "image": "/assets/images/Cicha-delikatnosc.png",
+      "image": "/media/siedem rozowych jaskyr.png",
       "alt": {
         "pl": "Jasna kompozycja z białych kwiatów",
         "en": "A light arrangement of white flowers"
@@ -413,12 +366,6 @@
           },
           "hex": "#f5f1e9"
         }
-      ],
-      "collections": [
-        "autorskie",
-        "czulosc",
-        "slub-rocznica",
-        "dzien-kobiet"
       ]
     },
     {
@@ -474,12 +421,6 @@
           },
           "hex": "#7861a8"
         }
-      ],
-      "collections": [
-        "autorskie",
-        "walentynki",
-        "dzien-kobiet",
-        "urodziny"
       ]
     },
     {
@@ -531,12 +472,6 @@
           },
           "hex": "#e4c568"
         }
-      ],
-      "collections": [
-        "autorskie",
-        "dom",
-        "sezonowa",
-        "urodziny"
       ]
     },
     {
@@ -588,10 +523,6 @@
           },
           "hex": "#fffdf2"
         }
-      ],
-      "collections": [
-        "dom",
-        "sezonowa"
       ]
     },
     {
@@ -643,10 +574,6 @@
           },
           "hex": "#f5b54b"
         }
-      ],
-      "collections": [
-        "dom",
-        "urodziny"
       ]
     }
   ],
