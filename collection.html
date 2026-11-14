@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7e8e9">
+<title>Kolekcja — Gent Flowers</title>
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/cms.css">
+<link rel="stylesheet" href="./css/storefront.css">
+<link rel="stylesheet" href="./css/motion.css">
+<style>
+.page-collection .collection-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;padding:34px;margin:28px 0}
+.page-collection .collection-hero img{width:100%;height:340px;object-fit:cover;border-radius:8px}
+.page-collection .collection-hero h1{font-family:var(--font-display,Georgia,serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;margin:12px 0}
+.page-collection .collection-hero p{color:var(--cms-muted,#777);line-height:1.8;max-width:520px}
+.page-collection .back-collections{display:inline-block;margin-top:18px;color:var(--cms-rose,#bd777e)}
+#collectionEmpty{padding:28px;text-align:center;color:var(--cms-muted,#777)}
+@media(max-width:700px){.page-collection .collection-hero{grid-template-columns:1fr;padding:22px}.page-collection .collection-hero img{height:230px}}
+</style>
+</head>
+<body class="page-shop page-collection">
+<main class="shell">
+<nav class="nav">
+<a aria-label="Gent Flowers" class="brand" href="./index.html"><img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"></a>
+<div class="links">
+<a href="./index.html">Start</a><a href="./shop.html">Katalog</a><a href="./index.html#collections">Kolekcje</a><a href="./about.html">O nas</a><a class="tracking-nav-link" href="./tracking.html">Śledź zamówienie</a>
+</div>
+<div class="tools">
+<div class="language"><button aria-pressed="true" data-lang="pl">PL</button><button aria-pressed="false" data-lang="en">EN</button></div>
+<button aria-label="Szukaj" class="icon" type="button"><img src="./assets/images/icons/search.svg" alt=""></button>
+<button aria-label="Koszyk" class="icon cart" type="button"><img src="./assets/images/icons/basket.svg" alt=""><span class="count" id="count">0</span></button>
+</div>
+</nav>
+<section class="collection-hero stack-panel">
+<div>
+<div class="eyebrow">GENT FLOWERS · KOLEKCJE</div>
+<h1 id="collectionTitle">Kolekcja</h1>
+<p id="collectionDescription"></p>
+<a class="back-collections" href="./index.html#collections">← Wszystkie kolekcje</a>
+</div>
+<img id="collectionCover" src="./assets/images/rozowa-chmurka.png" alt="">
+</section>
+<section class="section stack-panel" id="shop">
+<div class="section-head"><div><div class="eyebrow">GENT FLOWERS</div><h2>Bukiety z kolekcji</h2></div></div>
+<div class="products" id="productGrid"></div>
+<p id="collectionEmpty" hidden>W tej kolekcji nie ma jeszcze przypisanych bukietów.</p>
+</section>
+<div class="footer-pages"><a href="./index.html">Start</a><a href="./shop.html">Katalog</a><a href="./index.html#collections">Kolekcje</a><a href="./about.html">O nas</a><a href="./contacts.html">Kontakt</a></div>
+<footer class="footer" id="footer"><a aria-label="Gent Flowers" class="brand" href="./index.html"><img alt="Gent Flowers" class="brand-logo" src="./assets/images/gent-flowers-logo.png"></a><nav class="footer-legal"><a href="./regulamin.html">Regulamin sklepu</a><a href="./polityka-prywatnosci.html">Polityka prywatności</a></nav></footer>
+<div aria-hidden="true" class="product-modal" id="productModal"><div aria-labelledby="modalTitle" aria-modal="true" class="product-detail" role="dialog" tabindex="-1"><button aria-label="Zamknij" class="modal-close" id="modalClose">×</button><img alt="" class="modal-image" id="modalImage"><div class="modal-copy"><div class="eyebrow">Szczegóły bukietu</div><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-price" id="modalPrice"></div><div class="swatches modal-swatches" id="modalSwatches"></div><button class="button modal-add" id="modalAdd">Dodaj do koszyka →</button></div></div></div>
+</main>
+<script defer src="./js/cms.js"></script><script defer src="./js/storefront.js"></script>
+</body></html>

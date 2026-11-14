@@ -146,7 +146,12 @@
         "pl": "Autorska kompozycja kwiatowa",
         "en": "Signature floral arrangement"
       },
-      "url": "#shop"
+      "url": "./collection.html?id=autorskie",
+      "id": "autorskie",
+      "description": {
+        "pl": "Wyjątkowe kompozycje tworzone ręcznie z dbałością o każdy detal.",
+        "en": "Distinctive arrangements, hand-crafted with care in every detail."
+      }
     },
     {
       "title": {
@@ -162,7 +167,12 @@
         "pl": "Delikatny bukiet róż",
         "en": "A delicate rose bouquet"
       },
-      "url": "#shop"
+      "url": "./collection.html?id=czulosc",
+      "id": "czulosc",
+      "description": {
+        "pl": "Delikatne bukiety na randki, rocznice i chwile, które warto zapamiętać.",
+        "en": "Delicate bouquets for dates, anniversaries and moments to remember."
+      }
     },
     {
       "title": {
@@ -178,7 +188,117 @@
         "pl": "Kwiaty w wazonie",
         "en": "Flowers in a vase"
       },
-      "url": "#shop"
+      "url": "./collection.html?id=dom",
+      "id": "dom",
+      "description": {
+        "pl": "Świeże kompozycje, które dodają wnętrzom koloru i przytulności.",
+        "en": "Fresh arrangements that bring colour and warmth to your home."
+      }
+    },
+    {
+      "id": "walentynki",
+      "title": {
+        "pl": "Walentynki",
+        "en": "Valentine’s Day"
+      },
+      "subtitle": {
+        "pl": "Romantyczne bukiety na dzień zakochanych.",
+        "en": "Romantic bouquets for Valentine’s Day."
+      },
+      "description": {
+        "pl": "Romantyczne bukiety na dzień zakochanych.",
+        "en": "Romantic bouquets for Valentine’s Day."
+      },
+      "image": "assets/images/Роскошный букет алых роз с бордовой лентой.png",
+      "alt": {
+        "pl": "Walentynki",
+        "en": "Valentine’s Day"
+      },
+      "url": "./collection.html?id=walentynki"
+    },
+    {
+      "id": "dzien-kobiet",
+      "title": {
+        "pl": "Dzień Kobiet",
+        "en": "Women's Day"
+      },
+      "subtitle": {
+        "pl": "Kwiaty, które wyrażają wdzięczność i uznanie.",
+        "en": "Flowers to express gratitude and appreciation."
+      },
+      "description": {
+        "pl": "Kwiaty, które wyrażają wdzięczność i uznanie.",
+        "en": "Flowers to express gratitude and appreciation."
+      },
+      "image": "assets/images/Pierwszy-pocalunek.png",
+      "alt": {
+        "pl": "Dzień Kobiet",
+        "en": "Women's Day"
+      },
+      "url": "./collection.html?id=dzien-kobiet"
+    },
+    {
+      "id": "urodziny",
+      "title": {
+        "pl": "Urodziny",
+        "en": "Birthdays"
+      },
+      "subtitle": {
+        "pl": "Kolorowe bukiety na urodziny i małe wielkie święta.",
+        "en": "Colourful bouquets for birthdays and special celebrations."
+      },
+      "description": {
+        "pl": "Kolorowe bukiety na urodziny i małe wielkie święta.",
+        "en": "Colourful bouquets for birthdays and special celebrations."
+      },
+      "image": "assets/images/rozowa-chmurka.png",
+      "alt": {
+        "pl": "Urodziny",
+        "en": "Birthdays"
+      },
+      "url": "./collection.html?id=urodziny"
+    },
+    {
+      "id": "slub-rocznica",
+      "title": {
+        "pl": "Ślub i rocznica",
+        "en": "Weddings & anniversaries"
+      },
+      "subtitle": {
+        "pl": "Eleganckie kompozycje na wyjątkowe wspólne chwile.",
+        "en": "Elegant arrangements for your most meaningful moments."
+      },
+      "description": {
+        "pl": "Eleganckie kompozycje na wyjątkowe wspólne chwile.",
+        "en": "Elegant arrangements for your most meaningful moments."
+      },
+      "image": "assets/images/Cicha-delikatnosc.png",
+      "alt": {
+        "pl": "Ślub i rocznica",
+        "en": "Weddings & anniversaries"
+      },
+      "url": "./collection.html?id=slub-rocznica"
+    },
+    {
+      "id": "sezonowa",
+      "title": {
+        "pl": "Kolekcja sezonowa",
+        "en": "Seasonal collection"
+      },
+      "subtitle": {
+        "pl": "Bukiety inspirowane kwiatami i kolorami aktualnego sezonu.",
+        "en": "Bouquets inspired by the flowers and colours of the season."
+      },
+      "description": {
+        "pl": "Bukiety inspirowane kwiatami i kolorami aktualnego sezonu.",
+        "en": "Bouquets inspired by the flowers and colours of the season."
+      },
+      "image": "assets/images/Poranek-w-ogrodzie.png",
+      "alt": {
+        "pl": "Kolekcja sezonowa",
+        "en": "Seasonal collection"
+      },
+      "url": "./collection.html?id=sezonowa"
     }
   ],
   "products": [
@@ -235,6 +355,13 @@
           },
           "hex": "#f5f1e9"
         }
+      ],
+      "collections": [
+        "autorskie",
+        "czulosc",
+        "walentynki",
+        "urodziny",
+        "slub-rocznica"
       ]
     },
     {
@@ -286,6 +413,12 @@
           },
           "hex": "#f5f1e9"
         }
+      ],
+      "collections": [
+        "autorskie",
+        "czulosc",
+        "slub-rocznica",
+        "dzien-kobiet"
       ]
     },
     {
@@ -341,6 +474,12 @@
           },
           "hex": "#7861a8"
         }
+      ],
+      "collections": [
+        "autorskie",
+        "walentynki",
+        "dzien-kobiet",
+        "urodziny"
       ]
     },
     {
@@ -392,6 +531,12 @@
           },
           "hex": "#e4c568"
         }
+      ],
+      "collections": [
+        "autorskie",
+        "dom",
+        "sezonowa",
+        "urodziny"
       ]
     },
     {
@@ -443,6 +588,10 @@
           },
           "hex": "#fffdf2"
         }
+      ],
+      "collections": [
+        "dom",
+        "sezonowa"
       ]
     },
     {
@@ -494,6 +643,10 @@
           },
           "hex": "#f5b54b"
         }
+      ],
+      "collections": [
+        "dom",
+        "urodziny"
       ]
     }
   ],

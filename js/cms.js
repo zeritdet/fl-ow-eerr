@@ -116,7 +116,7 @@
     collectionRoot.replaceChildren();
     (data.collections || []).forEach(item => {
       const a = el("a", "collection");
-      a.href = safeUrl(item.url);
+      a.href = safeUrl(item.url || (item.id ? `./collection.html?id=${encodeURIComponent(item.id)}` : "#shop"));
       const img = el("img");
       setImage(img, item.image, item.alt);
       a.append(img);
@@ -243,6 +243,32 @@
   }
 
   renderProducts();
+
+  // A collection landing page uses the same CMS product records and storefront cart.
+  const collectionId = new URLSearchParams(window.location.search).get("id");
+  if (document.body.classList.contains("page-collection") && collectionId) {
+    const collection = (data.collections || []).find(item => item.id === collectionId);
+    const heading = $("#collectionTitle");
+    const description = $("#collectionDescription");
+    const cover = $("#collectionCover");
+    if (collection) {
+      if (heading) heading.textContent = tr(collection.title);
+      if (description) description.textContent = tr(collection.description || collection.subtitle);
+      setImage(cover, collection.image, collection.alt);
+      document.title = `${tr(collection.title)} — Gent Flowers`;
+      const matching = (data.products || []).filter(product => (product.collections || []).includes(collectionId));
+      if (grid) {
+        grid.replaceChildren();
+        matching.forEach((item, i) => grid.append(productCard(item, i)));
+      }
+      const empty = $("#collectionEmpty");
+      if (empty) empty.hidden = matching.length > 0;
+    } else {
+      if (heading) heading.textContent = lang === "en" ? "Collection not found" : "Nie znaleziono kolekcji";
+      if (description) description.textContent = lang === "en" ? "Please choose another collection." : "Wybierz inną kolekcję.";
+      if (grid) grid.replaceChildren();
+    }
+  }
 
   setText("#shop .section-head .eyebrow", data.texts?.pickedForYou);
   setText("#shop h2", data.texts?.favoriteBouquets);
