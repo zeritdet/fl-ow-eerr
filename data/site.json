@@ -508,28 +508,32 @@
             "pl": "Czerwony",
             "en": "Red"
           },
-          "hex": "#5e091a"
+          "hex": "#5e091a",
+          "image": "/media/сzerwony roze-2.png"
         },
         {
           "name": {
             "pl": "Różowy",
             "en": "Pink"
           },
-          "hex": "#ffafc1"
+          "hex": "#ffafc1",
+          "image": "/media/rozowy roze.png"
         },
         {
           "name": {
             "pl": "Żółty",
             "en": "Yellow"
           },
-          "hex": "#e4b541"
+          "hex": "#e4b541",
+          "image": "/media/zelty roze-1.png"
         },
         {
           "name": {
             "pl": "kremowy",
             "en": "Сream"
           },
-          "hex": "#fffdf2"
+          "hex": "#fffdf2",
+          "image": "/media/kremowy roze-1.png"
         }
       ]
     },
