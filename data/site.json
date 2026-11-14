@@ -268,14 +268,14 @@
         "en": "Pink cloud"
       },
       "subtitle": {
-        "pl": "Róże piwoniowe · 10 szt.",
-        "en": "Peony roses · 10 qw."
+        "pl": "Róże piwoniowe · 9 szt.",
+        "en": "Peony roses · 9 stemp."
       },
       "description": {
         "pl": "Bukiet róż piwoniowych o miękkich, pudrowych odcieniach. ",
         "en": "A hand-tied bouquet of peonies and roses in soft blush tones."
       },
-      "price": 90,
+      "price": 89,
       "currency": "zł",
       "image": "/media/Розкішний букет рожевих садових троянд.png",
       "alt": {
@@ -327,8 +327,8 @@
         "en": "Quiet tenderness"
       },
       "subtitle": {
-        "pl": "Jaskry · 7 szt.",
-        "en": "Ranunculus · 7 stems"
+        "pl": "Jaskry · 9 szt.",
+        "en": "Ranunculus · 9 stems"
       },
       "description": {
         "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
@@ -336,7 +336,7 @@
       },
       "price": 79,
       "currency": "zł",
-      "image": "/media/siedem rozowych jaskyr.png",
+      "image": "/media/Пастельний букет ранункулюсів у стрічках.png",
       "alt": {
         "pl": "Jasna kompozycja z białych kwiatów",
         "en": "A light arrangement of white flowers"
@@ -347,28 +347,32 @@
             "pl": "Kremowy",
             "en": "Cream"
           },
-          "hex": "#e9d8bd"
+          "hex": "#e9d8bd",
+          "image": "/media/Пастельний букет ранункулюсів у стрічках-1.png"
         },
         {
           "name": {
             "pl": "Różowy",
             "en": "Pink"
           },
-          "hex": "#d993a2"
+          "hex": "#d993a2",
+          "image": "/media/Рожевий букет ранункулюсів у стрічках.png"
         },
         {
           "name": {
             "pl": "Brzoskwiniowy",
             "en": "Peach"
           },
-          "hex": "#efb9a2"
+          "hex": "#efb9a2",
+          "image": "/media/Персиковий букет ранункулюсів.png"
         },
         {
           "name": {
             "pl": "Biały",
             "en": "White"
           },
-          "hex": "#f5f1e9"
+          "hex": "#f5f1e9",
+          "image": "/media/Букет із дев’яти кремових троянд.png"
         }
       ]
     },
