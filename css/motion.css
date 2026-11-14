@@ -4,26 +4,7 @@ html {
   scroll-padding-top: 24px;
 }
 
-body {
-  animation: page-settle .45s ease-out both;
-}
 
-@keyframes page-settle {
-  from { opacity: .94; }
-  to { opacity: 1; }
-}
-
-.nav, .section, .hero, .story, .footer, .button, .icon, .links a,
-.collection, .collection img, .product, .product-photo img, .quick,
-.language, .language button, .view-button, .text-link {
-  transition: color .24s ease, background-color .24s ease, border-color .24s ease,
-    box-shadow .28s ease, opacity .24s ease,
-    transform .28s cubic-bezier(.2,.7,.2,1);
-}
-
-.collection:hover img, .product:hover .product-photo img {
-  transform: scale(1.025);
-}
 
 /* Compact animated PL / EN switch */
 .language {
@@ -400,4 +381,153 @@ body {
   .nav .language::before { width: 28px; }
   .nav .language button { width: 28px; }
   .nav .links { font-size: 9px; }
+}
+
+
+/* Gent Flowers premium motion system */
+:root {
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --dur-m: 700ms;
+  --dur-hover: 250ms;
+}
+
+.motion-hero-item,
+.motion-reveal {
+  transition: opacity var(--dur-m) var(--ease), transform var(--dur-m) var(--ease);
+}
+.motion-ready .motion-hero-item:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.motion-ready .motion-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-hero-item.is-visible {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--hero-delay, 0ms);
+}
+.motion-ready .motion-reveal-image:not(.is-visible) img {
+  transform: scale(1.03);
+}
+.motion-reveal-image img {
+  transition: transform 900ms var(--ease);
+}
+.motion-ready .motion-reveal-image.is-visible img {
+  transform: scale(1);
+}
+
+/* Hover motion is restricted to devices with a real hover pointer. */
+@media (hover: hover) and (pointer: fine) {
+  .collection,
+  .product {
+    transition: transform var(--dur-hover) var(--ease), box-shadow var(--dur-hover) var(--ease);
+  }
+  .collection img,
+  .product-photo img {
+    transition: transform 900ms var(--ease);
+  }
+  .collection:hover img,
+  .product:hover .product-photo img {
+    transform: scale(1.05);
+  }
+  .product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(43, 33, 18, .10);
+  }
+}
+
+/* Scrolled navigation */
+.nav {
+  transition: background-color 300ms var(--ease), backdrop-filter 300ms var(--ease);
+}
+.nav.is-scrolled {
+  background: rgba(255, 253, 251, .78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Product modal: preserve .is-open and detail-in behavior hooks. */
+.product-modal {
+  transition: opacity 300ms var(--ease), visibility 300ms var(--ease);
+}
+.product-detail {
+  animation: none;
+  opacity: 0;
+  transform: scale(.96);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.product-modal.is-open .product-detail {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Counter pop is triggered by storefront.js only when an item is added. */
+.count.pop {
+  animation: gent-count-pop 350ms var(--ease);
+}
+@keyframes gent-count-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 560px), (hover: none) {
+  .collection:active,
+  .product:active {
+    transform: scale(.98);
+    transition: transform 150ms var(--ease);
+  }
+  .product-quick-actions,
+  .quick {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .nav.is-scrolled {
+    background: rgba(255, 253, 251, .96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .motion-ready .motion-reveal:not(.is-visible) {
+    transform: translateY(14px);
+    transition-duration: 500ms;
+  }
+  .motion-reveal.is-visible {
+    transition-delay: min(var(--reveal-delay, 0ms), 120ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .motion-hero-item,
+  .motion-reveal,
+  .motion-reveal-image img,
+  .product-detail,
+  .product-modal,
+  .nav {
+    transition: opacity 0ms linear !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .motion-ready .motion-hero-item:not(.is-visible),
+  .motion-ready .motion-reveal:not(.is-visible) {
+    opacity: 0;
+  }
+  .motion-hero-item.is-visible,
+  .motion-reveal.is-visible {
+    opacity: 1;
+  }
+  .collection img,
+  .product-photo img,
+  .product,
+  .collection {
+    transform: none !important;
+    transition: none !important;
+  }
 }

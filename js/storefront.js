@@ -16,9 +16,20 @@
   const countNode = $("#count");
   function updateCount() {
     const count = cart.reduce((n, item) => n + item.qty, 0);
-    if (countNode) { countNode.textContent = count; countNode.hidden = count === 0; }
+    if (countNode) {
+      countNode.textContent = count;
+      countNode.hidden = count === 0;
+    }
     const cartButton = $(".tools .cart");
     if (cartButton) cartButton.setAttribute("aria-label", `${text("Koszyk", "Cart")}: ${count}`);
+  }
+  function popCartCount() {
+    if (!countNode) return;
+    countNode.classList.remove("pop");
+    // Force a style flush so repeated additions restart the short animation.
+    void countNode.offsetWidth;
+    countNode.classList.add("pop");
+    countNode.addEventListener("animationend", () => countNode.classList.remove("pop"), { once: true });
   }
   function toast(message) {
     let node = $("#storeToast");
@@ -36,7 +47,7 @@
     const existing = cart.find(x => x.id === lineId);
     if (existing) existing.qty += 1;
     else cart.push({ id: lineId, product: {...product, celofan:wrap, bouquetColor:color}, qty: 1 });
-    save(); renderCart();
+    save(); popCartCount(); renderCart();
     toast(text("Dodano do koszyka", "Added to cart"));
   }
   function buyNow(product) {

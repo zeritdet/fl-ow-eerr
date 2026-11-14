@@ -1,94 +1,65 @@
 (() => {
-  const intro = document.getElementById('introScreen');
-  const skip = document.getElementById('introSkip');
+  const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let introDone = false;
-  let introTimer;
+  const mobile = window.matchMedia('(max-width: 560px), (hover: none)');
+  const nav = document.querySelector('.nav');
 
-  const finishIntro = () => {
-    if (!intro || introDone) return;
-    introDone = true;
-    window.clearTimeout(introTimer);
-    intro.classList.add('is-leaving');
-    document.body.classList.remove('intro-active');
-    window.setTimeout(() => intro.remove(), 1150);
-  };
+  const heroItems = [...document.querySelectorAll('.hero-copy, .hero-image')];
+  heroItems.forEach((node, index) => {
+    node.classList.add('motion-hero-item');
+    node.style.setProperty('--hero-delay', `${index * 120}ms`);
+  });
 
-  if (intro) {
-    skip?.addEventListener('click', finishIntro);
-    if (reduceMotion.matches) {
-      finishIntro();
-    } else {
+  const revealTargets = [...document.querySelectorAll(
+    '.section, .collection, .product, .story, .footer, .page-extra'
+  )].filter(node => !node.classList.contains('motion-hero-item'));
 
-      introTimer = window.setTimeout(finishIntro, 6500);
-    }
-  }
-
-  const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-image, .nav, #collections .section-head, .collection, ' +
-    '#shop .section-head, #shop .product, .story img, .story-copy, .footer'
-  );
   revealTargets.forEach((node, index) => {
     node.classList.add('motion-reveal');
-    if (node.matches('.hero-image, .collection, .product, .story img')) {
-      node.classList.add('motion-reveal-image');
-    }
-    node.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 85}ms`);
+    if (node.matches('.collection, .product, .story img')) node.classList.add('motion-reveal-image');
+    const perGroup = mobile.matches ? 3 : 4;
+    const step = mobile.matches ? 60 : 85;
+    node.style.setProperty('--reveal-delay', `${(index % perGroup) * step}ms`);
   });
 
-  if (!reduceMotion.matches && 'IntersectionObserver' in window) {
-    document.documentElement.classList.add('motion-ready');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
-    revealTargets.forEach(node => revealObserver.observe(node));
-  } else {
-    revealTargets.forEach(node => node.classList.add('is-visible'));
-  }
-
-  const panels = [...document.querySelectorAll('.stack-panel')];
-  let ticking = false;
-  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
-  const updateDepth = () => {
-    ticking = false;
-    if (reduceMotion.matches) return;
-    const vh = window.innerHeight || 800;
-    panels.forEach(panel => {
-      const rect = panel.getBoundingClientRect();
-      const progress = clamp((vh * 0.58 - rect.top) / (vh * 0.58), 0, 1);
-      const scale = 1 - progress * 0.025;
-      const y = -progress * 12;
-      panel.style.setProperty('--depth-scale', scale.toFixed(4));
-      panel.style.setProperty('--depth-y', `${y.toFixed(1)}px`);
-      panel.style.setProperty('--depth-shadow', `${(0.035 + progress * 0.045).toFixed(3)}`);
+  if (!reduceMotion.matches) {
+    root.classList.add('motion-ready');
+    requestAnimationFrame(() => {
+      heroItems.forEach(node => node.classList.add('is-visible'));
     });
-  };
-  const requestDepthUpdate = () => {
-    if (!ticking) {
-      ticking = true;
-      window.requestAnimationFrame(updateDepth);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          currentObserver.unobserve(entry.target);
+        });
+      }, {
+        threshold: mobile.matches ? 0.05 : 0.08,
+        rootMargin: mobile.matches ? '0px 0px 2% 0px' : '0px 0px -4% 0px'
+      });
+      revealTargets.forEach(node => observer.observe(node));
+    } else {
+      revealTargets.forEach(node => node.classList.add('is-visible'));
     }
-  };
-  if (!reduceMotion.matches && panels.length) {
-    window.addEventListener('scroll', requestDepthUpdate, { passive: true });
-    window.addEventListener('resize', requestDepthUpdate, { passive: true });
-    updateDepth();
+  } else {
+    heroItems.concat(revealTargets).forEach(node => node.classList.add('is-visible'));
   }
 
-  reduceMotion.addEventListener?.('change', event => {
-    if (event.matches) {
-      document.documentElement.classList.remove('motion-ready');
-      revealTargets.forEach(node => node.classList.add('is-visible'));
-      panels.forEach(panel => {
-        panel.style.removeProperty('--depth-scale');
-        panel.style.removeProperty('--depth-y');
-        panel.style.removeProperty('--depth-shadow');
-      });
-    }
-  });
+  // Header state: one passive listener, updates coalesced through rAF.
+  let scrollQueued = false;
+  const updateHeader = () => {
+    scrollQueued = false;
+    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  const onScroll = () => {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(updateHeader);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateHeader();
+
+  // Depth transforms on stack panels are intentionally disabled.
 })();

@@ -29,7 +29,3 @@ body { background: var(--cms-page-bg); color: var(--ink); }
 
 .section + .section, .section + .story { margin-top: -5px; }
 .section, .hero, .nav, .story { transition: box-shadow .35s ease, transform .35s ease; }
-@media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .collection img, .product-photo img { will-change: transform; }
-  .button, .icon, .view-button { transition: transform .25s ease, background-color .25s ease, color .25s ease; }
-}
