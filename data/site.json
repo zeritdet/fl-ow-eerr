@@ -560,31 +560,10 @@
       "palette": [
         {
           "name": {
-            "pl": "Czerwony",
-            "en": "Red"
-          },
-          "hex": "#f05c31"
-        },
-        {
-          "name": {
-            "pl": "Różowy",
-            "en": "Pink"
-          },
-          "hex": "#ecadff"
-        },
-        {
-          "name": {
             "pl": "Biały",
             "en": "White"
           },
           "hex": "#ffeddb"
-        },
-        {
-          "name": {
-            "pl": "Żółty",
-            "en": "Yellow"
-          },
-          "hex": "#f5b54b"
         }
       ]
     }
