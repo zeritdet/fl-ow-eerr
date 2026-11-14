@@ -276,6 +276,28 @@
         "en": "A hand-tied bouquet of peonies and roses in soft blush tones."
       },
       "price": 89,
+      "quantity_variants": [
+        {
+          "count": 9,
+          "price": 89
+        },
+        {
+          "count": 19,
+          "price": 178
+        },
+        {
+          "count": 39,
+          "price": 356
+        },
+        {
+          "count": 79,
+          "price": 712
+        },
+        {
+          "count": 101,
+          "price": 999
+        }
+      ],
       "currency": "zł",
       "image": "/media/Розкішний букет рожевих садових троянд.png",
       "alt": {
