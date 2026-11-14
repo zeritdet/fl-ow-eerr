@@ -31,10 +31,11 @@
     if (confirmationPanel) confirmationPanel.hidden = true;
     const id = productId(product);
     const wrap = product.celofan || {id:"transparentny",name:"Transparentny"};
-    const lineId = `${id}::${wrap.id}`;
+    const color = product.bouquetColor || null;
+    const lineId = `${id}::${wrap.id}::${color?.hex || "default"}`;
     const existing = cart.find(x => x.id === lineId);
     if (existing) existing.qty += 1;
-    else cart.push({ id: lineId, product: {...product, celofan:wrap}, qty: 1 });
+    else cart.push({ id: lineId, product: {...product, celofan:wrap, bouquetColor:color}, qty: 1 });
     save(); renderCart();
     toast(text("Dodano do koszyka", "Added to cart"));
   }
@@ -42,7 +43,8 @@
     if (!product) return;
     buyNowBackup = cart.map(item => ({ ...item }));
     const wrap = product.celofan || {id:"transparentny",name:"Transparentny"};
-    cart = [{ id: `${productId(product)}::${wrap.id}`, product: {...product,celofan:wrap}, qty: 1 }];
+    const color = product.bouquetColor || null;
+    cart = [{ id: `${productId(product)}::${wrap.id}::${color?.hex || "default"}`, product: {...product,celofan:wrap,bouquetColor:color}, qty: 1 }];
     if (confirmationPanel) confirmationPanel.hidden = true;
     save(); renderCart(); openCart();
     if (checkoutForm) {
@@ -155,7 +157,10 @@
       const value = document.createElement("span"); value.className = "cart-quantity-value"; value.textContent = qty;
       const plus = document.createElement("button"); plus.type = "button"; plus.textContent = "+"; plus.setAttribute("aria-label", text("Zwiększ ilość", "Increase quantity")); plus.addEventListener("click", () => changeQty(id, 1));
       const remove = document.createElement("button"); remove.type = "button"; remove.className = "cart-remove"; remove.textContent = text("Usuń", "Remove"); remove.addEventListener("click", () => { cart = cart.filter(x => x.id !== id); save(); renderCart(); });
-      controls.append(minus, value, plus, remove); body.append(name, sub, price, controls); row.append(img, body); itemsNode.append(row);
+      const options = document.createElement("div"); options.className = "cart-item-options";
+      if (p.bouquetColor?.name) { const c = document.createElement("div"); c.textContent = `${text("Kolor bukietu", "Bouquet color")}: ${p.bouquetColor.name}`; options.append(c); }
+      if (p.celofan?.name) { const w = document.createElement("div"); w.textContent = `${text("Celofan", "Wrapping")}: ${p.celofan.name}`; options.append(w); }
+      controls.append(minus, value, plus, remove); body.append(name, sub, options, price, controls); row.append(img, body); itemsNode.append(row);
     });
     const totalQty = cart.reduce((n,x) => n+x.qty,0), total = cart.reduce((n,x) => n+x.qty*x.product.price,0);
     if (emptyNode) emptyNode.hidden = totalQty > 0;
@@ -264,7 +269,9 @@
         quantity: qty,
         price: Number(product.price),
         celofan: product.celofan?.name || "Transparentny",
-        celofanId: product.celofan?.id || "transparentny"
+        celofanId: product.celofan?.id || "transparentny",
+        bouquetColor: product.bouquetColor?.name || "",
+        bouquetColorHex: product.bouquetColor?.hex || ""
       }))
     };
     submit.disabled = true;

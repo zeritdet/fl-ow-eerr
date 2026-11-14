@@ -499,7 +499,7 @@
     if (!item) return;
     if (window.GentStore?.buyNow) {
       closeProduct();
-      window.GentStore.buyNow({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}});
+      window.GentStore.buyNow({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}, bouquetColor: window.GentSelectedBouquetColor?.() || null});
     }
   });
 
@@ -561,27 +561,40 @@
     });
     picker.append(choices);
     modalPrice.after(picker);
+    // Bouquet color picker styled consistently with the wrapping selector.
+    const oldBouquetPicker = $("#bouquetColorPicker");
+    if (oldBouquetPicker) oldBouquetPicker.remove();
+    const bouquetPicker = el("div", "celofan-picker bouquet-color-picker");
+    bouquetPicker.id = "bouquetColorPicker";
+    const bouquetLabel = el("div", "celofan-label");
+    bouquetLabel.textContent = lang === "en" ? "Choose bouquet color" : "Wybierz kolor bukietu";
+    bouquetPicker.append(bouquetLabel);
+    const bouquetOptions = Array.isArray(item.palette) ? item.palette : [];
+    let selectedBouquetColor = bouquetOptions[0] || null;
+    const bouquetChoices = el("div", "celofan-options bouquet-color-options");
+    bouquetOptions.forEach((color, i) => {
+      const button = el("button", "celofan-option bouquet-color-option");
+      button.type = "button";
+      button.setAttribute("aria-pressed", String(i === 0));
+      const chip = el("span", "celofan-chip bouquet-color-chip");
+      chip.style.setProperty("--wrap-color", color.hex || "#ddd");
+      const name = el("span");
+      name.textContent = tr(color.name);
+      button.append(chip, name);
+      button.addEventListener("click", () => {
+        selectedBouquetColor = color;
+        $$(".bouquet-color-option", bouquetChoices).forEach(x => x.setAttribute("aria-pressed", String(x === button)));
+      });
+      bouquetChoices.append(button);
+    });
+    bouquetPicker.append(bouquetChoices);
+    picker.after(bouquetPicker);
     modalSwatches.replaceChildren();
     window.GentSelectedCelofan = () => ({id:selectedWrap[0], name:selectedWrap[1]});
-
-
-
-    (item.palette || []).forEach((color, i) => {
-      const button = el("button", "color-swatch");
-      button.type = "button";
-      button.style.setProperty("--swatch", color.hex || "#ddd");
-      button.title = tr(color.name);
-      button.setAttribute("aria-label", tr(color.name));
-      button.setAttribute("aria-pressed", String(i === 0));
-
-      button.addEventListener("click", () => {
-        $$(".color-swatch", modalSwatches).forEach(x => {
-          x.setAttribute("aria-pressed", String(x === button));
-        });
-      });
-
-      modalSwatches.append(button);
-    });
+    window.GentSelectedBouquetColor = () => selectedBouquetColor ? ({
+      name: tr(selectedBouquetColor.name),
+      hex: selectedBouquetColor.hex || "#ddd"
+    }) : null;
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -603,7 +616,7 @@
     const item = activeCard?._productData;
     if (!item) return;
     if (window.GentStore?.add) {
-      window.GentStore.add({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}});
+      window.GentStore.add({...item, celofan: window.GentSelectedCelofan?.() || {id:"transparentny",name:"Transparentny"}, bouquetColor: window.GentSelectedBouquetColor?.() || null});
       closeProduct();
     } else {
       console.error("Gent Flowers cart is not ready: window.GentStore.add is unavailable");

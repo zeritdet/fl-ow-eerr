@@ -221,3 +221,11 @@ body.cart-open { overflow: hidden; }
 .celofan-chip{width:17px;height:17px;flex:0 0 17px;border-radius:50%;background:var(--wrap-color);border:1px solid rgba(40,30,30,.22)}
 .cart-item-wrap{font-size:12px;color:var(--muted,#817477);margin:3px 0 7px}
 @media(max-width:520px){.celofan-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Bouquet color menu — visually matches the cellophane selector */
+.bouquet-color-picker { margin-top: 12px; }
+.bouquet-color-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.bouquet-color-option { min-height: 36px; }
+.bouquet-color-chip { flex: 0 0 15px; width: 15px; height: 15px; border: 1px solid rgba(40,35,35,.2); border-radius: 50%; }
+.cart-item-options { margin: 4px 0 8px; color: #766d6b; font-size: 12px; line-height: 1.5; }
+@media (max-width: 520px) { .bouquet-color-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
