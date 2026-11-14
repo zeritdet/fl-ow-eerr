@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /tracking.html
+
+Sitemap: https://gentflowers.com/sitemap.xml
