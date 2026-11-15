@@ -268,8 +268,8 @@
         "en": "Pink cloud"
       },
       "subtitle": {
-        "pl": "Róże piwoniowe · 9 szt.",
-        "en": "Peony roses · 9 stemp."
+        "pl": "Róże piwoniowe · 10 szt.",
+        "en": "Peony roses · 10 stemp."
       },
       "description": {
         "pl": "Bukiet róż piwoniowych o miękkich, pudrowych odcieniach. ",
@@ -349,14 +349,32 @@
         "en": "Quiet tenderness"
       },
       "subtitle": {
-        "pl": "Jaskry · 9 szt.",
-        "en": "Ranunculus · 9 stems"
+        "pl": "Jaskry · 10 szt.",
+        "en": "Ranunculus · 10 stems"
       },
       "description": {
         "pl": "Delikatne jaskry w jasnej palecie — elegancki wybór na wyjątkowy dzień.",
         "en": "Delicate ranunculus in a light palette — an elegant choice for a special day."
       },
-      "price": 79,
+      "price": 55,
+      "quantity_variants": [
+        {
+          "count": 20,
+          "price": 90
+        },
+        {
+          "count": 30,
+          "price": 120
+        },
+        {
+          "count": 60,
+          "price": 240
+        },
+        {
+          "count": 101,
+          "price": 480
+        }
+      ],
       "currency": "zł",
       "image": "/media/Пастельний букет ранункулюсів у стрічках.png",
       "alt": {
@@ -404,14 +422,28 @@
         "en": "First kiss"
       },
       "subtitle": {
-        "pl": "Tulipany · 25 szt.",
-        "en": "Tulips · 25 stems"
+        "pl": "Tulipany · 20 szt.",
+        "en": "Tulips · 20 stems"
       },
       "description": {
         "pl": "Wyraziste tulipany, które wnoszą do domu kolor i wiosenną energię.",
         "en": "Bright tulips that bring colour and springtime energy into your home."
       },
-      "price": 240,
+      "price": 85,
+      "quantity_variants": [
+        {
+          "count": 30,
+          "price": 120
+        },
+        {
+          "count": 60,
+          "price": 240
+        },
+        {
+          "count": 101,
+          "price": 480
+        }
+      ],
       "currency": "zł",
       "image": "/assets/images/Pierwszy-pocalunek.png",
       "alt": {
