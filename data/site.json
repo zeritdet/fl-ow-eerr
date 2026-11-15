@@ -542,19 +542,37 @@
         "en": "Student Classic"
       },
       "subtitle": {
-        "pl": "Róże · 7 szt.",
-        "en": "Roses · 7 stems"
+        "pl": "Róże · 10 szt.",
+        "en": "Roses · 10 stems"
       },
       "description": {
-        "pl": "Bukiet siedmiu białych róż w eleganckim opakowaniu. Ręcznie układany na zamówienie.",
-        "en": "A bouquet of seven white roses in elegant packaging. Hand-arranged to order."
+        "pl": "Bukiet białych róż w eleganckim opakowaniu. Ręcznie układany na zamówienie.",
+        "en": "A bouquet of white roses in elegant packaging. Hand-arranged to order."
       },
-      "price": 45,
+      "price": 55,
+      "quantity_variants": [
+        {
+          "count": 20,
+          "price": 85
+        },
+        {
+          "count": 30,
+          "price": 120
+        },
+        {
+          "count": 60,
+          "price": 240
+        },
+        {
+          "count": 101,
+          "price": 480
+        }
+      ],
       "currency": "zł",
       "image": "/assets/images/Student Classic.png",
       "alt": {
-        "pl": "Elegancki bukiet 7 białych róż, ozdobiony delikatnym papierem i satynową wstążką. Idealny na wyjątkowe okazje i jako wyraz pięknych uczuć.",
-        "en": "An elegant bouquet of 7 white roses, adorned with delicate paper and a satin ribbon. Perfect for special occasions and as an expression of beautiful sentiments."
+        "pl": "Elegancki bukiet 10 białych róż, ozdobiony delikatnym papierem i satynową wstążką. Idealny na wyjątkowe okazje i jako wyraz pięknych uczuć.",
+        "en": "An elegant bouquet of 10 white roses, adorned with delicate paper and a satin ribbon. Perfect for special occasions and as an expression of beautiful sentiments."
       },
       "palette": [
         {
@@ -597,19 +615,19 @@
         "en": "Small Gift"
       },
       "subtitle": {
-        "pl": "Tulipany · 7 szt.",
-        "en": "Tulip · 7 stems"
+        "pl": "Tulipany · 10 szt.",
+        "en": "Tulip · 10 stems"
       },
       "description": {
-        "pl": "Bukiet siedmiu białych tulipanów w eleganckim opakowaniu. Ręcznie układany na zamówienie, idealny na wyjątkowe okazje i jako subtelny wyraz pięknych uczuć.",
-        "en": "A bouquet of seven white tulips in elegant packaging. Arranged by hand to order, it is perfect for special occasions and serves as a subtle expression of beautiful sentiments."
+        "pl": "Bukiet 10 białych tulipanów w eleganckim opakowaniu. Ręcznie układany na zamówienie, idealny na wyjątkowe okazje i jako subtelny wyraz pięknych uczuć.",
+        "en": "A bouquet of 10 white tulips in elegant packaging. Arranged by hand to order, it is perfect for special occasions and serves as a subtle expression of beautiful sentiments."
       },
       "price": 50,
       "currency": "zł",
       "image": "/media/7 tulip.png",
       "alt": {
-        "pl": "Elegancki bukiet 7 białych tulipanów, ozdobiony delikatnym papierem i satynową wstążką. Subtelny, ponadczasowy i pełen uroku — idealny, by wywołać uśmiech, wyrazić wdzięczność lub po prostu sprawić komuś małą, piękną niespodziankę.",
-        "en": "An elegant bouquet of 7 white tulips, wrapped in delicate paper and finished with a satin ribbon. Subtle, timeless, and full of charm—perfect for bringing a smile to someone’s face, expressing gratitude, or simply offering a lovely little surprise."
+        "pl": "Elegancki bukiet 10 białych tulipanów, ozdobiony delikatnym papierem i satynową wstążką. Subtelny, ponadczasowy i pełen uroku — idealny, by wywołać uśmiech, wyrazić wdzięczność lub po prostu sprawić komuś małą, piękną niespodziankę.",
+        "en": "An elegant bouquet of 10 white tulips, wrapped in delicate paper and finished with a satin ribbon. Subtle, timeless, and full of charm—perfect for bringing a smile to someone’s face, expressing gratitude, or simply offering a lovely little surprise."
       },
       "palette": [
         {
