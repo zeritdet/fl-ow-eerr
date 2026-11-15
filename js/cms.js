@@ -415,6 +415,40 @@
       if (fixed[key] !== undefined) node.textContent = tr(fixed[key]);
     });
 
+    // Translate shared navigation and footer elements that are not CMS-managed.
+    const sharedLabels = {
+      tracking: lang === "en" ? "Track order" : "Śledź zamówienie",
+      footerHome: lang === "en" ? "Home" : "Start",
+      footerCatalog: lang === "en" ? "Catalog" : "Katalog",
+      footerCollections: lang === "en" ? "Collections" : "Kolekcje",
+      footerAbout: lang === "en" ? "About us" : "O nas",
+      footerDelivery: lang === "en" ? "Delivery & payment" : "Dostawa i płatność",
+      footerContact: lang === "en" ? "Contact" : "Kontakt",
+      terms: lang === "en" ? "Store terms" : "Regulamin sklepu",
+      privacy: lang === "en" ? "Privacy policy" : "Polityka prywatności",
+      grid: lang === "en" ? "Grid" : "Siatka",
+      list: lang === "en" ? "List" : "Lista",
+      carousel: lang === "en" ? "Carousel" : "Karuzela"
+    };
+    $$(".tracking-nav-link").forEach(node => {
+      node.textContent = sharedLabels.tracking;
+      node.setAttribute("aria-label", sharedLabels.tracking);
+    });
+    $$(".footer-pages").forEach(nav => {
+      const links = $$("a", nav);
+      const keys = ["footerHome", "footerCatalog", "footerAbout", "footerDelivery", "footerContact"];
+      links.forEach((link, index) => {
+        if (sharedLabels[keys[index]]) link.textContent = sharedLabels[keys[index]];
+      });
+    });
+    $$(".footer-legal a").forEach((link, index) => {
+      link.textContent = index === 0 ? sharedLabels.terms : sharedLabels.privacy;
+    });
+    $$("[data-view='grid']").forEach(node => node.textContent = sharedLabels.grid);
+    $$("[data-view='list']").forEach(node => node.textContent = sharedLabels.list);
+    $$("[data-view='carousel']").forEach(node => node.textContent = sharedLabels.carousel);
+    $$(".view-controls").forEach(node => node.setAttribute("aria-label", lang === "en" ? "Product view" : "Widok kompozycji"));
+
     languageButtons.forEach(button => {
       button.setAttribute(
         "aria-pressed",
@@ -426,6 +460,10 @@
     if (languageSwitch) languageSwitch.classList.toggle("is-en", lang === "en");
 
     renderProducts();
+    const modalEyebrow = $(".modal-copy .eyebrow");
+    if (modalEyebrow) modalEyebrow.textContent = lang === "en" ? "Bouquet details" : "Szczegóły bukietu";
+    const modalClose = $("#modalClose");
+    if (modalClose) modalClose.setAttribute("aria-label", lang === "en" ? "Close" : "Zamknij");
     const modalButton = $("#modalAdd");
     if (modalButton) modalButton.textContent = addLabel();
     const modalBuyNow = $("#modalBuyNow");
