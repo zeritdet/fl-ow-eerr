@@ -150,6 +150,32 @@ label {
 @media(max-width:700px){.product-quick-actions{opacity:1;transform:none;left:8px;right:8px;bottom:8px;gap:5px}.product-quick-actions .quick,.product-quick-actions .buy-now{padding:9px 5px;font-size:9px}.modal-buy-now{margin-top:8px}}
 \n@media(max-width:560px){.footer{align-items:flex-start;gap:18px;padding:28px 8px 38px}.footer-legal{width:100%;gap:18px}}\n
 
-/* Elfsight social media icons: centered beneath the footer content */
-.social-icons-widget{flex:0 0 100%;width:100%;display:flex;justify-content:center;align-items:center;text-align:center;min-height:40px;margin:8px auto 0;}
-.social-icons-widget > div{max-width:100%;}
+/* Elfsight social icons: keep the embed in normal document flow inside the footer */
+.footer{flex-wrap:wrap;}
+.social-icons-widget{
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  float:none !important;
+  flex:0 0 100%;
+  order:99;
+  width:100%;
+  max-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  min-height:40px;
+  margin:8px auto 0;
+  padding:0;
+  z-index:auto !important;
+}
+.social-icons-widget > div{
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  float:none !important;
+  max-width:100%;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
