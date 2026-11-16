@@ -149,3 +149,19 @@ label {
 .modal-buy-now:hover{background:#87464e}
 @media(max-width:700px){.product-quick-actions{opacity:1;transform:none;left:8px;right:8px;bottom:8px;gap:5px}.product-quick-actions .quick,.product-quick-actions .buy-now{padding:9px 5px;font-size:9px}.modal-buy-now{margin-top:8px}}
 \n@media(max-width:560px){.footer{align-items:flex-start;gap:18px;padding:28px 8px 38px}.footer-legal{width:100%;gap:18px}}\n
+
+/* Elfsight social media icons: centered beneath the footer content */
+.social-icons-widget{flex:0 0 100%;width:100%;display:flex;justify-content:center;align-items:center;text-align:center;min-height:40px;margin:8px auto 0;}
+.social-icons-widget > div{max-width:100%;}
+
+
+/* Gent Flowers social links */
+.footer{flex-wrap:wrap;}
+.footer-social{flex:0 0 100%;width:100%;display:flex;justify-content:center;align-items:center;gap:16px;margin:2px auto 0;padding:4px 0 0;}
+.footer-social-link{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(165,111,115,.28);border-radius:50%;background:rgba(255,255,255,.55);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease,background .35s ease;will-change:transform;}
+.footer-social-link img{display:block;width:23px;height:23px;object-fit:contain;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s ease;}
+.footer-social-link:hover{transform:translateY(-5px) scale(1.06);border-color:#a56f73;background:#fff;box-shadow:0 9px 22px rgba(127,69,75,.16),0 0 0 5px rgba(165,111,115,.07);}
+.footer-social-link:hover img{transform:scale(1.1);filter:drop-shadow(0 2px 3px rgba(127,69,75,.18));}
+.footer-social-link:focus-visible{outline:2px solid #a56f73;outline-offset:4px;}
+@media(prefers-reduced-motion:reduce){.footer-social-link,.footer-social-link img{transition:none}.footer-social-link:hover{transform:none}}
+@media(max-width:560px){.footer-social{padding-top:2px;gap:14px}.footer-social-link{width:42px;height:42px}}
