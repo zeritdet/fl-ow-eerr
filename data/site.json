@@ -88,7 +88,7 @@
   },
   "hero": {
     "eyebrow": "First Date?)",
-    "image": "assets/images/pink-tulip-bouquet.png",
+    "image": "/media/tulip.png",
     "image_alt": {
       "pl": "Delikatny bukiet różowych kwiatów",
       "en": "A delicate bouquet of pink flowers"
