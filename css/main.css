@@ -165,3 +165,26 @@ label {
 .footer-social-link:focus-visible{outline:2px solid #a56f73;outline-offset:4px;}
 @media(prefers-reduced-motion:reduce){.footer-social-link,.footer-social-link img{transition:none}.footer-social-link:hover{transform:none}}
 @media(max-width:560px){.footer-social{padding-top:2px;gap:14px}.footer-social-link{width:42px;height:42px}}
+
+
+/* Instagram post on the homepage */
+.instagram-section{overflow:hidden}
+.instagram-section-head{align-items:flex-end}
+.instagram-section-head .text-link{white-space:nowrap}
+.instagram-embed-wrap{display:flex;justify-content:center;width:100%;padding:8px 0 2px}
+.instagram-embed-wrap .instagram-media{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:540px!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  border:0!important;
+  border-radius:14px!important;
+  box-shadow:0 12px 34px rgba(72,42,45,.09)!important;
+  overflow:hidden;
+}
+@media(max-width:560px){
+  .instagram-section-head{align-items:flex-start;gap:10px}
+  .instagram-section-head .text-link{font-size:13px}
+  .instagram-embed-wrap{padding-top:2px}
+}
